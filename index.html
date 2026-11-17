@@ -107,7 +107,7 @@ function speakSequence(lines,onEnd){
 }
 function discovery(id,name,description){
  const first=!s.found[id];s.found[id]=true;
- const brief=({mail:'郵便受けには401、402、403の表示がある。',key:'古い鍵が一本、鍵棚に残っている。',handbook:'仕事の手順が書かれた手帳。',wall:'塗装の色が違う壁の継ぎ目。',map:'古い避難図。現在のものと一部が違う。',letter:'404号室宛ての封筒。差出人の記載はない。',ledger:'1987年の日付が残る台帳。',scratch:'壁の低い位置に刻まれた傷。',photo:'古い写真が入った封筒。',vent:'換気口。奥から音がする。',wire:'新しい配線と結束バンド。',speaker:'壁の裏にあった小型スピーカー。',draft:'手書きの報告書の下書き。',report:'会社に送信された報告書。',history:'管理室端末の送信履歴。',testimony:'佳奈が持参した古い手帳。',attendance:'1987年の出勤簿。',meals:'物置への食事の記録。',mariLetter:'藤崎真理の手紙。',resignation:'藤崎真理の退職届。',construction:'古い封鎖工事の記録。',finalMap:'四階の古い建築図面。',oldLetter:'当時の責任者が残した手紙。',album:'佐伯が保管していた写真アルバム。'})[id]||name;
+ const brief=({mail:'部屋番号順に並んだ郵便受け。',key:'古い鍵が一本、鍵棚に残っている。',handbook:'仕事の手順が書かれた手帳。',wall:'塗装の色が違う壁の継ぎ目。',map:'古い避難図。現在のものと一部が違う。',letter:'404号室宛ての封筒。差出人の記載はない。',ledger:'1987年の日付が残る台帳。',scratch:'壁の低い位置に刻まれた傷。',photo:'古い写真が入った封筒。',vent:'換気口。奥から音がする。',wire:'新しい配線と結束バンド。',speaker:'壁の裏にあった小型スピーカー。',draft:'手書きの報告書の下書き。',report:'会社に送信された報告書。',history:'管理室端末の送信履歴。',testimony:'佳奈が持参した古い手帳。',attendance:'1987年の出勤簿。',meals:'物置への食事の記録。',mariLetter:'藤崎真理の手紙。',resignation:'藤崎真理の退職届。',construction:'古い封鎖工事の記録。',finalMap:'四階の古い建築図面。',oldLetter:'当時の責任者が残した手紙。',album:'佐伯が保管していた写真アルバム。'})[id]||name;
  if(first)s.log.push({id,name,description:brief,chapter:s.chapter});
  save();
  sheet.replaceChildren(E('h3',name));

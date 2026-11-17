@@ -135,10 +135,40 @@ function render(){if(s.chapter<0||s.chapter>=chapters.length)s.chapter=0;app.rep
 const c=chapters[s.chapter],header=E('header');const brand=E('div');brand.append(E('div','404号室','brand'),E('small','黒瀬ハイツ / 調査記録'));header.append(brand,E('div',c.time,'clock'));app.append(header);
 const stage=E('section');stage.id='stage';stage.className='fade';stage.style.backgroundImage='linear-gradient(180deg,#05090920,#05090955),url("'+c.image+'")';stage.append(E('div','CHAPTER '+String(s.chapter+1).padStart(2,'0')+' / '+c.place,'location'));c.spots.forEach(([name,x,y,id,description])=>{const b=B(s.found[id]?'✓':'+',()=>add(id,name,description),'hotspot'+(s.found[id]?' seen':''));b.style.left=x+'%';b.style.top=y+'%';b.setAttribute('aria-label',name+'を調べる');b.title=name;stage.append(b)});stage.append(E('div','＋を押して周囲を調べる','scenefoot'));const inStory=renderStory(stage);app.append(stage);if(inStory){const nav=E('nav');nav.className='bottom';[['▤','証拠帳',journal],['?','ヒント',hint],['☰','メニュー',menu]].forEach(([ic,t,f])=>{const b=B('',f);b.append(E('span',ic),document.createTextNode(t));nav.append(b)});app.append(nav);return}
 const main=E('main');main.append(E('div','CHAPTER '+String(s.chapter+1).padStart(2,'0')+' / 08','eyebrow'),E('h2',c.title),E('div','現在の目的｜'+c.objective,'objective'),E('div','調査 '+c.spots.filter(x=>s.found[x[3]]).length+' / 3　・　推理 '+(s.solved[s.chapter]?'完了':'未完了'),'status'));
-if(s.solved[s.chapter])main.append(B(s.chapter===7?'結末を読む':'次の章へ進む',()=>{if(s.chapter===7){s.finished=true;save();ending()}else{s.chapter++;resetScene();save();render();window.scrollTo(0,0)}},'btn primary'));else main.append(B(done()?(s.chapter===0?'仕事の引き継ぎを終える':'集めた証拠から推理する'):(c.spots.every(x=>s.found[x[3]])?'会話を進める':'周囲を調べる'),()=>done()?deduce():(c.spots.every(x=>s.found[x[3]])?showPostTalk():hint()),'btn primary'));
+if(s.solved[s.chapter])main.append(B(s.chapter===7?'結末を読む':'次の章へ進む',()=>{if(s.chapter===7){s.finished=true;save();ending()}else{s.chapter++;resetScene();save();render();window.scrollTo(0,0)}},'btn primary'));else main.append(B(done()?(s.chapter===0?'仕事の引き継ぎを終える':s.chapter===4?'報告書を照合する':s.chapter===7?'事件の時系列を再構築する':'集めた証拠から推理する'):(c.spots.every(x=>s.found[x[3]])?'会話を進める':'周囲を調べる'),()=>done()?deduce():(c.spots.every(x=>s.found[x[3]])?showPostTalk():hint()),'btn primary'));
 main.append(B('これまでの物語を読み返す',recap,'btn secondary'));app.append(main);
 const nav=E('nav');nav.className='bottom';[['▤','証拠帳',journal],['◇','推理',deduce],['?','ヒント',hint],['☰','メニュー',menu]].forEach(([icon,label,fn])=>{const b=B('',fn);b.append(E('span',icon),document.createTextNode(label));nav.append(b)});app.append(nav)}
-function deduce(){if(s.solved[s.chapter])return show('推理済み',['この章の推理は完了している。']);if(!done()){if(chapters[s.chapter].spots.every(x=>s.found[x[3]])&&!s.events['talk'+s.chapter])return showPostTalk();return hint()}if(s.chapter===0){s.solved[0]=true;save();return show('引き継ぎ完了',['仕事の手順を確認した。古い鍵は勝手に使わず、必要になったら高瀬に相談しよう。'],[['翌日へ',()=>{s.chapter=1;save();hide();window.scrollTo(0,0)}],['記録を見る',journal]])}const q=questions[s.chapter];show('推理｜'+chapters[s.chapter].title,[q.q],q.a.map((a,i)=>[a,()=>{if(i!==q.right)return show('もう一度考えよう',['証拠帳の記述を見比べれば、答えは一つに絞れる。'],[['証拠帳を見る',journal],['推理に戻る',deduce]]);s.solved[s.chapter]=true;save();show('推理成立',[q.why],[['物語を続ける',()=>{hide();if(s.chapter===7){s.finished=true;save();ending()}else{s.chapter++;save();render();window.scrollTo(0,0)}}],['証拠帳を見る',journal]])}]).concat([['探索に戻る',hide]]))}
+
+const caseTimeline=[
+{date:'10月3日',label:'佳奈が物置に閉じ込められる',id:'kana'},
+{date:'10月8日',label:'真理が佳奈を逃がす',id:'escape'},
+{date:'10月9日',label:'真理が建物に戻り、拘束される',id:'mari'},
+{date:'10月12日',label:'真理が死亡する',id:'death'}
+];
+function evidenceComparison(){
+ if(!s.events.compare)s.events.compare=[];
+ const choices=[
+ ['下書き','録音装置を確認。原因の調査を継続する。'],
+ ['提出版','録音装置を確認。旧物置の配線を早急に撤去すること。'],
+ ['送信履歴','送信時刻：主人公が四階で水野と調査していた時間帯']
+ ];
+ sheet.replaceChildren(E('h3','報告書を比較する'),E('p','下書きと提出版を読み比べ、書き換えられた箇所を選ぼう。'));
+ choices.forEach((x,i)=>{const f=E('div',undefined,'file');f.append(E('b',x[0]),E('p',x[1]));sheet.append(f)});
+ sheet.append(E('p','下書きに存在せず、提出版に追加された指示はどれ？'));
+ [['原因の調査を継続する','wrong'],['旧物置の配線を早急に撤去する','correct'],['録音装置を確認する','wrong']].forEach(([label,result])=>sheet.append(B(label,()=>{if(result==='wrong')return show('もう一度照合',['二つの報告書の文章を見比べよう。'],[['比較に戻る',evidenceComparison]]);s.events.compareDone=true;save();speakSequence([['主人公','「旧物置の配線を早急に撤去する」……この一文は下書きにはない。'],['主人公','しかも、送信された時刻は水野さんと四階にいた。'],['水野','誰かが管理室の端末から書き換えた可能性があります。'],['主人公','でも、誰が操作したかはまだ証明できない。送信履歴を保存しておこう。']],()=>{save();render()})},'btn')));
+ sheet.append(B('証拠帳に戻る',journal,'btn secondary'));modal.classList.add('show')
+}
+function timelinePuzzle(){
+ if(!s.events.timeline)s.events.timeline=[];
+ const picked=s.events.timeline;
+ sheet.replaceChildren(E('h3','1987年の出来事を並べる'),E('p','手帳・出勤簿・食事記録・工事記録から分かる順番に、出来事を選ぼう。'));
+ const bar=E('div',undefined,'objective');bar.textContent=picked.length?picked.map(id=>caseTimeline.find(x=>x.id===id)).map(x=>x.date+' '+x.label).join(' → '):'まだ出来事を選んでいない。';sheet.append(bar);
+ const order=[caseTimeline[2],caseTimeline[0],caseTimeline[3],caseTimeline[1]];
+ order.forEach(item=>{const b=B(item.label,()=>{if(picked.includes(item.id))return;const expected=caseTimeline[picked.length];if(item.id!==expected.id)return show('時系列が合わない',['この出来事より前に起きたことがある。日付と証言を確認しよう。'],[['並べ直す',timelinePuzzle],['最初から',()=>{s.events.timeline=[];save();timelinePuzzle()}]]);picked.push(item.id);save();if(picked.length===4){s.events.timelineDone=true;save();speakSequence([['主人公','十月三日に佳奈さんが閉じ込められた。'],['水野','八日に真理さんが伯母を逃がした。'],['主人公','九日に真理さんが戻り、十二日まで物置へ食事が運ばれている。'],['水野','その後、奥の区画が塞がれた。図面と工事記録を警察に渡しましょう。']],()=>{render()})}else timelinePuzzle()},'btn'+(picked.includes(item.id)?' secondary':''));b.disabled=picked.includes(item.id);sheet.append(b)});
+ sheet.append(B('最初から並べ直す',()=>{s.events.timeline=[];save();timelinePuzzle()},'btn secondary'));sheet.append(B('証拠帳',journal,'btn secondary'));modal.classList.add('show')
+}
+
+function deduce(){if(s.solved[s.chapter])return show('推理済み',['この章の推理は完了している。']);if(!done()){if(chapters[s.chapter].spots.every(x=>s.found[x[3]])&&!s.events['talk'+s.chapter])return showPostTalk();return hint()}if(s.chapter===4&&!s.events.compareDone)return evidenceComparison();if(s.chapter===7&&!s.events.timelineDone)return timelinePuzzle();if(s.chapter===0){s.solved[0]=true;save();return show('引き継ぎ完了',['仕事の手順を確認した。古い鍵は勝手に使わず、必要になったら高瀬に相談しよう。'],[['翌日へ',()=>{s.chapter=1;save();hide();window.scrollTo(0,0)}],['記録を見る',journal]])}const q=questions[s.chapter];show('推理｜'+chapters[s.chapter].title,[q.q],q.a.map((a,i)=>[a,()=>{if(i!==q.right)return show('もう一度考えよう',['証拠帳の記述を見比べれば、答えは一つに絞れる。'],[['証拠帳を見る',journal],['推理に戻る',deduce]]);s.solved[s.chapter]=true;save();show('推理成立',[q.why],[['物語を続ける',()=>{hide();if(s.chapter===7){s.finished=true;save();ending()}else{s.chapter++;save();render();window.scrollTo(0,0)}}],['証拠帳を見る',journal]])}]).concat([['探索に戻る',hide]]))}
 function journal(){const arr=s.log;show('証拠帳',arr.length?arr.map((x,i)=>(i+1)+'. '+x.name+'｜第'+(x.chapter+1)+'章\n'+x.description):['まだ記録がない。背景の＋から調べよう。'],[['戻る',hide]])}
 function recap(){show('これまでの記録',chapters.slice(0,s.chapter+1).map((c,i)=>'第'+(i+1)+'章　'+c.title+'\n'+(s.solved[i]?c.end:'現在調査中')), [['戻る',hide]])}
 function hint(){const c=chapters[s.chapter],missing=c.spots.filter(x=>!s.found[x[3]]);if(s.chapter===3&&s.found.speaker&&!s.events.moritaDone)return show('調査のヒント',['スピーカーの設置者について、森田に質問しよう。'],[['森田に話を聞く',morita],['戻る',hide]]);show('調査のヒント',[missing.length?'まだ確認していない場所：'+missing.map(x=>x[0]).join('・'):'証拠は揃っている。推理で、各記録が示す事実を結びつけよう。','間違えてもペナルティはない。証拠帳はいつでも見返せる。'])}

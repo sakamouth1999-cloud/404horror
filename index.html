@@ -1,80 +1,49 @@
-<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover"><meta name="theme-color" content="#080c0d"><title>404号室 — 深夜の記録</title><style>*{box-sizing:border-box}html,body{margin:0;background:#050808;width:100%;height:100%;overflow:hidden}canvas{display:block;width:100vw;height:100dvh;touch-action:none;image-rendering:auto;-webkit-tap-highlight-color:transparent}body{font-synthesis:none}</style></head><body><canvas id="c"></canvas><script>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#090e10"><title>404号室｜消された階</title><style>
+*{box-sizing:border-box}body{margin:0;background:#080d0e;color:#e6e2d7;font-family:-apple-system,"Hiragino Kaku Gothic ProN",sans-serif}button{font:inherit;cursor:pointer}#app{max-width:490px;margin:auto;min-height:100dvh;background:#111818;position:relative;box-shadow:0 0 90px #000}header{padding:16px 18px;background:#111719;border-bottom:1px solid #8e795d}header b{letter-spacing:3px;font-size:19px}header small{display:block;color:#b2a58e;margin-top:6px}#visual{height:35dvh;min-height:220px;max-height:340px;position:relative;background-size:cover;background-position:center;overflow:hidden}#visual:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 45%,#111818 100%);pointer-events:none}#spots{position:absolute;inset:0;z-index:2}.spot{position:absolute;border:1px solid #c9b58b88;background:#101b1955;color:#fff;border-radius:50%;width:43px;height:43px;transform:translate(-50%,-50%);box-shadow:0 0 18px #d4c08d55}.spot:before{content:"+";font-size:22px}.spot.seen{border-color:#78887a66;color:#8d9d8b;background:#111a1877}.spot.seen:before{content:"✓";font-size:16px}main{padding:14px 18px 120px}h2{font-size:21px;margin:8px 0 10px}p{font-size:15px;line-height:1.8;color:#d4d4c9;margin:8px 0}.sub{font-size:12px;color:#a9a58f;letter-spacing:1px}.panel{background:#1b2423;border:1px solid #5d665c;padding:13px;margin:12px 0;border-radius:3px}.action{display:block;width:100%;background:#30332f;border:1px solid #9c8b6e;color:#f0ecdf;padding:13px;margin:8px 0;text-align:left;border-radius:3px;min-height:45px}.action:disabled{opacity:.38}.action.secondary{background:#192221;border-color:#687468}#tabs{display:flex;gap:6px;position:sticky;bottom:0;background:#0a1010;padding:12px 9px;border-top:1px solid #7e705c}#tabs button{flex:1;background:#242c2a;color:#e7e1d3;border:1px solid #766e5d;padding:11px 2px;font-size:13px}#overlay{position:fixed;inset:0;background:#000c;z-index:10;display:none;align-items:center;justify-content:center;padding:15px}#dialog{width:min(440px,100%);max-height:86dvh;overflow:auto;background:#15201f;border:1px solid #baa17a;padding:22px;box-shadow:0 12px 60px #000}#dialog h3{margin:0 0 15px;color:#e3d2b5}#dialog p{white-space:pre-line}#dialog button{width:100%;background:#313b35;color:#eee;border:1px solid #a79576;padding:13px;margin-top:12px}#notice{color:#d7b68c;font-size:13px}.danger{color:#e2a9a2}#intro{padding:30px 24px 130px;text-align:center;min-height:90dvh;background:linear-gradient(#090e0e77,#090e0eea),url('assets/title.webp') center/cover}#intro h1{font-size:55px;margin:100px 0 16px;letter-spacing:4px}#intro p{margin:22px 0 50px}.evidence{display:inline-block;padding:7px 9px;margin:3px;border:1px solid #8d826c;background:#28312d;font-size:12px}#clock{float:right;color:#b8a28a}
+</style></head><body><div id="app"></div><div id="overlay"><div id="dialog"></div></div><script>
 (()=>{'use strict';
-const c=document.querySelector('canvas'),g=c.getContext('2d'),W=390,H=844;
-const bgKeys=['title','office','hall','door','passage','photo','surveillance','exit','archive'];
-const images={};for(const key of bgKeys){let im=new Image();im.src='assets/'+key+'.webp';im.onload=()=>draw();images[key]=im}
-const chapters=[
-{title:'序章　午前二時四十四分',place:'管理人室',bg:'office',intro:['雨の夜。あなたは黒瀬ハイツの臨時管理人として初めての夜勤に就いた。','前任者は引き継ぎに現れなかった。机には鍵束と、濡れた苦情票が一枚。','差出人は「404号室」。しかし建物の案内板には、その番号がない。'],tasks:[
-{n:'苦情票を調べる',lines:['「毎晩、壁の中で誰かが歩いています。もうやめてください」','消印はない。紙は内側から濡れたように波打っている。','欄外には小さく「三回叩いたら返事をして」と書かれていた。']},
-{n:'管理日誌を読む',lines:['1987年4月4日。「四階の改修。404号室は欠番とする」','それ以前のページだけが不自然に切り取られている。','末尾には管理人・黒瀬の署名。現在の管理会社の名と同じだ。']},
-{n:'管理会社に電話する',lines:['女の声「404号室はありません。苦情票は破棄してください」','あなたが名乗る前に、相手はあなたの名字を口にした。','電話が切れた後、内線が一度だけ鳴る。受話器の向こうには雨音。']}
-],clue:'消された番号／先に知られていた名前',gate:'苦情票、日誌、電話の記録を確認する',next:'四階へ向かう'},
-{title:'第一章　存在しない部屋',place:'四階の廊下',bg:'hall',intro:['四階には403号室までしかない。突き当たりは、塗り直されたばかりの壁だ。','照明が三度点滅する。その間だけ、壁の向こうから靴音が聞こえた。','廊下の住人がドア越しに囁く。「ここで、三回だけは叩かないで」'],tasks:[
-{n:'避難経路図を比較する',lines:['掲示板の図面には403号室の隣に不自然な空白がある。','紙の下に古い図面の角。そこには「404」の文字が透けていた。','壁の厚さは図面と合わない。奥に空間がある。']},
-{n:'403号室の住人と話す',lines:['住人「夜中に女の人が泣くの。昔からずっと」','住人「でも先月、壁の向こうで男の人が咳をしていた」','古い怪談と、最近の出来事が混ざっている。']},
-{n:'壁を三回叩く',lines:['コン。コン。コン。','一拍遅れて、同じ三回の音が返ってくる。','次に、あなたがまだ叩いていない四回目の音がした。']},
-{n:'床の粉を調べる',lines:['壁際に白い粉。指でこすると新しい石膏の匂いがする。','床には細い靴底の跡。昨日も誰かがここを歩いたようだ。','「何十年も閉ざされた部屋」という説明と矛盾している。']}
-],clue:'古い怪談と新しい足跡',gate:'図面、証言、ノック、床を調べる',next:'壁の隙間を探す'},
-{title:'第二章　昭和六十二年',place:'壁の向こう',bg:'door',intro:['壁の裏に細い通路があった。鍵は管理人の鍵束で開いた。','埃の積もった部屋には、家具が一つだけ残されている。小さな揺りかごだ。','壁には何度も擦ったような線。「1987.4.4」の数字が残る。'],tasks:[
-{n:'古い写真を裏返す',lines:['若い女性が赤ん坊を抱いている。顔の部分だけ傷がつけられていた。','裏には「春、ここから出られたら」とある。','写真の端に、あなたが子どもの頃から持つお守りと同じ柄の布。']},
-{n:'録音テープを再生する',lines:['女性「赤ちゃんだけでも、外へ……」','男「騒げば、誰も信じなくなる。事故として処理する」','テープが途切れる直前、金属の扉が閉まる音がした。']},
-{n:'封鎖工事の伝票を読む',lines:['工事日は失踪届の提出より二日早い。','発注者は管理会社。理由欄は「居住者の精神的混乱による安全措置」。','部屋が封鎖されたのは、事件の後ではなかった。']},
-{n:'揺りかごの底を調べる',lines:['底板に小さな紙片。「外に出た子は、まだ生きている」','紙片の下に四桁の数字。日付の年号「1987」。','誰かが子どもの存在を記録から隠したらしい。']}
-],clue:'封鎖の順序／生き延びた赤ん坊',gate:'写真、録音、工事伝票、揺りかごを調べる',next:'金庫を開ける'},
-{title:'第三章　記録の矛盾',place:'地下記録保管庫',bg:'archive',intro:['金庫に残されていたのは、地下保管庫の鍵と「1987」と書かれたメモ。','地下の台帳には、404号室の住人の名前が黒く塗りつぶされていた。','廊下の向こうで扉が閉まる。ここにいるのは、あなた一人ではない。'],tasks:[
-{n:'保管箱の番号を入力',kind:'code',answer:'0404',hint:'台帳の管理番号。部屋番号を四桁で表す。',lines:['保管箱が開いた。内部には1987年の原本と工事費の領収書。','領収書の日付は女性の失踪より前。','管理会社は彼女を閉じ込めたまま壁を作らせた。']},
-{n:'失踪届と台帳を照合',lines:['失踪届には「本人が自主的に転居」とある。','しかし台帳の最後の署名は、失踪届の提出日より後。','誰かが本人の筆跡を真似た形跡がある。']},
-{n:'管理人の勤務記録を読む',lines:['1987年の夜勤者は「黒瀬 修一」。','現在の採用通知に記された担当役員も「黒瀬 修一」。','同姓同名なのか。年齢を考えると、同一人物でもおかしくない。']},
-{n:'非常ベルの配線を追う',lines:['警報装置の線が、保管庫ではなく四階の壁へ伸びている。','床下には最近交換された電池と小型スピーカー。','誰かが怪談を再現できる仕組みを維持している。']}
-],clue:'嘘の失踪届／現在まで続く設備',gate:'保管箱、台帳、勤務記録、配線を調べる',next:'配線の先を追う'},
-{title:'第四章　幽霊の正体',place:'隠し監視室',bg:'surveillance',intro:['壁の裏には小さな監視室があった。六台のモニターが、建物中を映している。','画面の一つには、あなたの自宅の玄関。撮影日時は昨日。','スピーカーから、さっき聞いた女の泣き声が流れた。録音だった。'],tasks:[
-{n:'監視映像を巻き戻す',lines:['昨日の映像。作業服の男が壁を叩き、廊下の照明を落としている。','その男は管理会社の社員証を胸につけていた。','「幽霊」の大半は、誰かが意図的に作っていた。']},
-{n:'音声装置の履歴を見る',lines:['泣き声、足音、ノック。すべて時刻指定で再生できる。','ただし1987年の録音テープの声は別物だ。','過去の事件は本物。今の怪異だけが演出されている。']},
-{n:'採用試験の記録を開く',lines:['あなたの採用書類が、応募の一週間前に作成されている。','備考「対象者が過去の記録をどこまで把握しているか確認する」','あなたは管理人として雇われたのではなく、試されていた。']},
-{n:'警備員の無線を聞く',lines:['無線「対象者、監視室へ進入。予定より早い」','別の声「会長に知らせろ。証拠を持ち出させるな」','廊下の鍵が遠隔操作で閉まる。']}
-],clue:'幽霊は偽装／採用は罠',gate:'映像、音声、採用記録、無線を確認する',next:'採用書類の封筒を開く'},
-{title:'第五章　あなたの名前',place:'封印された写真',bg:'photo',intro:['採用書類には、あなたの出生記録が添付されていた。','「1987年4月4日、404号室で出生。母親の所在は未確認」','頭の中で、写真と揺りかごと古いお守りがつながる。'],tasks:[
-{n:'出生記録を読む',lines:['あなたが生まれた場所は、この404号室だった。','母親の欄には、写真に写っていた女性の名前。','あなたは偶然この建物に来たのではない。']},
-{n:'母の最後の手紙を読む',lines:['「この子だけは、ここから出して」','「いつか大きくなっても、私を探さなくていい。生きていて」','最後の行は書きかけのまま、紙が破れていた。']},
-{n:'黒瀬修一の写真を照合',lines:['1987年の管理人と、今夜採用を担当した役員。','右手の傷、左眉の切れ目。写真の人物は同じ男だ。','母を閉じ込めた男が、あなたをここへ呼び戻した。']},
-{n:'録音の最後を再生する',lines:['ノイズの後、男の声。「子どもは運び出した。記録は残すな」','続いて別の男「いずれ戻ってきたらどうする」','黒瀬「その時は、本人にどこまで知っているか喋らせる」']}
-],clue:'自分が404号室の赤ん坊だった',gate:'出生記録、手紙、写真、録音を確認する',next:'非常階段へ向かう'},
-{title:'最終章　出口にいる男',place:'非常階段',bg:'exit',intro:['非常口には黒いスーツの男が立っている。右手には古い傷跡。','黒瀬修一。「ここまで来たなら、もう分かっただろう」','「お前の母親は、最後まであの部屋のことを黙らなかった」'],tasks:[
-{n:'黒瀬の話を聞く',lines:['黒瀬「怪談なら人は離れる。犯罪だと知られたら、会社が終わる」','黒瀬「お前を採用したのは、母親が何を残したか知るためだ」','彼は母親の消息について、最後まで明言しない。']},
-{n:'証拠を整理する',lines:['封鎖前の領収書、偽造された失踪届、監視映像、出生記録。','単独では弱い証拠も、時系列で並べると一つの事件を指す。','送信先の報道機関と弁護士の連絡先が端末に残っている。']},
-{n:'非常口の鍵を確認',lines:['扉は外から施錠されている。非常解錠レバーは男の足元。','黒瀬は携帯端末を見ている。あなたが証拠を送るか見張っている。','今なら送信か脱出を選べる。ただし時間はない。']}
-],clue:'証拠を世に出すか／逃げるか',gate:'黒瀬の話、証拠、非常口を確認する',next:'決断する'}
+const rooms=[
+{id:'office',name:'管理人室',desc:'初めての夜勤。引き継ぎ担当は来ず、机には苦情票だけが残されている。',spots:[['机の引き出し',24,65,'memo','苦情票の控え。苦情が出されたのは「404号室」ではなく「404号室の隣」と読める。筆圧の跡が残っている。'],['鍵のかかった棚',77,55,'key','棚の裏に予備鍵。鍵の札は「点検口」。'],['留守番電話',52,35,'call','録音「四階の工事は予定通り。夜勤者が来たら点検口を施錠して」声の主は名乗らない。']]},
+{id:'hall',name:'四階廊下',desc:'403号室の先は行き止まり。壁は古いが、床だけが妙に新しい。',spots:[['避難経路図',24,38,'map','古い避難図では、四階の端に小さな共用倉庫がある。部屋番号は書かれていない。'],['床の傷',70,75,'floor','キャスターの新しい擦り傷。誰かが最近、重いものを壁の向こうへ運んでいる。'],['403号室の郵便受け',45,55,'letter','投函された紙。「夜中のノックは配管の音。騒がないで」差出人の欄は空白。']]},
+{id:'door',name:'壁の点検口',desc:'倉庫のはずの場所に、扉の輪郭が浮かぶ。ここは本当に404号室なのだろうか。',spots:[['点検口の錠',51,55,'lock','鍵穴は管理用。扉の奥に空気の流れがある。'],['壁の塗装',22,42,'paint','上塗りの下に、古い「管理用」という文字。ここが居室だった証拠はない。'],['換気口',78,33,'vent','女の泣き声が聞こえる。耳を寄せると同じ息継ぎが繰り返されている。']]},
+{id:'passage',name:'壁の内側',desc:'細い通路には新しい足跡。古い事件の跡と、今夜の誰かの行動が重なっている。',spots:[['小型スピーカー',28,34,'speaker','タイマー式の音声装置。女の声もノックも、ここから流せる。'],['古い作業日誌',75,67,'work','1987年「女性の保護に伴い一時隔離」。ただし責任者の署名欄が切り取られている。'],['床下の封筒',48,82,'envelope','封筒には新しい紙幣と、最近の管理会社の領収印。今夜も誰かがここを使っている。']]},
+{id:'archive',name:'地下資料庫',desc:'帳簿の山。数字は残っていても、名前だけが消されている。',spots:[['旧台帳',22,44,'ledger','1987年の記録。四階の倉庫には「一時保護者」の記載。居住者名はない。'],['改修契約書',75,45,'contract','封鎖工事は失踪届より前。発注者は管理会社ではなく、当時の警備会社。'],['廃棄記録',50,75,'trash','昨年も同じ形式の書類が廃棄された。1987年の一度きりの事件ではない可能性。']]},
+{id:'surveillance',name:'監視室',desc:'六台のモニター。映っているのは廊下だけではない。',spots:[['映像ログ',23,35,'video','昨夜、作業服の人物が音声装置を設置。顔はフードで見えない。'],['監視対象一覧',76,35,'targets','あなたの名前がある。だが監視開始日は、採用面接の三か月前。'],['通話履歴',50,75,'calls','警備会社と管理会社の通話記録。今夜の侵入者を「確認役」と呼んでいる。']]},
+{id:'photo',name:'封印された記録',desc:'写真、古いメモ、そして消された証言。何を信じるべきか。',spots:[['古い集合写真',28,40,'picture','1987年の集合写真。失踪したとされる女性が、事件の翌月の日付の写真にも写っている。'],['証言の写し',73,54,'statement','「本人は出ていった」。しかし証言者の氏名は伏せられ、署名もない。'],['手書きの地図',45,80,'route','当時の避難経路には建物の外へ続く別の搬出口がある。今は壁で塞がれている。']]},
+{id:'exit',name:'非常階段',desc:'出口の前に誰かがいる。相手はあなたの手元を見ている。',spots:[['落ちた社員証',29,65,'badge','写真の人物は管理会社の現役社員。1987年の警備会社の関係者と同じ名字だが、同一人物とは限らない。'],['非常扉の留め金',75,56,'bolt','内側から外せる。だが扉を開ければ、ここにいることが知られる。'],['置かれた携帯端末',52,35,'device','「証拠を送れば、あなたの身元も公表する」と未送信のメッセージ。']]},
 ];
-const initial=()=>({chapter:0,done:{},journal:[],screen:'title',modal:null,code:'',hints:0,ending:'',sound:false});
-let s=initial();try{let v=JSON.parse(localStorage.getItem('horror404v5'));if(v&&v.chapter>=0)s={...initial(),...v}}catch(e){}
-function save(){try{localStorage.setItem('horror404v5',JSON.stringify(s))}catch(e){}}
-function begin(){s=initial();s.screen='chapter';save();draw()}
-function enter(i){s.chapter=i;s.screen='chapter';s.modal=null;s.code='';save();draw()}
-function rect(x,y,w,h,color){g.fillStyle=color;g.fillRect(x,y,w,h)}
-function txt(t,x,y,size=16,color='#e4e2d7',align='left',weight=500){g.fillStyle=color;g.font=weight+' '+size+'px -apple-system,"Hiragino Kaku Gothic ProN",sans-serif';g.textAlign=align;g.fillText(t,x,y)}
-function lines(t,x,y,width=22,size=17,step=29,color='#e5e4db'){let row='',n=0;for(let ch of t){if(row.length>=width){txt(row,x,y+n*step,size,color);row='';n++}row+=ch}if(row)txt(row,x,y+n*step,size,color);return n+1}
-function bg(key){let im=images[key];rect(0,0,W,H,'#101817');if(im&&im.complete&&im.naturalWidth){let iw=im.naturalWidth,ih=im.naturalHeight,scale=Math.max(W/iw,706/ih),sw=W/scale,sh=706/scale;g.drawImage(im,(iw-sw)/2,(ih-sh)/2,sw,sh,0,0,W,706)}rect(0,0,W,H,'rgba(0,0,0,.53)');let grad=g.createLinearGradient(0,0,0,844);grad.addColorStop(0,'rgba(0,0,0,.36)');grad.addColorStop(.5,'rgba(0,0,0,.10)');grad.addColorStop(1,'#080c0c');rect(0,0,W,H,grad)}
-let hits=[];function hit(x,y,w,h,fn){hits.push({x,y,w,h,fn})}
-function btn(label,x,y,w,fn,active=true){rect(x,y,w,49,active?'#302f2c':'#202322');g.strokeStyle=active?'#ad9375':'#50524a';g.strokeRect(x+.5,y+.5,w-1,48);txt(label,x+w/2,y+30,label.length>15?12:label.length>11?14:16,active?'#eee9dc':'#9a9d93','center');if(active)hit(x,y,w,49,fn)}
-function header(title,sub){rect(0,0,390,115,'rgba(10,15,15,.94)');txt('黒瀬ハイツ  /  404号室',18,32,18,'#e5e1d4');txt(title,18,64,16,'#bca98e');txt(sub,18,93,13,'#9ea8a0');rect(0,114,390,1,'#796b5c')}
-function modal(title,content){s.modal={title,content};save();draw()}
-function inspect(i){let ch=chapters[s.chapter],t=ch.tasks[i];if(t.kind==='code'){s.screen='code';s.code='';save();draw();return}complete(i)}
-function complete(i){let ch=chapters[s.chapter],t=ch.tasks[i];if(!s.done[s.chapter])s.done[s.chapter]=[];if(!s.done[s.chapter].includes(i)){s.done[s.chapter].push(i);s.journal.push({chapter:s.chapter,task:t.n,summary:t.lines[t.lines.length-1]})}s.screen='chapter';save();modal(t.n,t.lines)}
-function allDone(){return (s.done[s.chapter]||[]).length===chapters[s.chapter].tasks.length}
-function next(){if(!allDone()){modal('調査が終わっていない',['まだ確認していない手掛かりがある。','全ての調査項目を調べよう。']);return}if(s.chapter===6){s.screen='choice';save();draw()}else enter(s.chapter+1)}
-function renderChapter(){let ch=chapters[s.chapter];bg(ch.bg);header(ch.title,ch.place+'  •  '+((s.done[s.chapter]||[]).length)+' / '+ch.tasks.length+' 件調査');
-rect(13,131,364,171,'rgba(9,16,15,.85)');txt('現場の記録',29,158,14,'#bca98e');let yy=186;for(let p of ch.intro){let n=lines(p,29,yy,21,14,23);yy+=n*23+7}
-txt('調査する',22,332,17,'#e5dfd2');
-ch.tasks.forEach((t,i)=>{let y=351+i*66;let done=(s.done[s.chapter]||[]).includes(i);rect(13,y,364,57,done?'rgba(35,49,42,.94)':'rgba(20,26,25,.96)');g.strokeStyle=done?'#697e6b':'#8e7c66';g.strokeRect(13.5,y+.5,363,56);txt(done?'✓':'?',30,y+34,17,done?'#a5c0a3':'#d1b28d');txt(t.n,60,y+34,15,'#e5e5db');hit(13,y,364,57,()=>inspect(i))});
-rect(0,631,390,213,'#101514');txt('手掛かり：'+(allDone()?ch.clue:'まだ調査中'),19,662,13,'#b5bcae');btn('記録帳',13,682,177,()=>{s.screen='journal';save();draw()});btn('ヒント',200,682,177,()=>modal('調査のヒント',[ch.gate,'調査項目は何度でも読み返せる。']));btn(ch.next,33,750,324,next,allDone());txt('調査をすべて終えると次に進めます',195,825,12,'#8e998e','center')}
-function renderTitle(){bg('title');txt('黒瀬ハイツ',195,172,21,'#d2c4ad','center');txt('404号室',195,251,57,'#f2e9d9','center',700);txt('存在しない部屋から、苦情が届いた。',195,306,15,'#d2d0c6','center');rect(27,379,336,148,'rgba(7,13,13,.76)');lines('消された部屋。三十八年前の失踪事件。誰かが仕組んだ怪談。そして、あなたがここに呼ばれた理由。',47,420,19,17,31);btn('はじめから',29,654,332,begin);btn('つづきから',29,716,332,()=>{s.screen=s.ending?'ending':'chapter';save();draw()},!!(s.journal.length||s.chapter));txt('人間が一番怖い、探索ミステリー',195,810,13,'#a9b0a7','center')}
-function renderModal(){rect(0,0,W,H,'rgba(0,0,0,.78)');rect(18,158,354,528,'#111c1a');g.strokeStyle='#b5a083';g.strokeRect(18.5,158.5,353,527);txt(s.modal.title,37,203,20,'#e5d3b8');let y=245;for(let p of s.modal.content){let n=lines(p,37,y,19,17,29);y+=n*29+25}txt('画面をタップして閉じる',195,647,14,'#aab4a8','center');hits=[{x:0,y:0,w:390,h:844,fn:()=>{s.modal=null;save();draw()}}]}
-function renderCode(){bg('archive');header('第三章　記録の矛盾','保管箱の暗証番号');txt('台帳の管理番号を四桁で入力',195,191,17,'#e7e0d3','center');txt(s.code.padEnd(4,'—').split('').join('  '),195,271,33,'#e9e2ce','center');for(let i=0;i<10;i++){let n=String((i+1)%10),x=33+(i%3)*111,y=328+Math.floor(i/3)*78;btn(n,x,y,101,()=>{if(s.code.length<4)s.code+=n;save();draw()})}btn('消去',33,668,155,()=>{s.code=s.code.slice(0,-1);draw()});btn('決定',201,668,155,()=>{if(s.code==='0404')complete(0);else{ s.code='';modal('開かない',['番号が違う。台帳の管理番号を確認しよう。'])}},s.code.length===4);btn('戻る',33,747,323,()=>{s.screen='chapter';save();draw()})}
-function renderJournal(){bg('archive');header('記録帳','見つけた証拠を時系列で振り返る');let page=s.journalPage||0,per=5,max=Math.max(0,Math.ceil(s.journal.length/per)-1);page=Math.min(page,max);s.journalPage=page;let list=s.journal.slice(page*per,page*per+per);if(!list.length)txt('まだ証拠はない。',28,207,17);list.forEach((a,i)=>{let y=158+i*100;rect(15,y,360,91,'rgba(11,18,17,.91)');txt(chapters[a.chapter].title,28,y+22,13,'#bba98b');txt(a.task,28,y+45,16);lines(a.summary,28,y+67,23,12,17,'#b9c4b8')});btn('前の記録',13,695,177,()=>{s.journalPage--;draw()},page>0);btn('次の記録',200,695,177,()=>{s.journalPage++;draw()},page<max);btn('調査に戻る',33,763,324,()=>{s.screen='chapter';save();draw()})}
-function renderChoice(){bg('exit');header('最終章　午前三時十二分','出口にいる男');rect(18,164,354,385,'rgba(8,13,13,.89)');txt('黒瀬「それを外へ出すのか」',35,207,18,'#e3d1b7');let y=252;for(let p of ['携帯には証拠が揃っている。','送信すれば、会社が何十年も隠した事件が再び動き出す。','だが、男は出口を塞いでいる。','母が何を願ったのか、あなたはまだ答えを知らない。']){let n=lines(p,35,y,20,17,29);y+=n*29+21}btn('証拠を外部へ送る',25,616,340,()=>finish('expose'));btn('携帯をしまい、逃げる',25,684,340,()=>finish('flee'));btn('記録帳を確認',25,752,340,()=>{s.screen='journal';save();draw()})}
-function finish(v){s.ending=v;s.screen='ending';save();draw()}
-function renderEnding(){bg('exit');let expose=s.ending==='expose';header(expose?'告発':'沈黙','事件のその後');rect(17,145,356,517,'rgba(8,13,13,.9)');txt(expose?'消せなかった記録':'消えなかった声',195,196,25,'#e5d6bd','center');let ps=expose?['証拠は夜明け前に外部へ届いた。','1987年の事件について再捜査が始まり、管理会社の隠蔽も報じられた。','黒瀬は姿を消した。母の行方は、まだ分からない。','数日後、差出人のない封筒が届く。','中には母の手紙の続きがあった。','「あなたが生きている。それだけで、私は負けていない」']:['あなたは携帯をしまい、非常口から逃げ出した。','翌朝、採用の取り消し通知が届く。','添付されていたのは、昨夜のあなたの行動記録だった。','黒瀬は何も失っていない。404号室も再び壁の向こうに隠された。','それでも、あなたの手元には母の写真が残る。','今度は誰が、壁を三回叩くのだろう。'];let y=244;for(let p of ps){let n=lines(p,35,y,20,15,25);y+=n*25+16}txt('完',195,633,23,'#e8e0cf','center');btn('もう一度はじめる',27,711,336,begin);btn('タイトルへ',27,771,336,()=>{s.screen='title';save();draw()})}
-function draw(){let d=Math.min(devicePixelRatio||1,3),cw=innerWidth,ch=innerHeight;c.width=Math.round(cw*d);c.height=Math.round(ch*d);let scale=Math.min(c.width/W,c.height/H),ox=(c.width-W*scale)/2,oy=(c.height-H*scale)/2;c.dataset.scale=scale;c.dataset.ox=ox;c.dataset.oy=oy;g.setTransform(1,0,0,1,0,0);rect(0,0,c.width,c.height,'#050808');g.setTransform(scale,0,0,scale,ox,oy);hits=[];if(s.screen==='title')renderTitle();else if(s.screen==='chapter')renderChapter();else if(s.screen==='code')renderCode();else if(s.screen==='journal')renderJournal();else if(s.screen==='choice')renderChoice();else if(s.screen==='ending')renderEnding();if(s.modal)renderModal()}
-c.addEventListener('pointerup',e=>{let scale=+c.dataset.scale,ox=+c.dataset.ox,oy=+c.dataset.oy,x=(e.clientX*c.width/c.clientWidth-ox)/scale,y=(e.clientY*c.height/c.clientHeight-oy)/scale;for(let h of [...hits].reverse())if(x>=h.x&&x<=h.x+h.w&&y>=h.y&&y<=h.y+h.h){h.fn();return}});
-addEventListener('resize',draw);draw();
+const puzzles=[
+{title:'最初の矛盾',q:'404号室が存在したという噂に、まず疑いを持てる証拠の組み合わせは？',opts:[['memo','map'],['call','floor'],['key','letter']],right:0,good:'苦情の宛先は「404号室の隣」。古い図面には番号のない倉庫。誰かが「404号室」という呼び名を作った可能性がある。'},
+{title:'壁の向こうへ',q:'今も誰かが点検口を使っていると判断できる組み合わせは？',opts:[['paint','map'],['floor','vent'],['floor','envelope']],right:2,good:'新しい擦り傷と新しい領収印。古い怪談の舞台が、今も使われている。'},
+{title:'音の正体',q:'怪異が自然現象ではなく、人為的に作られたと示す証拠は？',opts:[['vent','speaker'],['work','ledger'],['key','contract']],right:0,good:'換気口の泣き声は、壁内の装置が繰り返し再生していた。だが、1987年に何が起きたかはまだ分からない。'},
+{title:'事件の時系列',q:'「女性は封鎖後に失踪した」という説明と食い違うのは？',opts:[['contract','ledger'],['trash','map'],['work','floor']],right:0,good:'封鎖工事は失踪届より前。しかも工事発注者は警備会社。管理会社だけを犯人と決めつけるのは早い。'},
+{title:'今夜の目的',q:'あなたが偶然ここに来たのではないと示す記録は？',opts:[['targets','calls'],['video','badge'],['ledger','picture']],right:0,good:'監視は面接前から。通話ではあなたを「確認役」と呼ぶ。誰かはあなたの行動を観察したかった。'},
+{title:'最後の推理',q:'「女性は1987年にこの部屋で亡くなった」という前提を揺るがすのは？',opts:[['picture','route'],['statement','speaker'],['badge','device']],right:0,good:'事件の翌月の写真と、外へ続く搬出口。女性はあの夜に外へ出た可能性がある。ただし写真の日付が正しいとは限らない。'}
+];
+const app=document.querySelector('#app'),overlay=document.querySelector('#overlay'),dialog=document.querySelector('#dialog');
+const fresh=()=>({room:0,found:{},solved:0,alert:0,turn:0,ending:'',started:false,notes:[],pending:false});
+let s=fresh();try{const saved=JSON.parse(localStorage.getItem('horror404v6'));if(saved&&saved.found)s={...fresh(),...saved}}catch(e){}
+function save(){localStorage.setItem('horror404v6',JSON.stringify(s))}
+function button(t,fn,cl='action'){let b=document.createElement('button');b.className=cl;b.textContent=t;b.onclick=fn;return b}
+function el(tag,txt,cls){let e=document.createElement(tag);if(txt!==undefined)e.textContent=txt;if(cls)e.className=cls;return e}
+function open(title,paras,choices){overlay.style.display='flex';dialog.replaceChildren(el('h3',title));for(let p of paras)dialog.append(el('p',p));if(choices)for(let c of choices)dialog.append(button(c[0],()=>{close();c[1]()}));else dialog.append(button('閉じる',close))}
+function close(){overlay.style.display='none';render()}
+function gain(item,label,description){let first=!s.found[item];s.found[item]=true;if(first)s.notes.push({label,description});s.turn++;if(s.room>=3&&s.room<=5&&s.turn%4===0)s.alert=Math.min(3,s.alert+1);save();open(label,[description,first?'証拠を記録帳に追加した。':'すでに確認した証拠だ。'])}
+function required(i){return rooms[i].spots.every(a=>s.found[a[3]])}
+function render(){app.replaceChildren();if(!s.started){let intro=el('section',undefined);intro.id='intro';intro.append(el('h1','404号室'),el('p','存在しない部屋の噂。消された記録。あなた自身で、矛盾を見つけろ。'),button('新しく調査を始める',()=>{s=fresh();s.started=true;save();render()}),button('前回の調査を続ける',()=>{s.started=true;save();render()},'action secondary'));app.append(intro);return}
+let room=rooms[s.room],header=el('header');header.append(el('b','黒瀬ハイツ'));let sub=el('small',room.name+'　|　推理 '+s.solved+'/6');header.append(sub);app.append(header);
+let visual=el('div');visual.id='visual';visual.style.backgroundImage="linear-gradient(#0b111155,#0b111155),url('assets/"+room.id+".webp')";let spots=el('div');spots.id='spots';room.spots.forEach(a=>{let b=button('',()=>gain(a[3],a[0],a[4]),'spot'+(s.found[a[3]]?' seen':''));b.style.left=a[1]+'%';b.style.top=a[2]+'%';b.title=a[0];spots.append(b)});visual.append(spots);app.append(visual);
+let main=el('main');main.append(el('div','調査地点 '+(s.room+1)+' / '+rooms.length,'sub'),el('h2',room.name),el('p',room.desc));let count=room.spots.filter(a=>s.found[a[3]]).length;main.append(el('p','見つけた手掛かり：'+count+' / '+room.spots.length,'sub'));
+if(s.room===3||s.room===4||s.room===5){let p=el('p','警戒度：'+['低','注意','高','危険'][s.alert]+'　（調べすぎると巡回者が近づく）',s.alert>=2?'danger':'sub');main.append(p);if(s.alert>=2)main.append(button('物陰で巡回をやり過ごす',()=>{s.alert=0;s.turn++;save();open('息を潜める',['足音が通り過ぎた。ここに誰かがいるのは確かだ。'])},'action secondary'))}
+if(s.room===2&&!s.found.key)main.append(el('p','点検口には鍵が必要だ。管理人室に戻って探そう。','danger'));
+if(s.room===rooms.length-1&&s.solved===6){main.append(button('証拠を公開する',()=>ending('publish')));main.append(button('記録を持って逃げる',()=>ending('leave')))}
+else if(s.room<rooms.length-1){let ready=required(s.room)&&s.solved===Math.min(s.room,6);let b=button(ready?'証拠を照合して先へ進む':'この場所の証拠を集める',()=>{if(!required(s.room))return open('調査が足りない',['画像内の「＋」を調べて、手掛かりを集めよう。']);if(s.room===2&&!s.found.key)return open('鍵がない',['管理人室の棚を調べよう。']);if(s.room>=3&&s.alert>=2)return open('巡回者が近い',['このまま動くと見つかる。先に物陰に隠れよう。']);if(s.room===6){s.room++;save();render();return}deduce()},'action');main.append(b);if(s.room===6&&required(6)&&s.solved===6){main.append(button('非常階段へ',()=>{s.room=7;save();render()}))}}
+if(s.room>0)main.append(button('前の場所に戻る',()=>{s.room--;save();render()},'action secondary'));app.append(main);
+let tabs=el('div');tabs.id='tabs';tabs.append(button('証拠帳',journal),button('推理',()=>deduce(true)),button('ヒント',hint),button('タイトル',()=>{s.started=false;save();render()}));app.append(tabs)
+}
+function deduce(review=false){if(s.solved>=6)return open('推理は完了',['最後に、あなた自身でどう行動するか決めよう。']);let p=puzzles[s.solved];let all=p.opts.every(pair=>pair.every(id=>s.found[id]));if(!all&&!required(s.room))return open('まだ情報が足りない',['現場の手掛かりを探そう。']);let choices=p.opts.map((pair,i)=>[pair.map(id=>{for(let r of rooms)for(let a of r.spots)if(a[3]===id)return a[0];return id}).join(' ＋ '),()=>{if(i===p.right){s.solved++;if(s.room<6)s.room++;else if(s.room===6)s.room=7;save();open('矛盾を発見',[p.good,'新しい調査地点が開いた。'])}else{s.alert=Math.min(3,s.alert+1);save();open('その組み合わせでは説明できない',['証拠のどの部分が矛盾するか、記録帳を読み直そう。'])}}]);open(p.title,[p.q,'二つの証拠を選んで照合する。'],choices)}
+function journal(){let arr=s.notes;open('調査記録',arr.length?arr.map(a=>'■ '+a.label+'\n'+a.description):['まだ記録がない。背景の「＋」をタップして調べよう。'])}
+function hint(){let missing=rooms[s.room].spots.filter(a=>!s.found[a[3]]);let msg=missing.length?'未調査：'+missing.map(a=>a[0]).join('、'):s.solved<6?'証拠は揃った。推理画面で、説明が食い違う二つの記録を探そう。':'出口へ進もう。';open('調査のヒント',[msg,'推理は失敗してもやり直せる。巡回の警戒度が高い時は隠れよう。'])}
+function ending(kind){s.ending=kind;save();let a=kind==='publish'?['記録は外部へ送られた。翌朝、警備会社と管理会社の関係が報道される。','だが1987年の女性がどこへ消えたのか、確かな答えはない。','数日後、差出人のない封筒が届く。「写真の日付を信じるな」','あなたが暴いたのは事件の全貌ではなく、誰かが残した入口だった。']:['あなたは記録を持って建物を離れた。翌朝、404号室の噂はネットから消えている。','机の上には見覚えのない写真。あなたが調査していた夜、背後から撮られたものだった。','裏には一言。「まだ誰にも渡していないね」'];open(kind==='publish'?'公開された記録':'持ち帰った記録',a.concat(['終']),[['もう一度調査する',()=>{s=fresh();s.started=true;save();render()}],['タイトルへ',()=>{s.started=false;save();render()}]])}
+render();
 })();</script></body></html>

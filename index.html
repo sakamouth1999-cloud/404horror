@@ -64,7 +64,7 @@ const sceneLines=[
 [['地の文','古い鍵が、点検通路の錠に合った。'],['水野','この奥です。私がずっと調べたかったのは。'],['主人公','ここに何があったんですか？'],['水野','まずは、残されたものを見てください。']],
 [['地の文','深夜二時十三分。昨日と同じ音がした。'],['水野','また、あの声……。'],['主人公','待って。息を吸う音まで、昨日と同じだ。'],['地の文','壁のどこかに、音の出どころがあるはずだ。']],
 [['高瀬','報告書を受け取りました。配線の撤去も進めます。'],['主人公','……撤去？ そんな依頼はしていません。'],['高瀬','提出された書類には、そう書いてありますよ。'],['地の文','管理室で、自分の下書きと提出済みの文書を照合する。']],
-[['水野','伯母が、会って話してもいいと言っています。'],['佳奈','あなたが調べてくれている方ね。'],['佳奈','あの部屋にいたことは、今でも忘れられません。'],['地の文','佳奈は古い手帳をテーブルに置いた。']],
+[['水野','会ってほしい人がいます。'],['佳奈','あなたが調べてくれている方ね。'],['佳奈','少し長い話になります。聞いてもらえますか。'],['地の文','佳奈は古い手帳をテーブルに置いた。']],
 [['森田','古い図面と、壁の厚さが合わないんです。'],['主人公','この工事記録……1987年？'],['水野','真理さんがいなくなった直後です。'],['地の文','資料庫には、まだ誰も照合していない記録が眠っていた。']],
 [['地の文','夜が明けた。壁の奥には、まだ明かされていない事実がある。'],['水野','証拠は全部、複製しました。'],['主人公','これを警察に渡しましょう。'],['地の文','最後に、古い図面と佐伯の記録を確かめる。']]
 ];
@@ -113,7 +113,7 @@ function discovery(id,name,description){
  sheet.replaceChildren(E('h3',name));
  const img=E('img');img.className='itempic';img.src=itemArt(id);img.alt=name+'の画像';sheet.append(img);
  sheet.append(E('p',brief),E('p',first?'証拠帳に記録した。':'すでに確認した品物。'));
- sheet.append(B('閉じる',()=>{hide();if(first&&chapters[s.chapter].spots.every(x=>s.found[x[3]])&&!s.events['talk'+s.chapter])showPostTalk()},'btn primary'));
+ sheet.append(B('閉じる',()=>{hide();if(chapters[s.chapter].spots.every(x=>s.found[x[3]])&&!s.events['talk'+s.chapter])showPostTalk()},'btn primary'));
  modal.classList.add('show');
 }
 function showPostTalk(){
@@ -138,7 +138,7 @@ const main=E('main');main.append(E('div','CHAPTER '+String(s.chapter+1).padStart
 if(s.solved[s.chapter])main.append(B(s.chapter===7?'結末を読む':'次の章へ進む',()=>{if(s.chapter===7){s.finished=true;save();ending()}else{s.chapter++;resetScene();save();render();window.scrollTo(0,0)}},'btn primary'));else main.append(B(done()?'集めた証拠から推理する':(c.spots.every(x=>s.found[x[3]])?'会話を進める':'周囲を調べる'),()=>done()?deduce():(c.spots.every(x=>s.found[x[3]])?showPostTalk():hint()),'btn primary'));
 main.append(B('これまでの物語を読み返す',recap,'btn secondary'));app.append(main);
 const nav=E('nav');nav.className='bottom';[['▤','証拠帳',journal],['◇','推理',deduce],['?','ヒント',hint],['☰','メニュー',menu]].forEach(([icon,label,fn])=>{const b=B('',fn);b.append(E('span',icon),document.createTextNode(label));nav.append(b)});app.append(nav)}
-function deduce(){if(s.solved[s.chapter])return show('推理済み',['この章の推理は完了している。']);if(!done()){if(chapters[s.chapter].spots.every(x=>s.found[x[3]])&&!s.events['talk'+s.chapter])return showPostTalk();return hint()}const q=questions[s.chapter];show('推理｜'+chapters[s.chapter].title,[q.q],q.a.map((a,i)=>[a,()=>{if(i!==q.right)return show('もう一度考えよう',['証拠帳の記述を見比べれば、答えは一つに絞れる。'],[['証拠帳を見る',journal],['推理に戻る',deduce]]);s.solved[s.chapter]=true;save();show('推理成立',[q.why,chapters[s.chapter].end],[['物語を続ける',()=>{hide();if(s.chapter===7){s.finished=true;save();ending()}else{s.chapter++;save();render();window.scrollTo(0,0)}}],['証拠帳を見る',journal]])}]).concat([['探索に戻る',hide]]))}
+function deduce(){if(s.solved[s.chapter])return show('推理済み',['この章の推理は完了している。']);if(!done()){if(chapters[s.chapter].spots.every(x=>s.found[x[3]])&&!s.events['talk'+s.chapter])return showPostTalk();return hint()}const q=questions[s.chapter];show('推理｜'+chapters[s.chapter].title,[q.q],q.a.map((a,i)=>[a,()=>{if(i!==q.right)return show('もう一度考えよう',['証拠帳の記述を見比べれば、答えは一つに絞れる。'],[['証拠帳を見る',journal],['推理に戻る',deduce]]);s.solved[s.chapter]=true;save();show('推理成立',[q.why],[['物語を続ける',()=>{hide();if(s.chapter===7){s.finished=true;save();ending()}else{s.chapter++;save();render();window.scrollTo(0,0)}}],['証拠帳を見る',journal]])}]).concat([['探索に戻る',hide]]))}
 function journal(){const arr=s.log;show('証拠帳',arr.length?arr.map((x,i)=>(i+1)+'. '+x.name+'｜第'+(x.chapter+1)+'章\n'+x.description):['まだ記録がない。背景の＋から調べよう。'],[['戻る',hide]])}
 function recap(){show('これまでの記録',chapters.slice(0,s.chapter+1).map((c,i)=>'第'+(i+1)+'章　'+c.title+'\n'+(s.solved[i]?c.end:c.intro)),[['戻る',hide]])}
 function hint(){const c=chapters[s.chapter],missing=c.spots.filter(x=>!s.found[x[3]]);if(s.chapter===3&&s.found.speaker&&!s.events.moritaDone)return show('調査のヒント',['スピーカーの設置者について、森田に質問しよう。'],[['森田に話を聞く',morita],['戻る',hide]]);show('調査のヒント',[missing.length?'まだ確認していない場所：'+missing.map(x=>x[0]).join('・'):'証拠は揃っている。推理で、各記録が示す事実を結びつけよう。','間違えてもペナルティはない。証拠帳はいつでも見返せる。'])}

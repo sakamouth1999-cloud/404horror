@@ -13,8 +13,8 @@
 .itempic{width:116px;height:116px;display:block;margin:12px auto;object-fit:contain;background:#10191a;border:1px solid #59665e;border-radius:5px;padding:10px}
 #storyline .line{overflow-wrap:anywhere}.sheet{padding:20px}.sheet p{font-size:14px}.sheet h3{font-size:22px}
 @media(max-width:420px){#stage{height:54dvh}#storyline .portrait{width:64px;height:70px}#storyline .line{font-size:16px}main{padding:19px 17px 115px}}
-</style></head><body><div id="app"></div><div id="modal" role="dialog" aria-modal="true" aria-label="ゲームメニュー"><div class="sheet" id="sheet"></div></div>
-<script>
+</style></head><body><div id="app"><section class="intro"><div class="eyebrow">KUROSE HEIGHTS / 2026</div><h1>404号室</h1><p>その部屋は、存在しない。</p><p>ゲームを読み込んでいます……</p><button class="btn primary" onclick="location.reload()">再読み込み</button></section></div><div id="modal" role="dialog" aria-modal="true" aria-label="ゲームメニュー"><div class="sheet" id="sheet"></div></div>
+<script>window.addEventListener("error",function(e){const a=document.getElementById("app");if(a&&(!a.textContent.trim()||a.textContent.includes("読み込んでいます"))){a.innerHTML="<section class=\"intro\"><h1>404号室</h1><p>起動時に問題が発生しました。</p><button class=\"btn primary\" onclick=\"location.reload()\">再読み込み</button></section>";}});</script><script>
 (()=>{'use strict';
 const chapters=[
 {title:'新しい暮らし',place:'管理室',time:'11月18日 17:30',image:'assets/office.webp',fallback:'assets/title.webp',objective:'仕事を覚え、郵便物と鍵棚を確認する',intro:'黒瀬ハイツ。家賃無料、住み込みのアルバイト。\n古いマンションだが、廊下は丁寧に掃除されている。\n\n「あなたが新しい子ね。お腹、空いていない？」\n佐伯と名乗る女性が、紙袋を差し出した。',spots:[['郵便受け',25,59,'mail','四階の郵便受けは401、402、403。404はない。住人の名前と部屋番号を控えた。'],['鍵棚',72,46,'key','鍵を番号順に戻す。奥に「旧物置」と書かれた古い鍵が一本ある。'],['仕事の手帳',52,78,'handbook','清掃、郵便の仕分け、共用設備の確認。管理室の合鍵は佐伯も預かっている。']],end:'23時過ぎ。管理室の電話が鳴る。\n\n水野「403号室の水野です。隣から、家具を引きずるような音がするんです」\n\n403号室の隣には、部屋がない。'},

@@ -53,7 +53,7 @@ const questions=[
 {q:'壁の傷と古い台帳から、次に確認すべきことは？',a:['当時の宮原佳奈の記録を調べる','屋上の設備を修理する','すぐに壁を壊す'],right:0,why:'傷だけで閉じ込められた人は断定できない。台帳に残る宮原佳奈について、証言と記録を調べる必要がある。'},
 {q:'スピーカーと森田の証言から、まだ説明できないことは？',a:['誰がスピーカーを設置したか','なぜ発見しやすい位置に置かせたか','音が録音かどうか'],right:1,why:'森田は設置を認めたが、発見されやすくする理由までは知らなかった。'},
 {q:'下書きと提出版を比較して、確実に言えることは？',a:['佐伯が過去の事件の犯人である','主人公の知らない撤去指示が追記されている','森田が報告書を偽造した'],right:1,why:'提出された報告書には、主人公が書いていない撤去指示がある。誰が何のために追記したのかは、まだ分からない。'},
-{q:'佳奈が逃げた後も食事が運ばれていたことから分かるのは？',a:['記録が必ず間違っている','物置に別の誰かがいた可能性','佳奈がすぐ戻った'],right:1,why:'真理は佳奈を逃がした後、マンションへ戻って消息を絶っている。'},
+{q:'佳奈が逃げた後も食事が運ばれていたことから考えられるのは？',a:['記録が必ず間違っている','物置に別の誰かがいた可能性','佳奈がすぐ戻った'],right:1,why:'食事記録だけでは誰がいたかは断定できないが、真理の失踪と時期が重なっている。'},
 {q:'真理の失踪と封鎖工事を結ぶ証拠は？',a:['古い手紙の紙質だけ','偽造が疑われる退職届と直後の工事記録','住人の噂だけ'],right:1,why:'真理が消えた直後、物置の奥が塞がれている。'},
 {q:'古い図面・工事記録・手紙を合わせて、警察に確認を求めるべき場所は？',a:['一階の郵便受け','旧物置の奥の封鎖区画','屋上の貯水槽'],right:1,why:'工事前後の図面の違いと当時の記録が、旧物置の奥の封鎖区画を指している。'}
 ];
@@ -113,7 +113,7 @@ function discovery(id,name,description){
  sheet.replaceChildren(E('h3',name));
  const img=E('img');img.className='itempic';img.src=itemArt(id);img.alt=name+'の画像';sheet.append(img);
  sheet.append(E('p',brief),E('p',first?'証拠帳に記録した。':'すでに確認した品物。'));
- sheet.append(B('閉じる',()=>{hide();if(chapters[s.chapter].spots.every(x=>s.found[x[3]])&&!s.events['talk'+s.chapter])showPostTalk()},'btn primary'));
+ sheet.append(B('証拠帳で確認',journal,'btn secondary'));sheet.append(B('閉じる',()=>{hide();if(chapters[s.chapter].spots.every(x=>s.found[x[3]])&&!s.events['talk'+s.chapter])showPostTalk()},'btn primary'));
  modal.classList.add('show');
 }
 function showPostTalk(){
@@ -143,7 +143,7 @@ const caseTimeline=[
 {date:'10月3日',label:'佳奈が物置に閉じ込められる',id:'kana'},
 {date:'10月8日',label:'真理が佳奈を逃がす',id:'escape'},
 {date:'10月9日',label:'真理が建物に戻り、拘束される',id:'mari'},
-{date:'10月12日',label:'真理が死亡する',id:'death'}
+{date:'10月12日',label:'食事の搬入記録が途絶える',id:'lastMeal'}
 ];
 function evidenceComparison(){
  if(!s.events.compare)s.events.compare=[];
@@ -164,12 +164,25 @@ function timelinePuzzle(){
  sheet.replaceChildren(E('h3','1987年の出来事を並べる'),E('p','手帳・出勤簿・食事記録・工事記録から分かる順番に、出来事を選ぼう。'));
  const bar=E('div',undefined,'objective');bar.textContent=picked.length?picked.map(id=>caseTimeline.find(x=>x.id===id)).map(x=>x.date+' '+x.label).join(' → '):'まだ出来事を選んでいない。';sheet.append(bar);
  const order=[caseTimeline[2],caseTimeline[0],caseTimeline[3],caseTimeline[1]];
- order.forEach(item=>{const b=B(item.label,()=>{if(picked.includes(item.id))return;const expected=caseTimeline[picked.length];if(item.id!==expected.id)return show('時系列が合わない',['この出来事より前に起きたことがある。日付と証言を確認しよう。'],[['並べ直す',timelinePuzzle],['最初から',()=>{s.events.timeline=[];save();timelinePuzzle()}]]);picked.push(item.id);save();if(picked.length===4){s.events.timelineDone=true;save();speakSequence([['主人公','十月三日に佳奈さんが閉じ込められた。'],['水野','八日に真理さんが伯母を逃がした。'],['主人公','九日に真理さんが戻り、十二日まで物置へ食事が運ばれている。'],['水野','その後、奥の区画が塞がれた。図面と工事記録を警察に渡しましょう。']],()=>{render()})}else timelinePuzzle()},'btn'+(picked.includes(item.id)?' secondary':''));b.disabled=picked.includes(item.id);sheet.append(b)});
+ order.forEach(item=>{const b=B(item.label,()=>{if(picked.includes(item.id))return;const expected=caseTimeline[picked.length];if(item.id!==expected.id)return show('時系列が合わない',['この出来事より前に起きたことがある。日付と証言を確認しよう。'],[['並べ直す',timelinePuzzle],['最初から',()=>{s.events.timeline=[];save();timelinePuzzle()}]]);picked.push(item.id);save();if(picked.length===4){s.events.timelineDone=true;save();speakSequence([['主人公','十月三日に佳奈さんが閉じ込められた。'],['水野','八日に真理さんが伯母を逃がした。'],['主人公','九日に真理さんが戻った。その後、十二日まで食事が運ばれている。'],['水野','その後、奥の区画が塞がれた。図面と工事記録を警察に渡しましょう。']],()=>{render()})}else timelinePuzzle()},'btn'+(picked.includes(item.id)?' secondary':''));b.disabled=picked.includes(item.id);sheet.append(b)});
  sheet.append(B('最初から並べ直す',()=>{s.events.timeline=[];save();timelinePuzzle()},'btn secondary'));sheet.append(B('証拠帳',journal,'btn secondary'));modal.classList.add('show')
 }
 
 function deduce(){if(s.solved[s.chapter])return show('推理済み',['この章の推理は完了している。']);if(!done()){if(chapters[s.chapter].spots.every(x=>s.found[x[3]])&&!s.events['talk'+s.chapter])return showPostTalk();return hint()}if(s.chapter===4&&!s.events.compareDone)return evidenceComparison();if(s.chapter===7&&!s.events.timelineDone)return timelinePuzzle();if(s.chapter===0){s.solved[0]=true;save();return show('引き継ぎ完了',['仕事の手順を確認した。古い鍵は勝手に使わず、必要になったら高瀬に相談しよう。'],[['翌日へ',()=>{s.chapter=1;save();hide();window.scrollTo(0,0)}],['記録を見る',journal]])}const q=questions[s.chapter];show('推理｜'+chapters[s.chapter].title,[q.q],q.a.map((a,i)=>[a,()=>{if(i!==q.right)return show('もう一度考えよう',['証拠帳の記述を見比べれば、答えは一つに絞れる。'],[['証拠帳を見る',journal],['推理に戻る',deduce]]);s.solved[s.chapter]=true;save();show('推理成立',[q.why],[['物語を続ける',()=>{hide();if(s.chapter===7){s.finished=true;save();ending()}else{s.chapter++;save();render();window.scrollTo(0,0)}}],['証拠帳を見る',journal]])}]).concat([['探索に戻る',hide]]))}
-function journal(){const arr=s.log;show('証拠帳',arr.length?arr.map((x,i)=>(i+1)+'. '+x.name+'｜第'+(x.chapter+1)+'章\n'+x.description):['まだ記録がない。背景の＋から調べよう。'],[['戻る',hide]])}
+function journal(){
+ sheet.replaceChildren(E('h3','証拠帳'),E('p','記録した証拠を選ぶと、画像と観察メモをもう一度確認できる。'));
+ if(!s.log.length)sheet.append(E('p','まだ記録がない。背景の＋から調べよう。'));
+ s.log.forEach(x=>{const b=B('第'+(x.chapter+1)+'章｜'+x.name,()=>inspectEvidence(x),'btn secondary');sheet.append(b)});
+ sheet.append(B('調査へ戻る',hide,'btn'));modal.classList.add('show');sheet.scrollTop=0
+}
+function inspectEvidence(x){
+ sheet.replaceChildren(E('h3',x.name));
+ const img=E('img');img.className='itempic';img.src=itemArt(x.id);img.alt=x.name+'の証拠画像';img.style.cssText='width:100%;max-height:65vh;object-fit:contain;cursor:zoom-in';
+ let zoom=false;img.addEventListener('click',()=>{zoom=!zoom;img.style.maxHeight=zoom?'none':'65vh';img.style.cursor=zoom?'zoom-out':'zoom-in'});
+ sheet.append(img,E('p',x.description),E('p','画像をタップして拡大・縮小できます。'));
+ sheet.append(B('証拠帳に戻る',journal,'btn primary'),B('調査に戻る',hide,'btn secondary'));
+ modal.classList.add('show');sheet.scrollTop=0
+}
 function recap(){show('これまでの記録',chapters.slice(0,s.chapter+1).map((c,i)=>'第'+(i+1)+'章　'+c.title+'\n'+(s.solved[i]?c.end:'現在調査中')), [['戻る',hide]])}
 function hint(){const c=chapters[s.chapter],missing=c.spots.filter(x=>!s.found[x[3]]);if(s.chapter===3&&s.found.speaker&&!s.events.moritaDone)return show('調査のヒント',['スピーカーの設置者について、森田に質問しよう。'],[['森田に話を聞く',morita],['戻る',hide]]);show('調査のヒント',[missing.length?'まだ確認していない場所：'+missing.map(x=>x[0]).join('・'):'証拠は揃っている。推理で、各記録が示す事実を結びつけよう。','間違えてもペナルティはない。証拠帳はいつでも見返せる。'])}
 function menu(){show('メニュー',['進行状況はこの端末に自動保存される。'],[['設定',settings],['タイトルに戻る',()=>{s.started=false;save();hide()}],['閉じる',hide]])}

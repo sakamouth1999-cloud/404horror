@@ -124,12 +124,33 @@ function showPostTalk(){
 }
 
 function add(id,name,description){discovery(id,name,description)}
-function morita(){const i=Math.min(s.events.morita||0,3),steps=[
-['森田への質問',['主人公「壁の裏からスピーカーが見つかりました」','森田「……いたずらじゃないですか？」','主人公「配線は最近取り付けられたものです」','森田「俺には分からないですね」'],'配線について追及する'],
-['配線の痕跡',['主人公「この結束バンド、修理用のものですよね」','森田「どこにでも売っていますよ」','主人公「昨日の四階の点検記録に、あなたの名前があります」','森田「……それ、誰に見せてもらったんですか」'],'点検記録を提示する'],
-['設置を認める',['主人公「記録と作業時刻が一致しています」','森田「……分かりました。俺が設置しました」','主人公「何のために？」','森田「住人の退去を早めるためだと聞いていました」'],'依頼者を聞く'],
-['依頼者',['主人公「誰から頼まれたんですか？」','森田「……佐伯さんです」','主人公「佐伯さんが？」','森田「見つけやすい場所に付けろ、とも言われました。理由は聞いていません」','主人公「なぜ、わざと発見させたかったんだろう……」'],'証言を記録する']
-];const [title,lines,label]=steps[i];show(title,lines,[[label,()=>{s.events.morita=i+1;if(i===3){s.events.moritaDone=true;s.events.talk3=true;s.log.push({id:'moritaStatement',name:'森田の証言',description:'森田は佐伯の依頼でスピーカーを設置した。見つかりやすい位置に置くよう指示されたが、理由は知らない。',chapter:3});save();hide()}else{save();morita()}}],['戻る',hide]])}
+function morita(){
+ const step=Math.min(Number(s.events.morita||0),3);
+ const scenes=[
+ {question:'壁の音について、森田に確認する',lines:[['主人公','壁の裏からスピーカーが見つかりました。'],['森田','……いたずらじゃないですか？'],['主人公','配線は最近のものです。点検した人なら気づいたはずです。'],['森田','俺には分からないですね。']],prompt:'どの証拠で問い詰める？',options:[['壁の裏の配線','wire'],['古い避難図','map'],['不審な封筒','letter']],answer:'wire'},
+ {question:'配線について追及する',lines:[['主人公','この新しい配線を見てください。'],['森田','修理用の線なら、誰でも手に入れられますよ。'],['主人公','あなたが四階に入った記録は確認できますか？'],['森田','……何を疑っているんです？']],prompt:'次に示すべきものは？',options:[['壁の点検通路で見つけたスピーカー','speaker'],['写真の封筒','photo'],['古い台帳','ledger']],answer:'speaker'},
+ {question:'設置者を確かめる',lines:[['主人公','スピーカーと配線はつながっています。誰が設置したんですか。'],['森田','……分かりました。俺です。'],['主人公','何のために？'],['森田','住人に早く出ていってもらうため、と聞いていました。']],prompt:'まだ確認できていないことは？',options:[['依頼した人物','client'],['四階の部屋数','rooms'],['郵便の仕分け方','mail']],answer:'client'},
+ {question:'依頼者について聞く',lines:[['主人公','その仕事を頼んだのは誰ですか？'],['森田','……佐伯さんです。'],['主人公','どうしてあんな場所に？'],['森田','見つけやすいように付けろ、と言われました。理由は聞いていません。'],['主人公','わざと発見させる必要があった……？']],prompt:'証言の扱いを決める',options:[['森田の証言を記録する','record'],['佐伯の動機が証明されたと断定する','accuse']],answer:'record'}
+ ];
+ const data=scenes[step];
+ function question(){
+  sheet.replaceChildren(E('h3',data.question),E('p',data.prompt));
+  data.options.forEach(([label,id])=>sheet.append(B(label,()=>{
+   if(id!==data.answer)return show('まだ断定できない',['この時点で入手した物証と証言を区別しよう。'],[['質問に戻る',question],['証拠帳',journal]]);
+   s.events.morita=step+1;
+   if(step===3){
+    s.events.moritaDone=true;s.events.talk3=true;
+    if(!s.log.some(x=>x.id==='moritaStatement'))s.log.push({id:'moritaStatement',name:'森田の証言',description:'森田はスピーカーの設置を認め、佐伯から依頼されたと話した。ただし依頼の真意は知らない。',chapter:3});
+    save();return show('証言を記録',['森田は設置を認めた。しかし佐伯の本当の目的は、まだ不明だ。'],[['調査に戻る',hide]]);
+   }
+   save();morita();
+  },'btn')));
+  sheet.append(B('証拠帳を確認',journal,'btn secondary'),B('調査に戻る',hide,'btn secondary'));
+  modal.classList.add('show');sheet.scrollTop=0
+ }
+ if(!s.found.wire||!s.found.speaker)return show('質問の準備',['配線とスピーカーを調べてから、森田に話を聞こう。'],[['戻る',hide]]);
+ speakSequence(data.lines,question);
+}
 function done(){return chapters[s.chapter].spots.every(x=>s.found[x[3]])&&!!s.events['talk'+s.chapter]&&(s.chapter!==3||s.events.moritaDone)}
 function render(){if(s.chapter<0||s.chapter>=chapters.length)s.chapter=0;app.replaceChildren();document.documentElement.style.fontSize=s.large?'18px':'16px';if(!s.started){const intro=E('section',undefined,'intro');intro.append(E('div','KUROSE HEIGHTS / 2026','eyebrow'),E('h1','404号室'),E('p','その部屋は、存在しない。\nそれでも、壁の向こうから声がする。'));intro.append(B('新しく始める',()=>{if(s.chapter>0||s.log.length){show('最初から始めますか？',['現在の調査記録は上書きされます。'],[['最初から始める',()=>{s=fresh();s.started=true;resetScene();save();hide()}],['キャンセル',hide]]);return}s=fresh();s.started=true;resetScene();save();render()},'btn primary'));if(s.chapter>0||s.log.length)intro.append(B('続きから',()=>{s.started=true;save();render()},'btn secondary'));intro.append(B('設定',settings,'btn secondary'),E('p','心理ホラー・ミステリー｜音なしでもプレイできます','caption'));app.append(intro);return}
 const c=chapters[s.chapter],header=E('header');const brand=E('div');brand.append(E('div','404号室','brand'),E('small','黒瀬ハイツ / 調査記録'));header.append(brand,E('div',c.time,'clock'));app.append(header);
@@ -146,17 +167,19 @@ const caseTimeline=[
 {date:'10月12日',label:'食事の搬入記録が途絶える',id:'lastMeal'}
 ];
 function evidenceComparison(){
- if(!s.events.compare)s.events.compare=[];
- const choices=[
- ['下書き','録音装置を確認。原因の調査を継続する。'],
- ['提出版','録音装置を確認。旧物置の配線を早急に撤去すること。'],
- ['送信履歴','送信時刻：主人公が四階で水野と調査していた時間帯']
+ const rows=[
+ ['録音装置を確認した。','録音装置を確認した。',false],
+ ['原因の調査を継続する。','原因の調査を継続する。',false],
+ ['（記載なし）','旧物置の配線を早急に撤去すること。',true]
  ];
- sheet.replaceChildren(E('h3','報告書を比較する'),E('p','下書きと提出版を読み比べ、書き換えられた箇所を選ぼう。'));
- choices.forEach((x,i)=>{const f=E('div',undefined,'file');f.append(E('b',x[0]),E('p',x[1]));sheet.append(f)});
- sheet.append(E('p','下書きに存在せず、提出版に追加された指示はどれ？'));
- [['原因の調査を継続する','wrong'],['旧物置の配線を早急に撤去する','correct'],['録音装置を確認する','wrong']].forEach(([label,result])=>sheet.append(B(label,()=>{if(result==='wrong')return show('もう一度照合',['二つの報告書の文章を見比べよう。'],[['比較に戻る',evidenceComparison]]);s.events.compareDone=true;save();speakSequence([['主人公','「旧物置の配線を早急に撤去する」……この一文は下書きにはない。'],['主人公','しかも、送信された時刻は水野さんと四階にいた。'],['水野','誰かが管理室の端末から書き換えた可能性があります。'],['主人公','でも、誰が操作したかはまだ証明できない。送信履歴を保存しておこう。']],()=>{save();render()})},'btn')));
- sheet.append(B('証拠帳に戻る',journal,'btn secondary'));modal.classList.add('show')
+ sheet.replaceChildren(E('h3','報告書の差異を探す'),E('p','左右の報告書を見比べ、提出版だけにある行をタップしてください。'));
+ const table=E('div');table.style.cssText='display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0';
+ [['下書き','draft'],['会社提出版','report']].forEach(([name])=>{const t=E('strong',name);t.style.cssText='text-align:center;padding:8px;background:#263333';table.append(t)});
+ rows.forEach(([left,right,correct])=>{
+  const l=E('div',left);l.style.cssText='padding:12px 8px;border:1px solid #66716a;min-height:62px;white-space:normal';table.append(l);
+  const btn=B(right,()=>{if(!correct)return show('一致する文章',['その行は下書きにもある。追加された指示を探そう。'],[['比較に戻る',evidenceComparison]]);s.events.compareDone=true;save();speakSequence([['主人公','この「旧物置の配線を早急に撤去すること」という一文は、僕の下書きにはない。'],['主人公','提出された時刻は、水野さんと四階にいた。'],['水野','管理室の端末から、誰かが追記した可能性があります。'],['主人公','ただ、送信履歴だけでは操作した人までは特定できない。']],()=>{save();render()})},'btn');btn.style.cssText='white-space:normal;min-height:62px;text-align:left';table.append(btn)
+ });
+ sheet.append(table,B('証拠帳を確認',journal,'btn secondary'),B('調査に戻る',hide,'btn secondary'));modal.classList.add('show');sheet.scrollTop=0
 }
 function timelinePuzzle(){
  if(!s.events.timeline)s.events.timeline=[];

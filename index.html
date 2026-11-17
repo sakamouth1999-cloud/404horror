@@ -13,12 +13,12 @@ const rooms=[
 {id:'exit',name:'非常階段',desc:'出口の前に誰かがいる。相手はあなたの手元を見ている。',spots:[['落ちた社員証',29,65,'badge','写真の人物は管理会社の現役社員。1987年の警備会社の関係者と同じ名字だが、同一人物とは限らない。'],['非常扉の留め金',75,56,'bolt','内側から外せる。だが扉を開ければ、ここにいることが知られる。'],['置かれた携帯端末',52,35,'device','「証拠を送れば、あなたの身元も公表する」と未送信のメッセージ。']]},
 ];
 const puzzles=[
-{title:'最初の矛盾',q:'404号室が存在したという噂に、まず疑いを持てる証拠の組み合わせは？',opts:[['memo','map'],['call','floor'],['key','letter']],right:0,good:'苦情の宛先は「404号室の隣」。古い図面には番号のない倉庫。誰かが「404号室」という呼び名を作った可能性がある。'},
-{title:'壁の向こうへ',q:'今も誰かが点検口を使っていると判断できる組み合わせは？',opts:[['paint','map'],['floor','vent'],['floor','envelope']],right:2,good:'新しい擦り傷と新しい領収印。古い怪談の舞台が、今も使われている。'},
-{title:'音の正体',q:'怪異が自然現象ではなく、人為的に作られたと示す証拠は？',opts:[['vent','speaker'],['work','ledger'],['key','contract']],right:0,good:'換気口の泣き声は、壁内の装置が繰り返し再生していた。だが、1987年に何が起きたかはまだ分からない。'},
-{title:'事件の時系列',q:'「女性は封鎖後に失踪した」という説明と食い違うのは？',opts:[['contract','ledger'],['trash','map'],['work','floor']],right:0,good:'封鎖工事は失踪届より前。しかも工事発注者は警備会社。管理会社だけを犯人と決めつけるのは早い。'},
-{title:'今夜の目的',q:'あなたが偶然ここに来たのではないと示す記録は？',opts:[['targets','calls'],['video','badge'],['ledger','picture']],right:0,good:'監視は面接前から。通話ではあなたを「確認役」と呼ぶ。誰かはあなたの行動を観察したかった。'},
-{title:'最後の推理',q:'「女性は1987年にこの部屋で亡くなった」という前提を揺るがすのは？',opts:[['picture','route'],['statement','speaker'],['badge','device']],right:0,good:'事件の翌月の写真と、外へ続く搬出口。女性はあの夜に外へ出た可能性がある。ただし写真の日付が正しいとは限らない。'}
+{title:'最初の矛盾',q:'404号室が存在したという噂に、まず疑いを持てる証拠の組み合わせは？',opts:[['memo','call'],['key','memo'],['call','key']],right:0,good:'苦情の宛先は「404号室の隣」。管理会社はその番号がないことを知っていた。苦情の扱いには誰かの意図がある。'},
+{title:'壁の向こうへ',q:'古い倉庫が現在も使われていると考える根拠は？',opts:[['map','floor'],['letter','map'],['floor','memo']],right:2,good:'古い避難図には倉庫。床には新しい擦り傷。欠番の裏に、今も使われる空間がある。'},
+{title:'音の正体',q:'壁の向こうに何かが仕込まれていると疑う根拠は？',opts:[['vent','paint'],['lock','paint'],['vent','lock']],right:0,good:'換気口から聞こえる声は同じ間隔で繰り返される。塗り直された壁の向こうに、音源があるのかもしれない。'},
+{title:'事件の時系列',q:'壁の向こうで今も何かが行われている証拠は？',opts:[['speaker','envelope'],['work','speaker'],['envelope','work']],right:0,good:'新しい領収印と隠された音声装置。壁の向こうは今も利用され、怪異は仕組まれていた。'},
+{title:'今夜の目的',q:'事件の責任者を一社だけと決めつけられない理由は？',opts:[['contract','ledger'],['trash','contract'],['ledger','work']],right:0,good:'旧台帳と工事契約書の発注者が食い違う。管理会社だけでなく警備会社も事件に関わっていた。'},
+{title:'最後の推理',q:'あなたが偶然雇われたわけではない証拠は？',opts:[['targets','calls'],['video','targets'],['calls','video']],right:0,good:'監視は採用面接より前から始まっていた。通話ではあなたを「確認役」と呼ぶ。偶然の採用ではない。'}
 ];
 const app=document.querySelector('#app'),overlay=document.querySelector('#overlay'),dialog=document.querySelector('#dialog');
 const fresh=()=>({room:0,found:{},solved:0,alert:0,turn:0,ending:'',started:false,notes:[],pending:false});

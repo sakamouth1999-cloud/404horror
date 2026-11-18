@@ -1,215 +1,988 @@
 <!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0b1112"><title>404号室 | 黒瀬ハイツ</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#050809"><meta name="apple-mobile-web-app-capable" content="yes"><title>404号室 | 黒瀬ハイツ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600&family=Shippori+Mincho:wght@400;600&family=Zen+Kurenaido&display=swap" rel="stylesheet">
 <style>
-:root{color-scheme:dark;--bg:#0a1011;--paper:#172022;--line:#56615c;--text:#eee9dd;--muted:#b9bcb2;--accent:#d1b28b;--red:#d68b83}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#050809;color:var(--text);font-family:"Noto Sans JP",sans-serif;font-size:15px}button,input{font:inherit}button{cursor:pointer;color:inherit}button:focus-visible,input:focus-visible{outline:3px solid #f0c48b;outline-offset:3px}#app{width:min(100%,840px);margin:auto;min-height:100dvh;background:var(--bg);box-shadow:0 0 100px #000}header{height:70px;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #4d534d;background:#111a1b}header .brand{font-family:"Shippori Mincho",serif;letter-spacing:.17em;font-size:23px}header small{display:block;color:var(--muted);font-size:10px;letter-spacing:.12em}header .clock{font-variant-numeric:tabular-nums;color:var(--accent);font-size:12px;text-align:right}#stage{height:clamp(260px,49dvh,480px);background:#141b1a center/cover no-repeat;position:relative;overflow:hidden}#stage:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#03070755 0%,transparent 35%,#071011bf 100%);pointer-events:none}#stage .location{position:absolute;top:16px;left:18px;padding:9px 12px;background:#071010cf;border-left:2px solid var(--accent);font-size:12px;letter-spacing:.08em}#stage .hotspot{position:absolute;transform:translate(-50%,-50%);min-width:48px;min-height:48px;border-radius:50%;border:1px solid #e4c69c;background:#0b1415b8;box-shadow:0 0 0 6px #0005,0 0 18px #0008;font-size:23px;transition:transform .16s,background .16s;z-index:1}#stage .hotspot:active{transform:translate(-50%,-50%) scale(.92)}#stage .hotspot.seen{border-color:#82958b;color:#c7d0c5;background:#162321bd}#stage .scenefoot{position:absolute;bottom:12px;left:16px;color:#e8e1d2;font-size:11px;letter-spacing:.08em;text-shadow:0 2px 8px #000}main{padding:24px 22px 120px}h1,h2,h3{font-family:"Shippori Mincho",serif;font-weight:600}h2{font-size:clamp(23px,5vw,31px);margin:6px 0 16px;letter-spacing:.06em}.eyebrow{font-size:11px;color:var(--accent);letter-spacing:.2em}.bodycopy{font-family:"Shippori Mincho",serif;line-height:2.15;font-size:17px;white-space:pre-line;color:#e6e0d4}.objective{padding:13px 15px;margin:18px 0;background:#1a2424;border-left:2px solid var(--accent);line-height:1.75;color:#dedfd6}.status{font-size:12px;color:var(--muted);margin:14px 0}.btn{display:block;width:100%;text-align:left;min-height:50px;margin:9px 0;padding:13px 17px;border:1px solid #aa9271;border-radius:2px;background:#28302c;transition:background .16s,transform .16s}.btn:active{transform:scale(.992);background:#465044}.btn.secondary{background:#121a1b;border-color:#5b665f}.btn:disabled{opacity:.45;cursor:not-allowed}.btn.primary{background:#4b4436;border-color:#d4b78b}.bottom{position:fixed;z-index:5;bottom:0;left:50%;transform:translateX(-50%);width:min(100%,840px);display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#45504c;border-top:1px solid #77847b;padding-bottom:env(safe-area-inset-bottom)}.bottom button{border:0;background:#10191a;min-height:62px;padding:8px 2px;font-size:12px}.bottom button span{display:block;font-size:19px;margin-bottom:3px}#modal{position:fixed;inset:0;z-index:20;background:#020505df;display:none;align-items:center;justify-content:center;padding:18px;backdrop-filter:blur(7px)}#modal.show{display:flex}.sheet{width:min(100%,540px);max-height:85dvh;overflow:auto;background:#172122;border:1px solid #a28b6e;box-shadow:0 22px 70px #000;padding:23px 21px}.sheet h3{font-size:24px;margin:0 0 13px;border-bottom:1px solid #4e5b56;padding-bottom:14px}.sheet p{line-height:2;white-space:pre-line;color:#e3e0d6}.sheet .small{font-size:12px;color:var(--muted)}.sheet input{width:100%;padding:14px;background:#0a1213;border:1px solid #a28b6e;color:white;font-size:20px}.sheet .btn{font-size:14px}.file{border:1px solid #56635c;padding:13px;margin:10px 0;background:#111a1b}.file b{display:block;color:#e6c7a0;margin-bottom:7px}.file p{font-size:13px;line-height:1.8;margin:0}.danger{color:#f0a8a1}.intro{min-height:100dvh;display:flex;flex-direction:column;justify-content:flex-end;text-align:center;padding:42px 24px max(55px,env(safe-area-inset-bottom));background:linear-gradient(180deg,#03070766 0%,#04080899 45%,#050909f7 90%),url("assets/title.webp") center/cover}.intro h1{font-size:clamp(58px,13vw,88px);letter-spacing:.12em;margin:0}.intro p{font-family:"Shippori Mincho",serif;line-height:2.2;font-size:17px;margin:12px 0 38px}.intro .btn{text-align:center}.intro .caption{font-size:11px;color:#b9b9ae;margin:15px 0 0}.ending{font-family:"Shippori Mincho",serif;font-size:18px;line-height:2.3;white-space:pre-line}.fade{animation:fade .4s ease both}@keyframes fade{from{opacity:.3}to{opacity:1}}@media(min-width:650px){main{padding:28px 48px 140px}#stage{height:52dvh}.bottom button{min-height:66px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+:root{color-scheme:dark;--bg:#080c0d;--panel:#0e1516;--line:#3e4a46;--text:#ece6da;--muted:#a9aea5;--accent:#d6b486;--red:#d9786f;--fs:16px}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;background:#000;color:var(--text);font-family:"Noto Sans JP","Hiragino Sans",sans-serif;font-size:var(--fs);overscroll-behavior:none}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+button:focus-visible{outline:2px solid #f0c48b;outline-offset:2px}
+#blur{position:fixed;inset:-40px;background:#000 center/cover;filter:blur(28px) brightness(.35);transform:scale(1.1);z-index:0;transition:background-image .6s}
+#app{position:relative;z-index:1;display:flex;flex-direction:column;width:min(100%,820px);height:100vh;height:100dvh;margin:0 auto;background:#050809cc}
+header{flex:0 0 auto;display:flex;justify-content:space-between;align-items:center;padding:calc(8px + env(safe-area-inset-top)) 14px 8px;border-bottom:1px solid #2c3532;background:#0a1011e6;font-size:12px;letter-spacing:.08em}
+header .ch{color:var(--accent);font-family:"Shippori Mincho",serif;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+header .clk{font-variant-numeric:tabular-nums;color:#d8d2c4;text-align:right;white-space:nowrap;padding-left:8px}
+#stagewrap{flex:0 0 auto}
+#stage{position:relative;width:min(100%,calc(46dvh * 1.5));aspect-ratio:3/2;margin:0 auto;overflow:hidden;background:#0b0f10}
+#bgimg{position:absolute;inset:0;background:#0b0f10 center/cover no-repeat;transition:opacity .5s,filter .5s}
+#bgimg.cafe{background:radial-gradient(circle at 30% 35%,#e6a85a55 0 4%,transparent 9%),radial-gradient(circle at 72% 28%,#e6a85a44 0 3%,transparent 8%),radial-gradient(circle at 55% 60%,#c98c4a33 0 6%,transparent 14%),linear-gradient(180deg,#2a1d14,#120c08 70%)}
+#bgimg.black{background:#030505}
+#stage:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0004,transparent 30%,transparent 70%,#000a);pointer-events:none}
+#spots{position:absolute;inset:0;z-index:3}
+.spot{position:absolute;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;border:1.5px solid #f0d3a6;background:#0b1415b0;color:#f6e6c8;font-size:22px;line-height:1;box-shadow:0 0 0 5px #0006,0 0 16px #000;animation:pulse 2.6s ease-in-out infinite;transition:opacity .25s}
+.spot.seen{border-color:#7f948a;color:#9fb3a8;animation:none;opacity:.55;font-size:18px}
+.spot .lb{position:absolute;top:50px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:11px;background:#000b;padding:2px 6px;border-radius:3px;pointer-events:none}
+@keyframes pulse{50%{box-shadow:0 0 0 9px #e0b97a33,0 0 22px #e0b97a88}}
+#dark{position:absolute;inset:0;z-index:4;pointer-events:none;display:none}
+#stage.dark #dark{display:block}
+#stage.dark .spot{opacity:0;pointer-events:none}
+#stage.dark .spot.lit{opacity:1;pointer-events:auto}
+#stage.dark .spot.seen.lit{opacity:.7}
+#loc{position:absolute;left:10px;bottom:8px;z-index:5;font-size:11px;letter-spacing:.1em;color:#e9e1d0;text-shadow:0 1px 4px #000;pointer-events:none}
+#fxl{position:absolute;inset:0;z-index:6;pointer-events:none}
+#panel{flex:1 1 auto;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px 18px 14px;background:linear-gradient(#0c1314f2,#070b0cf7);border-top:1px solid #33403b;position:relative}
+#who{min-height:22px;font-size:13px;letter-spacing:.14em;font-weight:600;margin-bottom:6px}
+#who:empty{min-height:0;margin:0}
+#txt{font-family:"Shippori Mincho",serif;font-size:1.12rem;line-height:1.95;letter-spacing:.03em;white-space:pre-wrap;overflow-wrap:anywhere;min-height:3.9em}
+#txt.narr{color:#d9d3c6}
+#txt.voice{color:#ec9a90;font-style:italic;letter-spacing:.2em}
+#txt .goal{display:block;font-family:"Noto Sans JP",sans-serif;font-size:.95rem;color:var(--accent);border-left:2px solid var(--accent);padding-left:10px;line-height:1.7}
+#next{position:absolute;right:16px;bottom:10px;font-size:12px;color:#c9b18c;animation:blink 1.4s infinite;pointer-events:none}
+@keyframes blink{50%{opacity:.25}}
+#ctrl{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+#ctrl:empty{margin:0}
+.btn{display:block;width:100%;text-align:left;min-height:48px;padding:12px 15px;border:1px solid #8e7a5d;border-radius:3px;background:#1d2522;line-height:1.55;font-size:.95rem}
+.btn:active{background:#39433d}
+.btn.pri{background:#3f392d;border-color:#d4b78b}
+.btn.sub{background:#0f1617;border-color:#4c5852;color:#cfd3cb}
+.btn.ctr{text-align:center}
+.btn:disabled{opacity:.4}
+.row{display:flex;gap:8px}.row .btn{flex:1;text-align:center}
+nav{flex:0 0 auto;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #3c4843;background:#091011;padding-bottom:env(safe-area-inset-bottom)}
+nav button{min-height:54px;font-size:12px;color:#d8d2c5;border-right:1px solid #1d2725}
+nav button span{display:block;font-size:17px;margin-bottom:1px}
+nav button.glow{color:#f3cf98}
+/* testimony */
+.testi{border:1px solid #6c5a45;background:#130f0c;padding:12px 14px;border-radius:3px}
+.testi .tt{font-size:11px;letter-spacing:.2em;color:#e7a98f;margin-bottom:6px}
+.testi .st{font-family:"Shippori Mincho",serif;font-size:1.08rem;line-height:1.85;min-height:3.7em;color:#f3e3c4}
+.testi .dots{display:flex;gap:6px;margin-top:8px}.testi .dots i{width:8px;height:8px;border-radius:50%;background:#4b3f33}.testi .dots i.on{background:#e7a98f}
+/* modal */
+#modal{position:fixed;inset:0;z-index:30;display:none;align-items:center;justify-content:center;padding:14px;padding-top:max(14px,env(safe-area-inset-top));background:#000c;backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+#modal.show{display:flex}
+#sheet{width:min(100%,560px);max-height:88dvh;overflow-y:auto;-webkit-overflow-scrolling:touch;background:#121a1b;border:1px solid #8d7a5f;border-radius:5px;padding:18px 16px 16px;box-shadow:0 20px 60px #000}
+#sheet h3{font-family:"Shippori Mincho",serif;font-size:1.3rem;margin:0 0 10px;padding-bottom:10px;border-bottom:1px solid #3e4a46}
+#sheet p{line-height:1.85;margin:.5em 0}
+#sheet .small{font-size:12px;color:var(--muted)}
+.newtag{display:inline-block;font-size:11px;letter-spacing:.15em;color:#111;background:var(--accent);padding:2px 8px;border-radius:2px;margin-bottom:8px}
+.evlist{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.evlist button{text-align:left;padding:10px;border:1px solid #4a5650;background:#0d1415;border-radius:3px;font-size:.88rem;line-height:1.4;min-height:54px}
+.evlist button small{display:block;color:#8e9a92;font-size:10px;margin-bottom:2px}
+.evlist button.pick{border-color:#d4b78b;background:#2a2620}
+/* documents */
+.paper{background:#e8e0cc;color:#26221c;font-family:"Shippori Mincho",serif;padding:14px 14px;border-radius:2px;margin:10px 0;box-shadow:inset 0 0 40px #b8a98a88;font-size:.95rem;line-height:1.75}
+.paper.dark{background:#1d2524;color:#e8e1d2;box-shadow:none;border:1px solid #4d5a55}
+.paper.hand{font-family:"Zen Kurenaido","Shippori Mincho",serif;font-size:1.02rem}
+.paper.mono{font-family:"Noto Sans JP",sans-serif;font-size:.85rem}
+.paper h4{margin:0 0 8px;font-size:1rem;border-bottom:1px solid #8a7c62;padding-bottom:6px}
+.paper p{margin:.35em 0!important;line-height:1.75!important}
+.paper .sub{font-size:.8rem;color:#6a604f}
+.paper.dark .sub{color:#9aa49c}
+.paper ol,.paper ul{margin:.3em 0;padding-left:1.4em}
+.paper .gap{color:#8a7f6c}
+.paper .mk{border:1.5px solid #26221c;padding:0 4px;font-family:sans-serif;font-size:.8em}
+.dt{width:100%;border-collapse:collapse;font-size:.82rem;margin:6px 0}
+.dt th,.dt td{border:1px solid #9c8f74;padding:5px 6px;vertical-align:top;text-align:left}
+.dt th{background:#d6cbb2}
+.cols{display:flex;gap:8px}.cols .dt{flex:1}
+.note{border:1px dashed #6b5f4c;padding:12px;margin:8px 0;font-size:1.05rem;line-height:1.9;background:#f3ecdc}
+.note.print{font-family:"Noto Sans JP",sans-serif;text-align:center;font-size:1.05rem;background:#fff;color:#111}
+.env{border:1px solid #9c8f74;padding:16px;background:#f4efe2;font-size:1rem;line-height:2}
+.seal{display:inline-block;border:1.5px solid #b0362b;color:#b0362b;border-radius:50%;padding:4px 6px;font-size:.7rem;line-height:1.1;text-align:center;vertical-align:middle}
+.hand2{font-family:"Zen Kurenaido",serif;font-size:1.25rem}
+.hand2.big{font-size:1.5rem}
+.art{width:100%;height:auto;display:block;border-radius:3px;margin:8px 0;background:#111}
+.phone{border:6px solid #222;border-radius:16px;overflow:hidden;background:#111;margin:8px auto;max-width:300px}
+.phone .pimg{height:150px;background:linear-gradient(180deg,#0006,#000a),url(assets/hall.webp) center/cover}
+.phone .meta{padding:10px;font-size:.85rem;line-height:1.6;color:#ddd}
+.mbgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:8px 0}
+.mb{border:1px solid #66706b;background:#2a3332;min-height:46px;padding:4px;text-align:center;font-size:.85rem;border-radius:2px}
+.mb small{display:block;font-size:10px;color:#aab}
+.mb.taped{background:repeating-linear-gradient(-20deg,#a08a5a,#a08a5a 6px,#8c774c 6px,#8c774c 12px)}
+.mb.none{border:0;background:none}
+/* puzzles */
+.slotgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:10px 0}
+.slot{min-height:50px;border:1px solid #6b7671;background:#222b2a;border-radius:2px;font-size:.85rem;padding:4px 2px;text-align:center}
+.slot.filled{background:#3a4a3e;border-color:#9fbf9f}
+.slot.taped{background:repeating-linear-gradient(-20deg,#a08a5a,#a08a5a 6px,#8c774c 6px,#8c774c 12px);color:#2a2215}
+.slot.empty{visibility:hidden}
+.letters{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.letter{flex:1 1 44%;padding:10px;background:#efe7d4;color:#222;border-radius:2px;border:2px solid transparent;font-family:"Shippori Mincho",serif;font-size:.9rem;text-align:left;line-height:1.4}
+.letter.sel{border-color:#e39b3d;box-shadow:0 0 0 2px #e39b3d55}
+.letter.done{opacity:.25;pointer-events:none}
+.tapdoc p.tl{cursor:pointer;border-radius:3px;padding:4px 6px;margin:3px 0!important;border:1px dashed transparent}
+.tapdoc p.tl:active{background:#d8c9a4}
+.tapdoc p.tl.hit{background:#f1c2a0;border-color:#b0362b}
+svg .tap{cursor:pointer}
+svg text{pointer-events:none}
+svg .tap:hover,svg .tap:active{stroke:#fff;stroke-width:2.5}
+.sigs{display:flex;flex-direction:column;gap:10px}
+.sig{background:#e8e0cc;color:#26221c;padding:10px;border-radius:2px}
+.sig small{display:block;font-size:11px;color:#6a604f;margin-bottom:6px}
+.sig .chars{display:flex;gap:6px}
+.sig .chars button{flex:1;font-family:"Zen Kurenaido","Hiragino Mincho ProN",serif;font-size:2.1rem;line-height:1.2;padding:8px 0;background:#f5efe1;border:1px solid #b9ab8d;border-radius:3px;color:#26221c}
+.sig .chars button.hit{background:#f1c2a0;border-color:#b0362b}
+.recon .ev{border:1px solid #4a5650;background:#0d1415;padding:10px 12px;border-radius:3px;margin:8px 0}
+.recon .ev.ok{border-color:#86a98a;background:#13201a}
+.recon .ev b{display:block;color:var(--accent);font-size:.85rem;margin-bottom:3px}
+.recon .ev .sup{font-size:.8rem;color:#9fc3a3;margin-top:4px}
+.album{background:#2a2420;border-radius:4px;padding:14px;border:1px solid #6b5a48}
+.album .pg{background:#ece3cf;color:#2a241c;padding:14px;border-radius:2px;min-height:300px;font-family:"Shippori Mincho",serif;box-shadow:inset 0 0 30px #b7a68588}
+.album .pic{height:150px;margin:0 0 10px;background:#777 center/cover;border:6px solid #fff;box-shadow:0 2px 6px #0005;transform:rotate(-1.5deg)}
+.album .memo{font-family:"Zen Kurenaido",serif;font-size:1.12rem;line-height:1.9;color:#3a2a1e}
+.album .yr{font-size:.8rem;color:#6a5a48}
+.album .blank{display:flex;align-items:center;justify-content:center;color:#9a8c74;min-height:300px}
+/* intro / cards */
+#title{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;text-align:center;padding:30px 22px max(40px,env(safe-area-inset-bottom));background:linear-gradient(180deg,#0006 0%,#000a 45%,#000f 92%),url(assets/title.webp) center/cover}
+#title h1{font-family:"Shippori Mincho",serif;font-size:clamp(56px,15vw,92px);letter-spacing:.14em;margin:0;text-shadow:0 6px 24px #000}
+#title .tag{font-family:"Shippori Mincho",serif;line-height:2.1;margin:8px 0 26px;color:#ddd5c5}
+#title .eb{font-size:11px;letter-spacing:.3em;color:var(--accent)}
+#title .btn{width:min(100%,360px);text-align:center;margin:5px 0}
+#title .cap{font-size:11px;color:#9a9a90;margin-top:14px;line-height:1.7}
+#card{position:fixed;inset:0;z-index:25;display:none;flex-direction:column;align-items:center;justify-content:center;background:#000;text-align:center;padding:24px}
+#card.show{display:flex;animation:fadein .8s both}
+#card .n{font-size:12px;letter-spacing:.4em;color:var(--accent)}
+#card h2{font-family:"Shippori Mincho",serif;font-size:clamp(30px,8vw,46px);letter-spacing:.12em;margin:14px 0}
+#card .m{font-size:13px;color:#aaa;letter-spacing:.15em;line-height:2}
+#card .tap{margin-top:40px;font-size:12px;color:#888;animation:blink 1.6s infinite}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+/* fx */
+.shake{animation:shake .45s}
+@keyframes shake{20%{transform:translate(-5px,2px)}40%{transform:translate(5px,-2px)}60%{transform:translate(-3px,1px)}80%{transform:translate(3px,0)}}
+.flick #bgimg{animation:flick 1.2s}
+@keyframes flick{10%,30%,55%{opacity:.15}20%,40%,70%{opacity:1}62%{opacity:.4}}
+#fxl.red{animation:red 1.6s}
+@keyframes red{0%{background:#a0000066}100%{background:transparent}}
+#fxl.static{animation:stat 1.4s steps(8)}
+@keyframes stat{0%,100%{background:transparent}10%,50%,90%{background:repeating-linear-gradient(0deg,#fff1 0 2px,#0000 2px 4px)}30%,70%{background:repeating-linear-gradient(0deg,#0000 0 1px,#fff2 1px 3px)}}
+.big #txt{font-size:1.28rem}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media(min-width:700px){#panel{padding:18px 26px}}
 
-/* Progressive visual-novel presentation */
-#stage{height:clamp(300px,58dvh,550px)}main{padding-bottom:130px}.bodycopy{font-size:16px}.hotspot{opacity:.8}.hotspot.seen{opacity:.45}
-#storyline{position:absolute;bottom:0;left:0;right:0;z-index:3;padding:14px 16px 18px;background:linear-gradient(transparent,#071011 22%,#071011f5);min-height:120px}
-#storyline .speaker{font-size:12px;letter-spacing:.12em;color:#e7c79b;margin-bottom:8px}#storyline .line{font-family:"Shippori Mincho",serif;line-height:1.8;font-size:clamp(16px,3.6vw,21px);min-height:52px;white-space:pre-line}#storyline button{width:100%;border:0;background:transparent;color:#d8c09b;text-align:right;min-height:38px;padding:4px;font-size:12px}
-#storyline .portrait{width:76px;height:84px;float:left;margin:0 14px 6px 0;object-fit:cover;border:1px solid #8d8272;background:#202828}
-#stage.storymode .hotspot,#stage.storymode .scenefoot{display:none}#stage.storymode:before{background:linear-gradient(180deg,#03070733 0%,transparent 30%,#071011dd 100%)}
-.itempic{width:116px;height:116px;display:block;margin:12px auto;object-fit:contain;background:#10191a;border:1px solid #59665e;border-radius:5px;padding:10px}
-#storyline .line{overflow-wrap:anywhere}.sheet{padding:20px}.sheet p{font-size:14px}.sheet h3{font-size:22px}
-@media(max-width:420px){#stage{height:54dvh}#storyline .portrait{width:64px;height:70px}#storyline .line{font-size:16px}main{padding:19px 17px 115px}}
+</style></head><body>
+<noscript>このゲームを遊ぶにはJavaScriptを有効にしてください。</noscript>
+<script>window.addEventListener('error',function(e){if(!document.getElementById('app')){document.body.innerHTML='<p style="color:#ddd;padding:30px;font-family:sans-serif">起動に失敗しました。ページを再読み込みしてください。</p>'}});</script>
+<script>
+(function(){'use strict';
+/* =========================================================
+   404号室 ― 物語データ（確定版）
+   行の書式：
+     ['話者','台詞']        話者が '' なら地の文、'？？？' は正体不明の声
+     ['@get','証拠ID']      証拠を入手（ポップアップ）
+     ['@fx','knock']        演出 knock / ring / static / whisper / flicker / red / shake
+     ['@bg','office']       背景切替
+     ['@time','02:13']      時計表示の更新
+   ========================================================= */
 
-/* Final release: readable, cinematic, touch-first */
-#stage{background-color:#252b29;background-position:center center;box-shadow:inset 0 -40px 75px #0008}
-#stage .hotspot{font-size:22px;animation:spotpulse 3s ease-in-out infinite}
-@keyframes spotpulse{50%{box-shadow:0 0 0 10px #d1b28b22,0 0 24px #d1b28b66}}
-#stage .hotspot.seen{animation:none}
-#storyline{background:linear-gradient(transparent,#071011e9 14%,#071011 60%);padding:26px 20px 20px;min-height:155px}
-#storyline .line{line-height:1.85;letter-spacing:.025em}
-#storyline .speaker{color:#edcf9f}
-#storyline button{border-top:1px solid #6e75643b;margin-top:8px;letter-spacing:.13em}
-#storyline .portrait{width:84px;height:100px;object-position:top}
-.sheet{border-radius:4px}
-.sheet .itempic{width:min(62vw,220px);height:min(62vw,220px);background:radial-gradient(#28312d,#0a1112)}
-.intro{background-position:center;background-size:cover}
-.intro:before{content:"";position:absolute;inset:0;background:linear-gradient(transparent,#040808aa);pointer-events:none}
-.intro>*{position:relative}
-.intro h1{text-shadow:0 6px 20px #000}
-.chapter-marker{font-size:11px;letter-spacing:.2em;color:var(--accent);margin-bottom:8px}
-.progressbar{height:3px;background:#46514d;margin:12px 0 18px}
-.progressbar>div{height:100%;background:#d4b78b;transition:width .3s}
-@media(max-width:420px){#storyline{padding:22px 14px 12px;min-height:145px}#storyline .portrait{width:70px;height:88px}#storyline .line{font-size:16px}}
-</style></head><body><div id="app"><section class="intro"><div class="eyebrow">KUROSE HEIGHTS / 2026</div><h1>404号室</h1><p>その部屋は、存在しない。</p><p>ゲームを読み込んでいます……</p><button class="btn primary" onclick="location.reload()">再読み込み</button></section></div><div id="modal" role="dialog" aria-modal="true" aria-label="ゲームメニュー"><div class="sheet" id="sheet"></div></div>
-<script>window.addEventListener("error",function(e){const a=document.getElementById("app");if(a&&(!a.textContent.trim()||a.textContent.includes("読み込んでいます"))){a.innerHTML="<section class=\"intro\"><h1>404号室</h1><p>起動時に問題が発生しました。</p><button class=\"btn primary\" onclick=\"location.reload()\">再読み込み</button></section>";}});</script><script>
-(()=>{'use strict';
-const chapters=[
-{title:'新しい暮らし',place:'管理室',time:'11月18日 17:30',image:'assets/office.webp',fallback:'assets/title.webp',objective:'仕事を覚え、管理室の備品を確認する',intro:'黒瀬ハイツでの住み込みアルバイトが始まった。まずは仕事を覚えよう。',spots:[['郵便受け',25,59,'mail','郵便物を部屋番号順に仕分けるための郵便受け。'],['鍵棚',72,46,'key','鍵が番号順に並んでいる。奥に「旧物置」と書かれた古い鍵が一本ある。'],['仕事の手帳',52,78,'handbook','清掃、郵便の仕分け、共用設備の確認。管理室の合鍵は佐伯も預かっている。']],end:'仕事の引き継ぎが終わった。夜遅く、403号室の水野から物音についての連絡が入った。'},
-{title:'隣の部屋',place:'四階廊下',time:'11月20日 02:13',image:'assets/hall.webp',objective:'物音がする場所を調べる',intro:'水野と一緒に、四階の行き止まりに立つ。\n\n「毎晩、同じ頃なんです」\n\n壁の向こうで、何かが床を擦る音がした。',spots:[['壁の継ぎ目',70,47,'wall','403号室の隣は厚い壁になっている。壁の一部だけ、塗装の色が違う。'],['古い避難図',23,36,'map','現在の避難図では行き止まり。しかし昔の図面には、この先に共用の物置が描かれている。'],['不審な封筒',46,78,'letter','宛先は「黒瀬ハイツ404号室」。差出人の住所はない。封筒の紙は妙に新しい。']],end:'コン。コン。コン。\n\n壁の向こうから、三度のノック。\n\nその直後、か細い声が聞こえた。\n\n「……たすけて」'},
-{title:'壁の向こう',place:'旧物置',time:'11月21日 16:40',image:'assets/passage.webp',objective:'点検通路の先に残されたものを調べる',intro:'古い鍵で点検通路を開けた。\n\n埃の積もる床には、最近ついたような足跡がある。\n\n水野は、奥の棚をじっと見つめていた。',spots:[['古い台帳',26,49,'ledger','1987年10月3日、宮原佳奈の失踪が記録されている。会社への相談記録も残る。'],['壁の傷',72,42,'scratch','壁には内側からつけられた無数の傷。低い位置に「404」と読める刻みがある。'],['写真の封筒',53,79,'photo','古い写真と手紙の写しがある。宮原佳奈の名前が繰り返し出てくる。']],end:'水野「……宮原佳奈は、私の伯母です」\n\n彼女は事件を調べるため、403号室に入居していた。\n\n「ここに、閉じ込められていたんです」'},
-{title:'作られた幽霊',place:'壁の点検通路',time:'11月22日 02:13',image:'assets/door.webp',objective:'音の規則を調べ、発生源を見つける',intro:'再び、女性の声が聞こえた。\n\n「……たすけて」\n\nしかし今度は、最後の息遣いまで前夜と同じだった。',spots:[['換気口',76,36,'vent','女性の声と三度のノックが、同じ間隔で繰り返されている。録音の可能性がある。'],['壁の裏の配線',28,58,'wire','新しい配線が、古い壁の隙間に通されている。'],['小型スピーカー',57,77,'speaker','壁の裏に小型スピーカー。新しい配線が点検通路へ伸びている。設置者と目的はまだ分からない。']],end:'森田は設置を認めた。依頼者の意図には、まだ分からないことが残っている。'},
-{title:'選ばれたアルバイト',place:'管理室',time:'11月23日 21:05',image:'assets/office.webp',objective:'下書きと提出版の報告書を比較する',intro:'高瀬から電話があった。\n\n「佐伯さんが、あなたを推薦したんですよ」\n\n面接で話した、以前の職場で不正を指摘した経験。それも佐伯に伝わっていた。',spots:[['報告書の下書き',25,63,'draft','下書きには「録音装置を確認。原因の調査を継続する」とある。'],['会社へ送られた報告書',73,48,'report','提出版には「旧物置の配線を早急に撤去すること」と追記されている。自分の文章ではない。'],['送信履歴',50,78,'history','報告書の送信時刻、主人公は水野と四階にいた。管理室には佐伯も合鍵で入れる。']],end:'部屋の前に、佐伯のおにぎりが置かれていた。\n\n「もう十分調べたでしょう。あとは私に任せてね」\n\n初日に感じた温かさが、今は恐ろしい。'},
-{title:'逃げた女',place:'喫茶店',time:'11月24日 14:20',image:'assets/photo.webp',fallback:'assets/title.webp',objective:'佳奈の手帳と当時の記録を照合する',intro:'水野に連れられて、喫茶店で宮原佳奈と会った。\n\n佳奈は古い手帳をテーブルに置く。何があったのか、本人の言葉で確かめよう。',spots:[['佳奈の古い手帳',26,48,'testimony','佳奈が1987年に書き残した手帳。十月の日付が並んでいる。'],['古い出勤簿',74,45,'attendance','真理は10月9日に黒瀬ハイツへ戻っている。その後の出勤記録はない。'],['食事の記録',50,78,'meals','佳奈が逃げた10月8日以降も、10月12日まで物置へ食事が運ばれている。相手の名前はない。']],end:'佳奈「真理は、私の代わりに残ってしまったのかもしれない」\n\n誰かが、佳奈の脱出後もあの部屋にいた。'},
-{title:'二人目の女',place:'地下資料庫',time:'11月25日 19:10',image:'assets/archive.webp',objective:'退職届と工事記録を調べ、隠された空間を突き止める',intro:'真理が姿を消した後の資料が、地下の資料庫に残されていた。\n\n水野と森田とともに、書類を一つずつ確認する。',spots:[['真理の手紙',26,41,'mariLetter','真理の筆跡が分かる手紙。佳奈を助けたいという思いが書かれている。'],['退職届',74,44,'resignation','10月中旬の日付。真理の手紙と署名の形が明らかに違う。'],['封鎖工事の記録',49,79,'construction','1987年10月下旬、「旧物置奥の配管区画封鎖」。当時の責任者の承認印がある。']],end:'佐伯「どうしてそんな昔のことを掘り返すの？」\n\n主人公「真理さんは、どうなったんですか」\n\n佐伯「怪我をしたのよ。でも救急車を呼んだら、私が困るでしょう？」\n\nその声には、後悔がなかった。'},
-{title:'404号室',place:'四階・封鎖された壁',time:'11月26日 07:10',image:'assets/exit.webp',objective:'事件の全貌を証拠で示し、警察へ提出する',intro:'水野とともに、これまでの記録を複製した。\n\n警察に伝えるべきことを、図面と手紙から整理する。',spots:[['古い図面',25,42,'finalMap','旧物置の奥には配管用の空間があった。現在の壁は図面より手前にある。'],['責任者の手紙',73,44,'oldLetter','遺品整理で佐伯に届いた手紙。「あの部屋の奥に、すべて残してある」。佐伯は証拠を回収するため撤去工事を急がせた。'],['佐伯のアルバム',51,78,'album','住人の写真に性格と弱点のメモ。佳奈と主人公の欄には同じ言葉。「正義感が強い。人の頼みを断れない。利用しやすい」']],end:'警察の捜査で、封鎖された空間から藤崎真理の遺骨が見つかった。\n\n佐伯と当時の責任者による隠蔽も明らかになる。\n\n佳奈は真理の墓前で、静かに花を供えた。\n\n「あなたが助けてくれたから、私は生きてこられた」\n\n――404号室は、誰かを存在しなかったことにするための部屋だった。'}
+const CAST={
+ '私':'#e8e1d2','佐伯':'#d9a56f','水野':'#8fbfd4','高瀬':'#b5b8ad','森田':'#c7a073',
+ '佳奈':'#cf9fb6','久我':'#a3c39a','？？？':'#e07a72'
+};
+
+
+/* 﨑（たつさき）と崎を、フォントに頼らず確実に描き分ける */
+function saki(tatsu,size){const part=(x,y,w,h,ch)=>'<svg x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" viewBox="0 0 100 100" preserveAspectRatio="none"><text x="50" y="86" font-size="98" text-anchor="middle" fill="currentColor" stroke="currentColor" stroke-width="2.5">'+ch+'</text></svg>';
+ return '<svg class="saki" viewBox="0 0 100 100" style="width:'+(size||'1em')+';height:'+(size||'1em')+';vertical-align:-0.12em">'+part(0,18,42,74,'山')+part(36,2,64,50,tatsu?'立':'大')+part(36,46,64,52,'可')+'</svg>'}
+const FUJI=t=>'藤'+saki(t)+'真理';
+/* ---------- 証拠品 ---------- */
+const P=(cls,html)=>'<div class="paper '+(cls||'')+'">'+html+'</div>';
+const T=(rows,head)=>'<table class="dt">'+(head?'<tr>'+head.map(h=>'<th>'+h+'</th>').join('')+'</tr>':'')+rows.map(r=>'<tr>'+r.map(c=>'<td>'+c+'</td>').join('')+'</tr>').join('')+'</table>';
+
+const EVIDENCE={
+ handbook:{n:'業務手帳',ch:0,d:'前任者が残した管理業務の手帳。業者の手配方法や合鍵の管理者が書かれている。',
+  doc:()=>P('','<h4>黒瀬ハイツ　管理業務手帳</h4><ol><li>共用部の清掃（毎朝）</li><li>郵便物の仕分け</li><li>共用設備の点検。異常は<b>報告書</b>で管理会社へ</li><li>業者の手配は<b>すべて管理会社経由</b>。発注記録を必ず残すこと</li></ol><p class="sub">■ 出入り業者</p><p>森田設備（ロゴ：<b class="mk">MS</b>）　電気・設備全般</p><p class="sub">■ 管理室の合鍵</p><p>高瀬（管理会社）<br>佐伯様（101号室・緊急時にご協力いただく）</p><p class="sub">■ 管理室PC</p><p>パスワードはモニター脇の付箋を参照</p>')},
+ oldkey:{n:'旧物置の鍵',ch:0,d:'鍵棚の端にあった古い鍵。札の色だけが違う。',
+  doc:()=>'<svg viewBox="0 0 300 200" class="art"><rect width="300" height="200" fill="#1a2222"/><circle cx="95" cy="90" r="34" fill="none" stroke="#b99a5e" stroke-width="14"/><path d="M128 90H250M220 90v28M240 90v20" stroke="#b99a5e" stroke-width="12" fill="none"/><path d="M70 120 L40 170" stroke="#7b6d58" stroke-width="3"/><rect x="10" y="162" width="120" height="34" fill="#c9b78f" transform="rotate(-8 70 180)"/><text x="18" y="186" font-size="15" fill="#2b2620" transform="rotate(-8 70 180)">4F物置 ※要連絡</text></svg>'+P('','<p>札の文字：「<b>4F物置</b>　※使用時は管理会社へ連絡のこと」</p>')},
+ mailbox:{n:'郵便受け',ch:0,d:'四階の段だけ、401〜403の右にもう一つ枠がある。名札はなく、ガムテープで塞がれている。',
+  doc:()=>{let h='<div class="mbgrid">';[['401','空室'],['402','空室'],['403','水野'],['','']].forEach(([a,b],i)=>{h+='<div class="mb'+(i===3?' taped':'')+'"><span>'+(a||'&nbsp;')+'</span><small>'+(b||'')+'</small></div>'});['301','302','303'].forEach(a=>h+='<div class="mb"><span>'+a+'</span></div>');h+='<div class="mb none"></div>';return P('dark','<p class="sub">黒瀬ハイツ　集合郵便受け（上二段）</p>'+h+'</div><p>四階の段の右端だけ、名札がない。テープは何度も貼り直された跡がある。</p>')}},
+ seam:{n:'突き当たりの壁',ch:1,d:'四階の突き当たり、403号室の先の壁だけ塗装の色がわずかに違う。叩くと軽い音がする。',
+  doc:()=>'<svg viewBox="0 0 300 200" class="art"><rect width="300" height="200" fill="#6f6a60"/><rect x="150" y="0" width="150" height="200" fill="#7a7466"/><path d="M150 0V200" stroke="#4a463f" stroke-width="2" stroke-dasharray="6 4"/><text x="160" y="190" font-size="13" fill="#2b2620">ここから色が違う</text><path d="M200 70l12 8-12 8" stroke="#2b2620" fill="none"/><text x="216" y="82" font-size="13" fill="#2b2620">コン…（軽い）</text></svg>'},
+ evacmap:{n:'新旧の避難経路図',ch:1,d:'古い図面では、403号室の先に「物置」の区画がある。現在の図では、そこは壁になっている。',
+  doc:()=>mapSVG(true)},
+ envelope:{n:'404号室宛ての封筒',ch:1,d:'切手も消印もない。誰かが直接置いた。中の紙は真新しく、文字は印刷されている。',
+  doc:()=>P('','<div class="env">黒瀬ハイツ<br><b style="font-size:1.6em">四〇四号室</b>　様</div><p class="sub">差出人の記載なし／切手・消印なし</p><div class="note print">404号室の中を見てください</div><p class="sub">※同封の紙はコピー用紙。プリンターで印字されている。</p>')},
+ footprints:{n:'新しい足跡',ch:2,d:'物置の床の埃に、往復する靴跡。溝の深い作業靴のような靴底。ここ数日のものだ。',
+  doc:()=>'<svg viewBox="0 0 300 200" class="art"><rect width="300" height="200" fill="#4b4740"/>'+[0,1,2,3,4].map(i=>'<g transform="translate('+(40+i*50)+','+(i%2?60:110)+') rotate(-80)"><rect width="56" height="22" rx="10" fill="#2a2724"/>'+[0,1,2,3,4,5].map(j=>'<rect x="'+(5+j*8)+'" y="4" width="3" height="14" fill="#4b4740"/>').join('')+'</g>').join('')+'</svg>'},
+ scratches:{n:'壁の傷',ch:2,d:'床に近い壁に刻まれた線の束が二つ。左は5本。少し離れて、さらに低い位置に4本。上に震える線で「404」。',
+  doc:()=>'<svg viewBox="0 0 300 200" class="art"><rect width="300" height="200" fill="#77705f"/><text x="96" y="62" font-size="34" fill="none" stroke="#3a342b" stroke-width="2" font-family="serif">4 0 4</text>'+[0,1,2,3].map(i=>'<path d="M'+(60+i*12)+' 112 l3 46" stroke="#3a342b" stroke-width="3"/>').join('')+'<path d="M52 140 l58 -16" stroke="#3a342b" stroke-width="3"/>'+[0,1,2,3].map(i=>'<path d="M'+(180+i*13)+' 160 l2 28" stroke="#3a342b" stroke-width="2"/>').join('')+'<text x="54" y="104" font-size="12" fill="#2b2620">5本</text><text x="182" y="154" font-size="12" fill="#2b2620">4本（さらに低い）</text><path d="M0 196H300" stroke="#2b2620" stroke-width="6"/><text x="6" y="192" font-size="10" fill="#cfc6b0">床</text></svg>'},
+ keybook:{n:'スペアキー貸出簿',ch:2,d:'1987年の「四階物置」予備鍵の貸出簿。10月8日の夜に「藤崎」が借り、返却の記録がない。',
+  doc:()=>P('','<h4>四階物置　スペアキー貸出簿　昭和六十二年</h4>'+T([['9月12日 10:00','管理人','清掃','済'],['<b>10月8日 21:10</b>','<b>藤'+saki(true)+'</b>','書類確認','<b>―</b>'],['10月10日','管理人','錠前交換','―']],['日時','借りた者','理由','返却']))},
+ photo2:{n:'二人の写真',ch:2,d:'制服姿の若い女性が二人並んだ写真。裏に書き込みがある。',
+  doc:()=>'<svg viewBox="0 0 300 210" class="art"><rect width="300" height="210" fill="#d8cdb4"/><rect x="14" y="12" width="272" height="160" fill="#6f6f66"/><rect x="14" y="120" width="272" height="52" fill="#57584f"/><g fill="#2c2d2a"><circle cx="105" cy="62" r="20"/><path d="M70 172q4-74 35-74t35 74z"/><circle cx="190" cy="66" r="19"/><path d="M157 172q3-70 33-70t33 70z"/></g><path d="M86 50q19-26 38 0" fill="#1b1c1a"/><path d="M171 56q19-24 38 0v14h-38z" fill="#1b1c1a"/><text x="20" y="196" font-size="14" fill="#3b3428" font-family="serif">裏：佳奈と真理　1987.4　黒瀬不動産 事務所前</text></svg>'},
+ wave:{n:'二晩の音声の比較',ch:3,d:'水野が11月20日と22日の2時13分に録音した音声。波形がまったく同じ。',
+  doc:()=>waveSVG()},
+ vent:{n:'換気口',ch:3,d:'物置の天井近くの換気口。廊下側の換気ダクトとつながっていて、声はここから漏れていた。',
+  doc:()=>'<svg viewBox="0 0 300 200" class="art"><rect width="300" height="200" fill="#3d403b"/><rect x="70" y="40" width="160" height="110" fill="#1c1f1d" stroke="#8b8a7c" stroke-width="5"/>'+[0,1,2,3,4,5].map(i=>'<rect x="78" y="'+(50+i*16)+'" width="144" height="7" fill="#6c6c62"/>').join('')+'</svg>'},
+ wire:{n:'新しい配線',ch:3,d:'古い壁の隙間を這う真新しい黒いケーブル。束ねている結束バンドに「MS」の刻印。',
+  doc:()=>'<svg viewBox="0 0 300 200" class="art"><rect width="300" height="200" fill="#6a6456"/><path d="M0 150 C80 140 120 60 300 70" stroke="#111" stroke-width="9" fill="none"/>'+[60,140,220].map(x=>'<g transform="translate('+x+','+(x<100?140:x<180?96:72)+')"><rect x="-6" y="-12" width="12" height="24" fill="#222" stroke="#555"/></g>').join('')+'<rect x="150" y="20" width="110" height="34" fill="#1b1b1b" stroke="#888"/><text x="160" y="43" font-size="14" fill="#ddd">結束バンド「MS」</text></svg>'},
+ speaker:{n:'小型スピーカー',ch:3,d:'棚の上、目の高さに堂々と置かれていた。タイマーで毎晩2:13と2:43に再生。microSDの中には「tape_A.wav」。冒頭にカセット特有の雑音。',
+  doc:()=>'<svg viewBox="0 0 300 200" class="art"><rect width="300" height="200" fill="#26292a"/><rect x="40" y="40" width="130" height="120" rx="8" fill="#111" stroke="#666" stroke-width="3"/><circle cx="105" cy="100" r="40" fill="#1d1d1d" stroke="#444" stroke-width="6"/><circle cx="105" cy="100" r="12" fill="#333"/><rect x="185" y="70" width="90" height="60" fill="#0d1a12" stroke="#666"/><text x="193" y="96" font-size="14" fill="#6fe39a" font-family="monospace">02:13</text><text x="193" y="118" font-size="14" fill="#6fe39a" font-family="monospace">02:43</text></svg>'+P('','<p>microSD内のファイル：<b>tape_A.wav</b>（1件のみ）<br>再生すると、最初に「サー」という古いカセットテープ特有の雑音。</p>')},
+ entrylog:{n:'業者の入館記録',ch:3,d:'管理室の入館記録。11月15日（私が来る3日前）、森田設備の森田が四階に入っている。',
+  doc:()=>P('','<h4>業者入館記録　2026年11月</h4>'+T([['11/04','高瀬','1F','巡回'],['<b>11/15</b>','<b>森田設備　森田</b>','<b>4F</b>','<b>換気扇点検</b>'],['11/16','郵便局','1F','書留']],['日付','氏名','行先','用件']))},
+ morita:{n:'森田の証言',ch:3,d:'森田は配線とスピーカーの設置を認めた。依頼者は佐伯。音声はカセットテープから取り込んだもの。「見つけやすい場所に付けて」と指示されたが、理由は知らない。',
+  doc:()=>P('','<h4>森田の証言（メモ）</h4><ul><li>11/15、物置にスピーカーと配線を設置した</li><li>依頼者は佐伯さん。「403の住人を怖がらせて出ていかせたい」と言われた</li><li>音声は佐伯さんから渡された古いカセットテープを取り込んだもの</li><li>「<b>見つけやすい場所に付けてちょうだい</b>」と指示された</li><li>理由は聞いていない</li></ul>')},
+ photo21:{n:'四階で撮った写真',ch:3,d:'報告書に添付するため、水野と四階で撮った写真。撮影日時は11月22日 21:46。',
+  doc:()=>'<div class="phone"><div class="pimg"></div><div class="meta">2026/11/22（日）<b>21:46</b><br>撮影場所：黒瀬ハイツ 4階 突き当たり</div></div>'},
+ draft:{n:'報告書の下書き',ch:4,d:'11月22日の夕方、管理室のパソコンに保存した自分の下書き。',
+  doc:()=>reportDoc(false)},
+ submitted:{n:'提出された報告書',ch:4,d:'高瀬が受け取った報告書。差出人は管理室のアドレス。',
+  doc:()=>reportDoc(true)},
+ sendlog:{n:'送信履歴',ch:4,d:'管理室パソコンの送信済みフォルダ。報告書は11月22日 21:47に送信されている。',
+  doc:()=>P('mono','<h4>送信済み</h4>'+T([['11/22 <b>21:47</b>','高瀬','【報告】4F旧物置の異音について'],['11/19 08:30','高瀬','着任のご挨拶']],['日時','宛先','件名'])+'<p class="sub">※パスワードはモニター脇の付箋に書かれている。</p>')},
+ schedule:{n:'工事予定表',ch:4,d:'高瀬から届いたFAX。11月27日に物置の壁を開ける工事。12月1日には解体前の調査で建物中の壁が開けられる。',
+  doc:()=>P('','<h4>黒瀬ハイツ　工事・調査予定（FAX）</h4>'+T([['<b>11/27</b>','4F旧物置　壁内配線撤去<br>（壁を一部開口）','森田設備','<b>佐伯澄江</b><br>（住人代表・本人希望）'],['<b>12/1〜</b>','解体前アスベスト事前調査<br><b>全区画の壁・天井を開口</b>','第三者調査機関','管理会社']],['日程','内容','施工','立会'])+'<p class="sub">黒瀬ハイツは来年三月に解体予定。</p>')},
+ kananote:{n:'佳奈の手帳（1987年）',ch:5,d:'佳奈が当時つけていた手帳。10月の出来事が書かれている。',
+  doc:()=>P('hand','<h4>手帳　昭和六十二年十月</h4><p>10/2　帳簿の写し、真理に預けた。</p><p>10/3　夕方、管理人さんに相談があると呼ばれる。</p><p class="gap">（10/4〜10/8　記入なし）</p><p>10/9　実家にて。昨夜、真理が開けてくれた。真理は写しを取りに戻ると。</p><p>10/20　警察へ。物置は空っぽだった。</p><p>10/25　会社から「横領の疑い」と。真理は退職したと言われた。<b>そんなはずない。</b></p><p>11/3　手紙。家族のことが書いてあった。</p>')},
+ bento:{n:'弁当の配達伝票',ch:5,d:'水野が見つけた、近所の山吹弁当の古い伝票。管理人室への夕食の配達数が日ごとに記録されている。',
+  doc:()=>{const r=[];for(let d=1;d<=15;d++){const n=(d>=3&&d<=12)?2:1;r.push(['10/'+d,(n===2?'<b>':'')+n+'食'+(n===2?'</b>':'')])}const half=Math.ceil(r.length/2);return P('','<h4>山吹弁当　配達伝票（昭和62年10月）</h4><p class="sub">届け先：黒瀬ハイツ　管理人室</p><div class="cols">'+T(r.slice(0,half),['日','夕食'])+T(r.slice(half),['日','夕食'])+'</div>')}},
+ mariMemo:{n:'真理のメモ',ch:5,d:'1987年10月7日、真理が物置の扉の下から佳奈に差し入れたメモ。佳奈がずっと持っていた。',
+  doc:()=>P('hand','<div class="note">佳奈へ<br>明日の夜、開ける。<br><b>ノック三回が私。</b><br>　　　　　　真理</div>')},
+ voice:{n:'佳奈の証言（声）',ch:5,d:'スピーカーの音声を聞いた佳奈は「真理の声に間違いない」と言った。三回のノックは二人の合図だった。',
+  doc:()=>P('','<p>「……真理の声よ。間違いない。<br>三回のノック……あの子、私が来るのを待ってたんだわ」</p>')},
+ attendance:{n:'黒瀬不動産の出勤簿',ch:6,d:'1987年10月の出勤簿。真理は10月9日に出勤したきり退勤の記録がない。',
+  doc:()=>P('','<h4>出勤簿　昭和六十二年十月　黒瀬不動産</h4>'+T([['10/2','出 8:50　退 18:10','出 8:55　退 18:00'],['10/3〜','（空欄）','出勤'],['10/8','（空欄）','出 8:52　退 17:30'],['<b>10/9</b>','（空欄）','<b>出 8:55　退 ―</b>'],['10/10〜','（空欄）','（空欄）'],['欄外','<b>10/20 懲戒解雇（横領）</b>','<b>10/16 退職届受理</b>']],['日','宮原 佳奈','藤崎 真理']))},
+ resign:{n:'藤崎真理の退職届',ch:6,d:'日付は10月16日。「一身上の都合」。受理印は「管理人 佐伯」。',
+  doc:()=>P('','<h4 style="text-align:center">退　職　届</h4><p>私儀<br>このたび一身上の都合により、退職いたします。</p><p style="text-align:right">昭和六十二年十月十六日</p><p style="text-align:right" class="sig">氏名　<span class="hand2">'+FUJI(false)+'</span>　<span class="seal">藤'+saki(false)+'</span></p><p class="sub">受理：<span class="seal">管理人<br>佐伯</span></p>')},
+ resume:{n:'真理の履歴書',ch:6,d:'人事ファイルに綴じられていた真理の自筆の履歴書。',
+  doc:()=>P('','<h4>履　歴　書</h4>'+T([['ふりがな','ふじさき　まり'],['氏名','<span class="hand2 big">'+FUJI(true)+'</span>'],['生年月日','昭和三十八年 五月二日'],['特技','珠算一級']])+'<p class="sub">※本人自筆</p>')},
+ works:{n:'封鎖工事の記録',ch:6,d:'1987年10月22日、四階物置の奥の配管スペースがブロックで封鎖された。承認は黒瀬、立会は佐伯。',
+  doc:()=>P('','<h4>工事記録　昭和六十二年</h4>'+T([['<b>10月22日</b>','<b>四階物置奥　配管スペース<br>ブロック積みにて封鎖</b>','黒瀬忠雄','<b>佐伯澄江</b>'],['11月5日','外階段手すり補修','黒瀬忠雄','佐伯澄江']],['日付','内容','承認','立会']))},
+ kurose:{n:'黒瀬忠雄の手紙',ch:7,d:'旧管理会社の社長・黒瀬の遺品にあった手紙。今年の夏、亡くなる前に書かれたもの。',
+  doc:()=>P('hand','<p>黒瀬ハイツ管理会社　御中</p><p>私の死後、黒瀬ハイツを取り壊す際は、四階物置の奥を最後まで決して開けぬよう願いたい。</p><p>そのことは佐伯にも伝えてある。あれが、なんとかするはずだ。</p><p style="text-align:right">令和八年八月　黒瀬忠雄</p>')},
+ blueprint:{n:'竣工図と現況',ch:7,d:'昭和50年の竣工図では、物置の奥にもう一つ「配管スペース」がある。現在、その場所は壁の向こうだ。',
+  doc:()=>planSVG(null)}
+};
+
+function mapSVG(both){
+ const cur='<g><text x="10" y="18" font-size="13" fill="#e8e1d2">現在の避難経路図</text><rect x="10" y="28" width="280" height="40" fill="#2e3a3a" stroke="#9aa" /><text x="20" y="53" font-size="12" fill="#cde">廊下 →</text>'+['401','402','403'].map((r,i)=>'<rect x="'+(10+i*70)+'" y="68" width="70" height="46" fill="#253030" stroke="#9aa"/><text x="'+(32+i*70)+'" y="96" font-size="13" fill="#e8e1d2">'+r+'</text>').join('')+'<rect x="220" y="28" width="70" height="86" fill="#555" stroke="#9aa"/><text x="236" y="76" font-size="12" fill="#ddd">（壁）</text></g>';
+ const old='<g transform="translate(0,130)"><text x="10" y="18" font-size="13" fill="#e9d3a8">昭和の古い図面</text><rect x="10" y="28" width="280" height="40" fill="#3a3326" stroke="#b9a37a"/><text x="20" y="53" font-size="12" fill="#e9d3a8">廊下 →</text>'+['401','402','403'].map((r,i)=>'<rect x="'+(10+i*70)+'" y="68" width="70" height="46" fill="#30291e" stroke="#b9a37a"/><text x="'+(32+i*70)+'" y="96" font-size="13" fill="#e9d3a8">'+r+'</text>').join('')+'<rect x="220" y="28" width="70" height="86" fill="#4a3d27" stroke="#e0b46a" stroke-width="2"/><text x="238" y="76" font-size="13" fill="#f3d9a4">物置</text></g>';
+ return '<svg viewBox="0 0 300 250" class="art">'+cur+old+'</svg>';
+}
+function waveSVG(){
+ let seed=7;const rnd=()=>{seed=(seed*9301+49297)%233280;return seed/233280};
+ const pts=[];for(let i=0;i<120;i++){const env=i<20?0.25:i<38?0.9:i<46?0.15:i<54?1:i<58?0.1:i<64?1:i<70?0.1:i<76?1:i<92?0.2:i<110?0.75:0.15;pts.push(env*(0.4+rnd()*0.6))}
+ const draw=(y,c)=>pts.map((v,i)=>'<rect x="'+(10+i*2.3)+'" y="'+(y-v*26)+'" width="1.6" height="'+(v*52)+'" fill="'+c+'"/>').join('');
+ return '<svg viewBox="0 0 300 230" class="art"><rect width="300" height="230" fill="#0f1716"/><text x="10" y="18" font-size="12" fill="#cfd">11/20　02:13</text>'+draw(52,'#7fd1b0')+'<text x="10" y="98" font-size="12" fill="#cfd">11/22　02:13</text>'+draw(132,'#7fd1b0')+'<text x="10" y="178" font-size="12" fill="#cfd">11/22　02:43</text>'+draw(212,'#7fd1b0')+'<text x="150" y="18" font-size="11" fill="#9bb">引きずる音 → ノック×3 → 声</text></svg>';
+}
+function reportDoc(sub){
+ const lines=['4階旧物置にて、録音再生装置（小型スピーカー）を確認した。','音声は毎晩2:13と2:43に同じ内容が再生されている。','設置者と目的について、引き続き調査する。'];
+ if(sub)lines.splice(2,0,'旧物置の壁内配線は漏電の恐れがあるため、壁を一部開口のうえ早急に撤去すること。');
+ return P('','<h4>【報告】4F旧物置の異音について'+(sub?'（提出版）':'（下書き）')+'</h4>'+lines.map(l=>'<p>・'+l+'</p>').join('')+'<p class="sub">'+(sub?'差出人：管理室　送信 11/22 21:47':'保存 11/22 18:12　未送信')+'</p>');
+}
+function planSVG(tapIds){
+ const t=id=>tapIds?' data-tap="'+id+'" class="tap"':'';
+ const old='<text x="10" y="18" font-size="13" fill="#e9d3a8">昭和50年 竣工図（4階・東端）</text>'+
+ '<rect'+t('hall')+' x="10" y="30" width="170" height="44" fill="#3a3326" stroke="#b9a37a"/><text x="20" y="57" font-size="12" fill="#e9d3a8" pointer-events="none">廊下</text>'+
+ '<rect'+t('r403')+' x="10" y="74" width="170" height="60" fill="#30291e" stroke="#b9a37a"/><text x="76" y="109" font-size="13" fill="#e9d3a8" pointer-events="none">403</text>'+
+ '<rect'+t('store')+' x="180" y="30" width="58" height="104" fill="#4a3d27" stroke="#b9a37a"/><text x="192" y="86" font-size="12" fill="#f3d9a4" pointer-events="none">物置</text><text x="186" y="124" font-size="10" fill="#cdb98f" pointer-events="none">奥行1.2m</text>'+
+ '<rect'+t('pipe')+' x="238" y="30" width="52" height="104" fill="#3d3424" stroke="#b9a37a"/><text x="246" y="76" font-size="11" fill="#f3d9a4" pointer-events="none">配管</text><text x="246" y="92" font-size="11" fill="#f3d9a4" pointer-events="none">スペース</text><text x="244" y="124" font-size="10" fill="#cdb98f" pointer-events="none">1.0m</text>';
+ const cur='<g transform="translate(0,150)"><text x="10" y="18" font-size="13" fill="#e8e1d2">現況（今朝の実測）</text><rect x="10" y="30" width="170" height="44" fill="#2e3a3a" stroke="#9aa"/><text x="20" y="57" font-size="12" fill="#cde">廊下</text><rect x="10" y="74" width="170" height="60" fill="#253030" stroke="#9aa"/><text x="76" y="109" font-size="13" fill="#e8e1d2">403</text><rect x="180" y="30" width="58" height="104" fill="#253030" stroke="#9aa"/><text x="192" y="86" font-size="12" fill="#e8e1d2">物置</text><text x="186" y="124" font-size="10" fill="#bcc">奥行1.2m</text><rect x="238" y="30" width="52" height="104" fill="#575757" stroke="#9aa"/><text x="252" y="86" font-size="12" fill="#ddd">壁？</text></g>';
+ return '<svg viewBox="0 0 300 290" class="art">'+old+cur+'</svg>';
+}
+
+/* ---------- 章 ---------- */
+const CHAPTERS=[
+/* ===== 第一章 ===== */
+{title:'新しい暮らし',place:'黒瀬ハイツ　管理室',date:'11月18日',time:'17:30',bg:'title',steps:[
+ {t:'talk',lines:[
+  ['','「住み込み可・家賃なし・日給一万二千円」'],
+  ['','アパートの郵便受けに入っていた、一枚のチラシ。私は、その一文に飛びついた。'],
+  ['','前の職場を辞めて三か月。貯金は、もう底が見えていた。'],
+  ['','築五十年の集合住宅、黒瀬ハイツ。管理会社の高瀬さんと電話で話しただけで、採用はあっさり決まった。'],
+  ['@bg','office'],
+  ['','管理室の扉を開けると、出汁のいい匂いがした。'],
+  ['佐伯','あら、あなたが新しい管理人さんね。'],
+  ['佐伯','一〇一号室の佐伯です。ここには、もうずいぶん長く住んでいるの。'],
+  ['佐伯','お腹すいてない？　おにぎり、少し多めに作っちゃったから。梅と昆布。'],
+  ['私','……ありがとうございます。いただきます。'],
+  ['','まだ温かい。人の手で握ったおにぎりなんて、いつ以来だろう。'],
+  ['佐伯','高瀬さん、忙しくてなかなか来られないでしょう。だから管理室の合鍵、私も預かってるの。'],
+  ['佐伯','あなたのお部屋は、この奥の管理人室ね。困ったことがあったら、いつでも呼んでちょうだい。'],
+  ['佐伯','それに、聞いたわよ。前の職場で、帳簿のごまかしを見つけたんですって？'],
+  ['私','……ええ、まあ。結局、居づらくなって辞めましたけど。'],
+  ['佐伯','えらいわねえ。今どき、なかなかできることじゃないわ。'],
+  ['佐伯','さ、お仕事、お仕事。わからないことは、そこの手帳に全部書いてあるから。'],
+  ['','佐伯さんは、にこにこと手を振って出ていった。'],
+  ['','気のいい人だ。ここなら、やっていけるかもしれない。']
+ ]},
+ {t:'explore',bg:'office',goal:'管理室を確認しよう（＋をタップ）',spots:[
+  {id:'mail',x:13,y:62,label:'郵便物の束',puzzle:'mail',lines:[['','今日届いた郵便物だ。部屋ごとの郵便受けに仕分けよう。']],after:[['','四階の段だけ、401〜403の右に、もう一つ枠がある。'],['','名札はない。ガムテープで、しっかり塞がれていた。'],['@get','mailbox']]},
+  {id:'keys',x:78,y:36,label:'鍵棚',lines:[['','部屋番号順に鍵が並んでいる。いちばん端に、札の色が違う古い鍵が一本。'],['@get','oldkey'],['私','「4F物置」……使うときは管理会社に連絡、か。']]},
+  {id:'book',x:60,y:70,label:'業務手帳',lines:[['','前任者が残した業務手帳だ。几帳面な字で、仕事の内容がまとめられている。'],['@get','handbook']]}
+ ],hint:['管理室の中に、調べられる場所が3か所ある。','画面の「＋」をタップして、郵便物・鍵棚・手帳を確認しよう。','郵便物は、宛名の部屋番号と同じ郵便受けをタップすれば仕分けられる。']},
+ {t:'talk',lines:[
+  ['','気づけば、窓の外は真っ暗になっていた。初日の仕事は、思ったより穏やかに終わった。'],
+  ['@time','23:48'],
+  ['','管理人室の布団に入ったとき、内線電話が鳴った。'],
+  ['@fx','ring'],
+  ['水野','夜分にすみません……四〇三号室の水野です。'],
+  ['水野','あの、隣から、何かを引きずるような音がするんです。毎晩。'],
+  ['私','隣、ですか？　四〇二号室は空室のはずですが……。'],
+  ['水野','いえ、そっちじゃなくて。'],
+  ['水野','反対側です。廊下の、突き当たりの方。'],
+  ['','受話器の向こうで、水野さんが息を呑む気配がした。'],
+  ['水野','……ほら。今も。'],
+  ['','耳を澄ませても、聞こえるのは自分の鼓動だけだった。']
+ ]},
+ {t:'end'}
+]},
+/* ===== 第二章 ===== */
+{title:'隣の部屋',place:'黒瀬ハイツ　四階廊下',date:'11月20日',time:'01:50',bg:'hall',steps:[
+ {t:'talk',lines:[
+  ['','水野さんの電話から二日。私は、深夜の四階にいた。'],
+  ['','「同じ時間に聞こえるんです。一緒に確かめてもらえませんか」——そう頼まれて、断れなかった。'],
+  ['水野','来てくれて、ありがとうございます。……もうすぐです。'],
+  ['私','いつも何時ごろなんですか？'],
+  ['水野','二時十三分。毎晩、ぴったり。'],
+  ['','四階には、四〇一、四〇二、四〇三。その先は、行き止まりだ。'],
+  ['水野','音がするのは、あの突き当たりの向こうなんです。']
+ ]},
+ {t:'explore',bg:'hall',goal:'二時十三分までに、廊下を調べよう',spots:[
+  {id:'seam',x:63,y:47,label:'突き当たりの壁',lines:[['','突き当たりの壁に手を当てる。……ほかの壁と、塗装の色がわずかに違う。'],['','指の関節で叩くと、コン、と軽い音が返ってきた。'],['私','ここだけ、中が空洞みたいだ。'],['@get','seam']]},
+  {id:'evac',x:19,y:32,label:'避難経路図',puzzle:'mapdiff',lines:[['','壁に避難経路図が貼られている。その裏に、黄ばんだ古い図面が挟まっていた。'],['','二枚を見比べてみよう。']],after:[['水野','古い図面には……物置？'],['私','今の図では、ただの壁なのに。'],['@get','evacmap']]},
+  {id:'env',x:52,y:86,label:'床の封筒',lines:[['','壁の前の床に、白い封筒が一通落ちている。'],['','宛名は「黒瀬ハイツ　四〇四号室」。切手も消印もない。'],['水野','……四〇四号室なんて、ありませんよね。'],['','中には、一枚の紙。'],['','『404号室の中を見てください』'],['私','印刷された字だ。紙も、まだ真新しい。'],['@get','envelope']]}
+ ],hint:['廊下の突き当たりのあたりを調べよう。','壁・避難経路図・床の3か所がある。','避難経路図では、古い図面にだけある区画をタップしよう。']},
+ {t:'talk',lines:[
+  ['@time','02:13'],
+  ['','腕時計の針が、二時十三分を指した。'],
+  ['@fx','drag'],
+  ['','ずるっ。'],
+  ['','ずるっ……ずるっ……。'],
+  ['水野','……これです。'],
+  ['','重いものを、床の上で引きずる音。壁の向こう——存在しないはずの場所から。'],
+  ['@fx','knock'],
+  ['','コン。コン。コン。'],
+  ['','三度のノック。そして——'],
+  ['@fx','whisper'],
+  ['？？？','……たすけて。'],
+  ['','水野さんが、私の袖をきつく掴んだ。'],
+  ['','音は、それきり途絶えた。']
+ ]},
+ {t:'choice',q:'今夜わかったことから、確実に言えるのは？',opts:[
+  {t:'壁の向こうに、塞がれた空間が残っている',ok:true,r:[['私','古い図面にあった物置。それが、塗り直された壁の向こうに残っている……。'],['水野','中を確かめる方法は、ありませんか。'],['私','管理室の鍵棚に「4F物置」の鍵がありました。明日、管理会社に確認してみます。']]},
+  {t:'四〇四号室の住人が、封筒を受け取りに来る',r:[['私','……いや。四〇四号室という部屋は、どの図面にもない。']]},
+  {t:'音は、四〇三号室の中から出ている',r:[['水野','私の部屋じゃありません。聞こえたのは、壁の向こうからです。']]}
+ ],hint:['手に入れた「壁」と「避難経路図」を見比べよう。','古い図面の物置は、今どこにある？','壁の向こうに、塞がれた空間がある。']},
+ {t:'end'}
+]},
+/* ===== 第三章 ===== */
+{title:'壁の向こう',place:'四階　旧物置',date:'11月21日',time:'16:40',bg:'office',steps:[
+ {t:'talk',lines:[
+  ['@fx','ring'],
+  ['高瀬','四階の物置？　ああ、あそこは何十年も使ってないはずですよ。'],
+  ['高瀬','夜中の音、ねえ……配管か、ネズミでしょう。まあ、見るだけならかまいません。危ないところには入らないでくださいね。'],
+  ['@bg','hall'],
+  ['','午後四時四十分。水野さんと、四階の突き当たりに立つ。'],
+  ['','403号室の脇、柱の陰に、腰の高さほどの点検扉があった。古い鍵は、驚くほどすんなり回った。'],
+  ['@bg','passage'],
+  ['','中は真っ暗だった。懐中電灯の光が、舞い上がる埃を白く浮かび上がらせる。'],
+  ['水野','……ここが。'],
+  ['','水野さんの声が、かすかに震えていた。']
+ ]},
+ {t:'explore',bg:'passage',dark:true,goal:'画面をなぞって、懐中電灯で照らそう',spots:[
+  {id:'foot',x:50,y:88,label:'床の足跡',lines:[['','床の埃に、靴跡が往復している。溝の深い、作業靴のような靴底だ。'],['私','新しい。ここ数日のうちについたものだ。'],['@get','footprints']]},
+  {id:'scr',x:63,y:66,label:'壁の傷',lines:[['','椅子の脇の壁。床に近い低い位置に、細い傷が並んでいる。'],['','爪か何かで刻んだ線。五本の束と、少し離れて四本の束。'],['','四本の方は、さらに低い。ほとんど床すれすれだ。'],['','その上に、震える線で「404」。'],['@get','scratches']]},
+  {id:'book',x:44,y:42,label:'棚の帳面',lines:[['','棚の奥に、黴びた帳面が押し込まれていた。'],['','表紙には『四階物置　スペアキー貸出簿　昭和六十二年』。'],['@get','keybook']]},
+  {id:'pic',x:38,y:74,label:'棚の下の写真',lines:[['','棚の下に、色褪せた写真が一枚落ちている。'],['@get','photo2']]}
+ ],hint:['画面を指でなぞると、懐中電灯で照らせる。','光が当たると、調べられる場所が浮かび上がる。棚・床・壁の低いところを照らしてみよう。','まだ見つけていない場所：棚の中、棚の下、椅子の脇の壁、床。']},
+ {t:'talk',lines:[
+  ['水野','……その写真、見せてください。'],
+  ['','写真を受け取った水野さんの指先が、白くなった。'],
+  ['水野','この左の人……伯母です。宮原佳奈。'],
+  ['私','伯母さん？'],
+  ['水野','黙っていて、ごめんなさい。私が四〇三号室に入ったのは、伯母の昔のことを調べるためなんです。'],
+  ['水野','伯母は昔、この建物を管理していた会社で働いていました。そして一九八七年の秋、この建物のどこかに閉じ込められた。'],
+  ['水野','それ以上は、話してくれません。何を聞いても、黙ってしまう。'],
+  ['私','伯母さんは、今は……。'],
+  ['水野','生きています。名前を変えて、遠くで。'],
+  ['','私は、壁の傷に光を戻した。五本と、四本。'],
+  ['水野','……伯母は、自分は五日で逃げられたって言ってました。'],
+  ['私','じゃあ、この四本は？'],
+  ['','水野さんは、答えなかった。']
+ ]},
+ {t:'choice',q:'壁の傷について、証拠から確実に言えることは？',opts:[
+  {t:'二つの束は、刻んだ高さも深さも違う',ok:true,r:[['私','同じ人が刻んだとは限らない。……ここにいたのは、一人じゃないのかもしれない。'],['水野','伯母に、会ってもらえませんか。あなたになら、話すかもしれない。']]},
+  {t:'四本の傷は、伯母さんが逃げたあとの日数だ',r:[['私','……いや、そう決めつける証拠は、まだない。']]},
+  {t:'傷はすべて、最近の誰かのいたずらだ',r:[['私','傷の溝にも埃が積もっている。最近のものじゃない。']]}
+ ],hint:['推測ではなく、目で見て確かめられることを選ぼう。','証拠帳で「壁の傷」を見直そう。','二つの束は、高さが違う。']},
+ {t:'end'}
+]},
+/* ===== 第四章 ===== */
+{title:'作られた幽霊',place:'四階　旧物置',date:'11月22日',time:'02:13',bg:'hall',steps:[
+ {t:'talk',lines:[
+  ['','二時十三分。その夜も、音は来た。'],
+  ['@fx','drag'],['@fx','knock'],
+  ['','ずるっ……ずるっ……。コン、コン、コン。'],
+  ['@fx','whisper'],
+  ['？？？','……たすけて。'],
+  ['水野','……録っておきました。おとといの分も。'],
+  ['水野','それと……三十分後の二時四十三分にも、もう一度鳴ったんです。'],
+  ['','水野さんが、スマホの画面をこちらに向けた。']
+ ]},
+ {t:'choice',visual:'wave',q:'三つの音声の波形を比べて、わかることは？',opts:[
+  {t:'まったく同じ音が、繰り返し再生されている',ok:true,r:[['私','息継ぎの位置まで、寸分違わない。……これは、録音だ。'],['水野','誰かが、録音を流してる……？'],['@get','wave']]},
+  {t:'壁の向こうの誰かが、毎晩同じ言葉を叫んでいる',r:[['私','人間が叫んだら、毎回わずかにずれるはずだ。波形はぴったり重なっている。']]},
+  {t:'声の主は、日に日に弱っている',r:[['私','波形の大きさは三つとも同じだ。弱っているようには見えない。']]}
+ ],hint:['三つの波形の形を見比べよう。','形が、少しでも違っているだろうか？','まったく同じ形なら、それは生の声ではない。']},
+ {t:'talk',lines:[
+  ['@bg','passage'],
+  ['','作業灯を持ち込み、もう一度、物置に入った。今度は、隅々まで見える。']
+ ]},
+ {t:'explore',bg:'passage',goal:'音の出どころを探そう',spots:[
+  {id:'vent',x:56,y:18,label:'天井近くの換気口',lines:[['','天井近くの換気口に耳を寄せる。廊下側の換気ダクトと、この物置がつながっている。'],['私','音は、ここから廊下に漏れていたんだ。'],['@get','vent']]},
+  {id:'wire',x:76,y:52,label:'壁際の配線',lines:[['','壁の隙間に、真新しい黒いケーブルが這っている。この建物には不釣り合いなほど新しい。'],['','ケーブルを束ねる結束バンドに、小さく「MS」と刻印がある。'],['@get','wire']]},
+  {id:'spk',x:45,y:47,label:'棚の上の黒い箱',lines:[['','棚の上、ちょうど目の高さに、黒い小箱が置かれていた。隠すつもりなど、まるでないように。'],['','小型スピーカーと、タイマー付きの再生機。表示は「02:13／02:43」。'],['','中のmicroSDには、音声ファイルが一つだけ。『tape_A.wav』'],['私','テープ……？'],['','再生すると、冒頭に「サー」という、古いカセット特有の雑音が入っていた。'],['@get','speaker']]}
+ ],hint:['音が出ている場所、それにつながるものを探そう。','天井・壁際・棚の上を調べよう。','棚の上の黒い箱がスピーカーだ。']},
+ {t:'talk',lines:[
+  ['水野','配線、ずいぶん綺麗に通してある。素人の仕事じゃない。'],
+  ['私','「MS」……業務手帳の業者一覧に、同じロゴがあった。'],
+  ['','管理室に戻り、入館記録を確かめた。'],
+  ['@bg','office'],
+  ['','十一月十五日。私が来る三日前。'],
+  ['@get','entrylog'],
+  ['','朝を待って、森田設備に電話をかけた。'],
+  ['','森田さんは、作業着のまま管理室に現れた。三十代の後半くらい。目を合わせようとしない。'],
+  ['森田','……新しい管理人さん？　何の用です。']
+ ]},
+ {t:'testi',who:'森田',rounds:[
+  {title:'物置について',st:[
+   {s:'あの物置？　知りませんよ。何十年も使ってないでしょう。',p:[['森田','鍵だって管理室にあるんだ。俺が入れるわけない。']]},
+   {s:'そもそも四階なんて、ここ何か月も行ってませんね。',p:[['森田','空き部屋ばっかりで、用事なんかないですから。']]}
+  ],target:1,ans:['entrylog'],ok:[['私','十一月十五日。入館記録に、あなたの名前があります。四階、換気扇点検。'],['森田','……ああ、そうだった。忘れてただけですよ。']]},
+  {title:'十一月十五日の作業',st:[
+   {s:'換気扇の点検ですよ。ちゃんと頼まれた仕事です。',p:[['森田','頼まれなきゃ、行きませんよ。']]},
+   {s:'点検して、何もなかったから帰った。それだけです。',p:[['森田','作業記録？　小さい仕事は書かないこともあるんですよ。']]}
+  ],target:0,ans:['handbook'],ok:[['私','業務手帳には、業者の手配は必ず管理会社を通し、発注記録を残すとあります。でも、その日の発注はどこにもない。'],['森田','……。'],['私','誰に「頼まれた」んですか。']]},
+  {title:'スピーカーについて',st:[
+   {s:'スピーカー？　知らないですね。誰かのいたずらでしょう。',p:[['森田','今どき、そんなもの通販で誰でも買える。']]},
+   {s:'配線なんか、ちょっと知識があれば誰でも引けます。',p:[['森田','俺を疑うのは筋違いですよ。']]}
+  ],target:1,ans:['wire'],ok:[['私','結束バンドの刻印、「MS」。業務手帳にある森田設備のロゴと同じです。'],['','森田さんは、作業着の胸元を見下ろした。そこにも、同じ「MS」の刺繍があった。'],['森田','……わかった。わかりましたよ。付けたのは、俺です。']]},
+  {title:'依頼人について',st:[
+   {s:'頼まれてやっただけです。住人を怖がらせて、出ていかせたいって。',p:[['私','出ていかせたい？　誰を？'],['森田','四〇三の人でしょう。四階に住んでるのは、あそこだけだから。']]},
+   {s:'依頼人のことは言えません。こっちにも事情がある。',p:[['森田','勘弁してくださいよ……。']]},
+   {s:'音声は、預かったものを流しただけ。中身なんて知りません。',p:[['森田','俺はただ、言われた通りに機械を付けただけだ。']]}
+  ],target:2,ans:['speaker'],ok:[['私','預かったもの……「tape_A」。カセットテープですね。それを、デジタルに取り込んだ。'],['森田','……古いテープを渡されたんです。昔のドラマを録ったもんだって。'],['私','誰に。'],['','長い沈黙のあと、森田さんは、絞り出すように言った。'],['森田','……佐伯さんです。']]}
+ ],wrong:[['森田','……それが、何だっていうんです？']],hint:['証言の中に、手に入れた証拠と食い違うものがある。','「ゆさぶる」で詳しく聞き、怪しい発言に証拠を示そう。','1つ目：入館記録。2つ目：業務手帳。3つ目：新しい配線。4つ目：小型スピーカー。']},
+ {t:'talk',lines:[
+  ['私','佐伯さん……？'],
+  ['森田','昔、金のことで助けてもらったんです。あの人には、逆らえない。'],
+  ['森田','それに、変なことを言われたんですよ。'],
+  ['森田','「見つけやすい場所に付けてちょうだい」って。'],
+  ['森田','怖がらせたいなら、普通は隠すでしょう。なのに、わざわざ目の高さに置けって。'],
+  ['森田','理由は聞いてません。本当です。'],
+  ['@get','morita'],
+  ['','佐伯さんに直接聞くのは、もう少し確かめてからにしよう。'],
+  ['@time','21:46'],
+  ['','その夜、水野さんと四階に戻り、壁と換気口を写真に収めた。報告書に添付するためだ。'],
+  ['@get','photo21'],
+  ['','報告書の下書きは、夕方のうちに管理室のパソコンに保存してある。明日の朝、写真を付けて送ればいい。']
+ ]},
+ {t:'choice',q:'森田の証言を聞いても、まだわからないことは？',opts:[
+  {t:'佐伯さんが、スピーカーをわざと見つけさせようとした理由',ok:true,r:[['私','怖がらせるだけなら、隠せばいい。見つけさせることに、何の意味がある……？']]},
+  {t:'スピーカーを設置した人物',r:[['私','それは森田さんが認めた。']]},
+  {t:'声が録音かどうか',r:[['私','それは波形とスピーカーで確かめた。']]}
+ ],hint:['すでに証拠で確かめたことを除いていこう。','設置者と録音は、もう判明している。','残っているのは「なぜ」だ。']},
+ {t:'end'}
+]},
+/* ===== 第五章 ===== */
+{title:'選ばれたアルバイト',place:'黒瀬ハイツ　管理室',date:'11月23日',time:'09:10',bg:'office',steps:[
+ {t:'talk',lines:[
+  ['@fx','ring'],
+  ['高瀬','おはようございます、高瀬です。昨夜の報告書、受け取りましたよ。'],
+  ['私','……報告書？　まだ送っていませんが。'],
+  ['高瀬','え？　昨日の夜、管理室のアドレスから届いてますよ。旧物置の配線撤去の件。'],
+  ['高瀬','「漏電の恐れあり、壁を開けて撤去を」とあったので、急ぎで手配しました。二十七日に森田設備さんが入ります。'],
+  ['私','待ってください。私は、そんなことは書いていません。'],
+  ['高瀬','……届いたものを転送します。確認してください。'],
+  ['@get','submitted'],
+  ['','管理室のパソコンには、自分が保存した下書きが残っている。'],
+  ['@get','draft']
+ ]},
+ {t:'puzzle',id:'reportdiff',hint:['下書きと提出版を一行ずつ見比べよう。','提出版にだけある一文を探そう。','「旧物置の壁内配線は」で始まる一文をタップしよう。'],after:[['私','この一文だ。「旧物置の壁内配線は漏電の恐れがあるため、壁を一部開口のうえ早急に撤去すること」。'],['私','私は、こんなことは書いていない。']]},
+ {t:'explore',bg:'office',goal:'誰が、いつ送信したのか調べよう',spots:[
+  {id:'pc',x:57,y:52,label:'管理室のパソコン',lines:[['','送信済みフォルダを開く。'],['@get','sendlog'],['','下書きが開かれ、一文が足されて、送られている。'],['私','パスワードは……モニター脇の付箋。前任者の悪い癖だ。この部屋に入れれば、誰でも送れる。']]},
+  {id:'door',x:7,y:40,label:'入口の錠',lines:[['','管理室の扉の錠を確かめる。こじ開けた跡はない。'],['私','合鍵を持っている人間が、普通に開けて入ったんだ。']]},
+  {id:'fax',x:89,y:58,label:'複合機',lines:[['','複合機に、高瀬さんからのFAXが届いていた。工事と調査の予定表だ。'],['@get','schedule'],['私','立会……佐伯澄江。本人希望？']]}
+ ],hint:['パソコン・扉・複合機を調べよう。','送信時刻を確かめよう。','送信は11月22日21時47分。その時刻、自分がどこにいたかを思い出そう。']},
+ {t:'testi',who:'高瀬',rounds:[
+  {title:'送信について（電話）',st:[
+   {s:'送信は、管理室のパソコンからです。あなたの端末ですよ。',p:[['高瀬','私は昨夜、本社で遅くまで残業していました。そちらには行っていません。']]},
+   {s:'昨夜の九時四十七分、管理室にいたのは、あなたでしょう？',p:[['高瀬','書き足したのを、忘れているだけじゃないですか？']]}
+  ],target:1,ans:['photo21'],ok:[['私','その時刻、私は四階にいました。二十一時四十六分に、四階で撮った写真があります。'],['私','一分で四階から一階の管理室に戻って、文章を足して送るのは無理です。'],['高瀬','……確かに。じゃあ、いったい誰が。']]}
+ ],wrong:[['高瀬','それが、昨夜のこととどう関係するんです？']],hint:['自分が送っていないことを示せる証拠は？','送信時刻の直前に撮ったものがある。','「四階で撮った写真」を示そう。']},
+ {t:'talk',lines:[
+  ['高瀬','管理室の合鍵を持っているのは、私とあなたと……佐伯さんだけです。'],
+  ['高瀬','でも、佐伯さんがどうして。あの人は、あなたを採用するよう強く推してくれた人ですよ。'],
+  ['私','……推薦？'],
+  ['高瀬','ええ。「前の職場で不正を見つけて辞めた、正義感の強い子がいる。きっとこの建物を大事にしてくれる」って。'],
+  ['','初日の佐伯さんの言葉が、よみがえる。——聞いたわよ。前の職場で、帳簿のごまかしを見つけたんですって？'],
+  ['','あれは、高瀬さんから聞いた話ではなかった。佐伯さんが、高瀬さんに教えた話だった。'],
+  ['私','高瀬さん。求人のチラシは、どこに配ったんですか。'],
+  ['高瀬','チラシ？　うちは会社のサイトにしか出していませんよ。紙のチラシなんて作っていない。'],
+  ['','私の部屋のポストには、確かに入っていた。'],
+  ['','誰かが、私の住所を知っていた。'],
+  ['@fx','flicker']
+ ]},
+ {t:'choice',visual:'schedule',q:'書き足された一文と工事予定表から考えると、書き足した人物の狙いは？',opts:[
+  {t:'十二月一日の調査より前に、旧物置の壁を開けさせること',ok:true,r:[['私','十二月一日には、第三者の調査で建物じゅうの壁が開けられる。その四日前に、自分の立ち会いで、あの壁だけを開けさせる。'],['私','スピーカーを見つけさせたのは、壁を開ける「理由」を作るためだ。そして、その報告書を書くのは——私でなければならなかった。'],['私','正義感が強くて、頼まれたら断れない、新しい管理人。'],['高瀬','……二十七日の工事は、いったん止めます。確認が取れるまで。']]},
+  {t:'危険な配線を、安全のために撤去させること',r:[['私','それなら壁を開ける必要はないし、わざわざ自分が立ち会う理由もない。']]},
+  {t:'新人の管理人に責任を押しつけて、辞めさせること',r:[['私','辞めさせたいなら、そもそも推薦なんかしない。']]}
+ ],hint:['予定表の「日付」と「立会」に注目しよう。','11月27日と12月1日、それぞれ何が起きる？','12月1日には、第三者が全部の壁を開けてしまう。']},
+ {t:'talk',lines:[
+  ['','電話を切って、奥の管理人室に戻った。'],
+  ['','鍵は、かけて出たはずだった。'],
+  ['','ちゃぶ台の上に、ラップに包まれたおにぎりが二つ、置かれていた。'],
+  ['','梅と、昆布。'],
+  ['','添えられたメモには、見慣れた丸い字。'],
+  ['@fx','red'],
+  ['','『もう十分調べたでしょう。あとは私に任せてね』'],
+  ['','初日にはあんなに温かかったおにぎりが、今は——ひどく、冷たかった。']
+ ]},
+ {t:'end'}
+]},
+/* ===== 第六章 ===== */
+{title:'逃げた女',place:'駅前の喫茶店',date:'11月24日',time:'14:20',bg:'cafe',steps:[
+ {t:'talk',lines:[
+  ['','駅前の古い喫茶店。いちばん奥の席に、白髪の女性が座っていた。'],
+  ['水野','伯母です。'],
+  ['佳奈','……宮原佳奈です。今は、別の名前で暮らしています。'],
+  ['佳奈','遥から聞きました。あの部屋の中を、見たのね。'],
+  ['','私は写真と、壁の傷のことを話した。佳奈さんは、目を閉じて聞いていた。'],
+  ['佳奈','一九八七年、私は黒瀬不動産の事務員でした。あの建物を管理していた会社です。'],
+  ['佳奈','会社は、住人の印鑑や住民票を勝手に使って、住人の名義でお金を借りていた。'],
+  ['佳奈','住人から書類を集めていたのは、管理人。「手続き、代わりにやっておいてあげる」って。……みんな、喜んで渡したわ。親切な人だったから。'],
+  ['私','その管理人は……。'],
+  ['佳奈','佐伯澄江。今も、あそこに住んでいるのでしょう。'],
+  ['','水野さんが、テーブルの下で拳を握った。'],
+  ['佳奈','私は帳簿の写しを取って、同僚に預けた。藤崎真理。写真の、もう一人よ。'],
+  ['佳奈','これは、当時の私の手帳。……それと、真理が最後にくれたメモ。'],
+  ['@get','kananote'],
+  ['@get','mariMemo'],
+  ['水野','私も、調べてきたものがあるの。建物の近くの山吹弁当。先代のご主人が几帳面で、昔の伝票を全部とってあった。'],
+  ['@get','bento'],
+  ['佳奈','全部、話します。だから確かめて。私の記憶が、どこまで正しいのか。']
+ ]},
+ {t:'testi',who:'佳奈',mode:'check',rounds:[
+  {title:'十月三日',st:[
+   {s:'十月三日の夕方、管理人さんに「相談がある」と、四階に呼ばれました。',p:[['佳奈','写しを取ったことに、気づかれていたのね。']]},
+   {s:'物置に押し込まれて、外から鍵をかけられた。それから毎日、管理人さんが食事を運んできて……「写しはどこ」って。',p:[['佳奈','答えなかった。答えたら、真理が危ないから。']]},
+   {s:'日にちを忘れないように、毎晩、眠る前に壁に一本ずつ線を刻みました。',p:[['佳奈','爪が割れても、やめなかった。']]}
+  ],target:2,ans:['scratches'],ok:[['私','壁にあった、五本の束。三日の夜から七日の夜まで、五回の夜。八日の夜には、もう外にいた。'],['佳奈','……ええ。五本。覚えているわ。']]},
+  {title:'十月八日の夜',st:[
+   {s:'八日の夜、扉の外で三回ノックがして……真理だった。',p:[['佳奈','前の日に、真理が扉の下からメモを差し入れてくれていたの。']]},
+   {s:'真理は、会社にあった予備の鍵を持ち出して、開けてくれた。',p:[['佳奈','見つかったら、真理も無事では済まないのに。']]},
+   {s:'真理は「写しを取りに一度戻る。先に逃げて」と言って……私は、そのまま実家へ。',p:[['佳奈','一緒に行けばよかった。何度も、そう思った。']]}
+  ],target:1,ans:['keybook'],ok:[['私','スペアキー貸出簿です。十月八日、二十一時十分。「藤崎」。返却の記録はありません。'],['佳奈','真理は、自分の名前を書いて借りたのね。……あの子らしい。']]},
+  {title:'そのあと',st:[
+   {s:'私が逃げたあと、あの部屋は、もう空っぽだったはず。',p:[['佳奈','閉じ込める相手が、いなくなったんだもの。']]},
+   {s:'真理とは、それきり連絡が取れなくなりました。会社には、辞めたと言われた。',p:[['佳奈','二十日に、警察にも行った。でも物置は空で、会社は「宮原は金を横領して逃げた女だ」と。']]},
+   {s:'しばらくして、家族のことを書いた手紙が届いて……私は、名前を捨てました。',p:[['佳奈','脅しだと、すぐにわかった。それから、ずっと逃げてきたの。']]}
+  ],target:0,ans:['bento'],ok:[['私','山吹弁当の伝票です。十月三日から、管理人室への夕食は毎日「二食」。'],['私','佳奈さんが逃げた八日のあとも、二食は続いています。九日、十日、十一日、十二日——十三日から、一食に戻っている。'],['佳奈','……え？'],['水野','伯母さんが逃げたあとも、誰かが、あの部屋にいた。']]}
+ ],wrong:[['佳奈','……ごめんなさい。それが何を示しているのか、わからないわ。']],hint:['佳奈の話を、記録で裏づけたり、食い違いを見つけたりしよう。','1つ目は壁の傷、2つ目はスペアキー貸出簿で裏づけられる。','3つ目の「空っぽだった」は、弁当の配達伝票と食い違う。']},
+ {t:'talk',lines:[
+  ['','壁の、もう一つの束。床すれすれの、四本の傷。'],
+  ['私','九日の夜から、十二日の夜まで。……四回です。'],
+  ['','佳奈さんの顔から、血の気が引いていった。'],
+  ['水野','伯母さん。聞いてほしいものがあるの。'],
+  ['','水野さんが、スピーカーから取り出した音声のコピーを再生する。'],
+  ['@fx','static'],
+  ['','サー……という雑音。ずるっ……ずるっ……。'],
+  ['@fx','knock'],
+  ['','コン、コン、コン。'],
+  ['@fx','whisper'],
+  ['？？？','……たすけて。'],
+  ['','佳奈さんの手から、カップが滑り落ちた。'],
+  ['佳奈','……真理。'],
+  ['佳奈','真理の声よ。間違いない。三回のノック……あの子、私が来るのを、待ってたんだわ。'],
+  ['@get','voice'],
+  ['@fx','red'],
+  ['','幽霊の声ではなかった。'],
+  ['','三十九年前、あの部屋の中で、本当に助けを求めていた人の声だった。'],
+  ['','そして、そのテープを、今まで持っていた人間がいる。']
+ ]},
+ {t:'choice',q:'伝票・壁の傷・音声から、いま言えることは？',opts:[
+  {t:'佳奈さんが逃げたあと、十月九日から十二日まで、物置に別の誰かがいた可能性が高い',ok:true,r:[['私','それが真理さんだと断定するには、まだ足りない。でも——'],['佳奈','真理を、探してください。……お願いします。']]},
+  {t:'藤崎真理は、十月十二日に物置の中で亡くなった',r:[['私','……食事が途絶えたことは、亡くなったことの証明にはならない。推測で決めつけてはいけない。']]},
+  {t:'佳奈さんの記憶違いで、本当は十二日まで閉じ込められていた',r:[['私','佳奈さんの手帳には、九日に実家にいたと書いてある。スペアキーの記録とも合う。']]}
+ ],hint:['推測と、記録で確かめられることを分けよう。','伝票からわかるのは「食事が二人分運ばれていた」こと。','「可能性が高い」と言える範囲はどこまでか。']},
+ {t:'end'}
+]},
+/* ===== 第七章 ===== */
+{title:'二人目の女',place:'黒瀬ハイツ　地下資料庫',date:'11月25日',time:'19:10',bg:'archive',steps:[
+ {t:'talk',lines:[
+  ['','黒瀬ハイツの地下には、旧管理会社の書類を詰め込んだ資料庫がある。高瀬さんに事情を話し、立ち入りの許可をもらった。'],
+  ['森田','……俺にも手伝わせてください。せめて、それくらいは。'],
+  ['','森田さんが、資料庫の重い扉を開けてくれた。'],
+  ['水野','昭和六十二年の箱、ありました。']
+ ]},
+ {t:'explore',bg:'archive',goal:'1987年の書類を調べよう',spots:[
+  {id:'att',x:20,y:62,label:'出勤簿',lines:[['','黒瀬不動産の出勤簿。十月のページを開く。'],['@get','attendance'],['私','真理さんは、九日に出勤している。……でも、退勤の記録がない。']]},
+  {id:'res',x:78,y:28,label:'退職届',lines:[['','藤崎真理の退職届。「一身上の都合により」。日付は十月十六日。'],['','受理印は——「管理人　佐伯」。'],['@get','resign']]},
+  {id:'cv',x:28,y:25,label:'人事ファイル',lines:[['','社員の人事ファイル。藤崎真理の履歴書が綴じられている。本人の自筆だ。'],['@get','resume']]},
+  {id:'wk',x:55,y:42,label:'工事の綴り',lines:[['','建物の工事記録。昭和六十二年、十月二十二日。'],['','「四階物置奥　配管スペース　ブロック積みにて封鎖」。'],['@get','works'],['水野','十月二十二日……真理さんの伝票が途切れて、十日後。']]}
+ ],hint:['机の上の書類を、一つずつ調べよう。','出勤簿・退職届・人事ファイル・工事の綴りの4つ。','すべて調べたら、退職届と履歴書の名前を見比べよう。']},
+ {t:'puzzle',id:'sign',hint:['二つの書類の「氏名」を、一文字ずつ見比べよう。','形がわずかに違う字がある。','「さき」の字の右上に注目。']},
+ {t:'talk',lines:[
+  ['私','履歴書の名字は、「崎」の右上が「大」ではなく「立」になっている。たつさき、という字だ。'],['私','でも退職届は、ふつうの「崎」。'],
+  ['水野','自分の名前の字を、間違える人はいない。'],
+  ['私','この退職届は、真理さん本人が書いたものじゃない。'],
+  ['','そのとき、階段を降りてくる足音がした。'],
+  ['','柔らかな、聞き慣れた足音。'],
+  ['佐伯','あら。こんな時間に、みんなでお掃除？'],
+  ['','佐伯さんは、いつもと同じ笑顔で、資料庫の入口に立っていた。'],
+  ['佐伯','森田くんまで。……ずいぶん、仲良くなったのねえ。'],
+  ['','森田さんが、目を伏せた。'],
+  ['私','佐伯さん。藤崎真理さんのことを、聞かせてください。']
+ ]},
+ {t:'testi',who:'佐伯',rounds:[
+  {title:'藤崎真理',st:[
+   {s:'ふじさき……まり？　さあ、どなたかしら。',p:[['佐伯','年を取るとね、昔の人の名前なんて、すぐ忘れちゃうのよ。']]},
+   {s:'昔の会社の人なんて、管理人の私が知るわけないでしょう。',p:[['佐伯','私は建物のお世話をしていただけ。会社のことは知らないわ。']]}
+  ],target:1,ans:['resign'],ok:[['私','真理さんの退職届です。受理印は「管理人　佐伯」。あなたが受け取っています。'],['佐伯','……あら、そう。じゃあ、そうだったのね。']]},
+  {title:'退職届',st:[
+   {s:'思い出したわ。あの子、自分で届けを持ってきたのよ。',p:[['佐伯','「田舎に帰ります」って。寂しかったわあ。']]},
+   {s:'本人の字で、ちゃんと名前も書いてあるでしょう？',p:[['佐伯','ハンコだって押してあるじゃない。']]}
+  ],target:1,ans:['resume','keybook'],ok:[['私','真理さんは、名字の「崎」を、右上が「立」の字で書いていました。履歴書も、スペアキーの貸出簿もそうです。でも退職届は、ふつうの「崎」。'],['私','自分の名前を書き間違える人はいません。これを書いたのは、別の誰かです。'],['佐伯','……。']]},
+  {title:'物置の工事',st:[
+   {s:'物置の奥を塞いだのは、配管が古くなったから。それだけよ。',p:[['佐伯','会社が決めたことよ。私は立ち会っただけ。']]},
+   {s:'あの頃、物置には誰もいなかったわ。佳奈ちゃんが逃げてからはね。',p:[['佐伯','あら、私、何か変なこと言った？']]}
+  ],target:1,ans:['bento'],ok:[['私','今、「佳奈ちゃんが逃げてから」と言いましたね。'],['私','それに、山吹弁当の伝票。あなたは十月十二日まで、毎晩二人分の夕食を頼んでいた。佳奈さんが逃げたあとも。'],['私','誰の分ですか。'],['','佐伯さんの笑顔が、ふっと消えた。']]}
+ ],wrong:[['佐伯','ふふ。それがどうかしたの？']],hint:['佐伯の言葉と食い違う書類を示そう。','1つ目は受理印、2つ目は名前の字。','3つ目は「誰もいなかった」と食い違う記録を。']},
+ {t:'talk',lines:[
+  ['佐伯','……あの子、階段から落ちたのよ。逃げようとして。'],
+  ['佐伯','脚が変な方に曲がってて。ずっと、痛い痛いって。'],
+  ['私','救急車は。'],
+  ['佐伯','呼ぶわけないでしょう？　呼んだら、私が困るじゃない。'],
+  ['','天気の話でもするような声だった。'],
+  ['佐伯','でもね、それはあなたの頭の中のお話。私は今、昔話をしてあげただけ。'],
+  ['佐伯','紙切れと、弁当屋の伝票と、壁の傷。……それで、何が証明できるの？'],
+  ['佐伯','骨の一本でも見つかったなら、話は別だけど。'],
+  ['','佐伯さんは、私の頬にそっと手を当てた。乾いた、温かい手だった。'],
+  ['佐伯','あなた、本当にいい子ね。……おやすみなさい。おにぎり、ちゃんと食べてね。'],
+  ['','足音が遠ざかっていく。誰も、動けなかった。'],
+  ['森田','……あの人、二十七日の工事が止まったことは、もう知ってるはずです。'],
+  ['森田','このまま、黙ってるとは思えない。'],
+  ['','水野さんが、震える手でスマホを取り出した。証拠の写真を、何か所にも保存していく。']
+ ]},
+ {t:'end'}
+]},
+/* ===== 第八章 ===== */
+{title:'404号室',place:'四階　封鎖された壁',date:'11月26日',time:'05:40',bg:'black',steps:[
+ {t:'talk',lines:[
+  ['@fx','ring'],
+  ['','夜明け前、スマホが震えた。森田さんだった。'],
+  ['森田','佐伯さんに呼ばれました。「道具を持って、今すぐ四階に来て。壁を開けるの」って。'],
+  ['森田','行くふりをして、あなたに電話してます。……俺、どうしたら。'],
+  ['私','行ってください。私もすぐに向かいます。'],
+  ['','水野さんに電話をかけ、警察への通報を頼んだ。'],
+  ['@bg','hall'],
+  ['','四階の廊下は、まだ薄暗かった。'],
+  ['','点検扉が、開いている。中から、硬いものを打つ音。'],
+  ['@fx','knock'],
+  ['','ガン。ガン。ガン。'],
+  ['@bg','passage'],
+  ['','物置の奥の壁の前に、佐伯さんが立っていた。手には、森田さんのハンマー。足元に、砕けたブロックの欠片。'],
+  ['佐伯','あら。早いのね。'],
+  ['佐伯','ちょうどよかった。手伝ってくれる？　私、もう力がなくて。'],
+  ['森田','佐伯さん、もうやめてください。'],
+  ['佐伯','森田くん。あなたの借金のこと、奥さんはまだ知らないのよね？'],
+  ['','森田さんが、凍りついた。'],
+  ['','そのとき、廊下に複数の足音が響いた。'],
+  ['@time','07:10'],
+  ['久我','警察です。通報を受けて来ました。……全員、その場を動かないで。'],
+  ['','刑事の後ろに、水野さんと、管理会社の高瀬さんがいた。'],
+  ['佐伯','まあ、刑事さん。ご苦労さまです。'],
+  ['佐伯','この人たちがね、私に変な言いがかりをつけるの。古い壁を直していただけなのに。'],
+  ['高瀬','……刑事さん。これを見てください。旧管理会社の黒瀬さんの遺品が、先月うちに届いていたんです。'],['高瀬','段ボールのまま置きっぱなしで……ゆうべ、やっと開けました。その中に、これが。'],
+  ['@get','kurose'],
+  ['久我','「開けぬよう」「佐伯にも伝えてある」……。'],
+  ['久我','この壁を調べる理由がある、と通報では聞いています。'],
+  ['久我','三十九年前のことなら、なおさらだ。順を追って、証拠と一緒に説明してもらえますか。']
+ ]},
+ {t:'puzzle',id:'recon',hint:['出来事ごとに、それを裏づける証拠を選ぼう。','手帳・貸出簿・出勤簿・伝票・履歴書・工事記録……これまでの証拠を思い出そう。','10/3 手帳、10/8 貸出簿、10/9 出勤簿、10/9〜12 伝票、10/16 履歴書、10/22 工事記録。'],after:[
+  ['久我','……筋は通っています。'],
+  ['久我','高瀬さん。管理会社として、この壁を調べることに同意してもらえますか。'],
+  ['高瀬','はい。お願いします。'],
+  ['久我','どこを開ければいい。図面で示してください。'],
+  ['@get','blueprint']
+ ]},
+ {t:'puzzle',id:'blueprint',hint:['竣工図と、今朝の実測を見比べよう。','今の物置の奥行きは、図面のどの部分と一致する？','図面にあって、今は存在しない区画をタップ。'],after:[
+  ['私','ここです。物置の奥にあった、配管スペース。今の壁は、その手前に積まれています。'],
+  ['','刑事の指示で、森田さんがブロックを外していく。'],
+  ['','一つ。二つ。冷たい空気が、隙間から流れ出た。'],
+  ['','懐中電灯の光の中に、狭い空間が浮かび上がる。'],
+  ['@fx','red'],
+  ['','古い毛布にくるまれた、小さな塊。'],
+  ['','その横の壁にも、刻まれた線があった。'],
+  ['','一本、二本、三本、四本。'],
+  ['','床すれすれの、低い位置に。'],
+  ['森田','……二十七日は、壊したブロックを全部袋に詰めて運び出す段取りでした。'],['森田','佐伯さんが「袋は私が見てるから」って……そういう、ことだったのか。'],['佐伯','……ほら。だから、早く開けたかったのに。'],
+  ['','佐伯さんは、小さくため息をついた。それだけだった。'],
+  ['久我','佐伯澄江さん。署で、話を聞かせてもらいます。'],
+  ['佐伯','ええ、ええ。行きますとも。'],
+  ['','連れて行かれる間際、佐伯さんは振り返って、私に微笑んだ。'],
+  ['佐伯','ねえ。やっぱりあなた、思った通りの子だったわ。']
+ ]},
+ {t:'talk',lines:[
+  ['@bg','title'],
+  ['@time','12月'],
+  ['','十二月。'],
+  ['','毛布の中から見つかった遺骨は、藤崎真理さんのものと確認された。脚の骨には、折れた痕が残っていたという。'],
+  ['','佐伯は、真理さんを閉じ込めたことと、遺体を隠したことを認めた。「十三日の朝には、もう動かなかった」と話しているらしい。十月十二日の夜が、最後だった。'],
+  ['','佐伯の部屋からは、404号室宛ての封筒と同じ紙と、あの声の元になったカセットテープが見つかった。'],
+  ['','三十九年前の帳簿の写しは、まだ見つかっていない。真理さんが、どこかに隠したままだ。'],
+  ['','佳奈さんは、本当の名前で、真理さんの墓に花を供えた。'],
+  ['佳奈','遅くなって、ごめんね。真理。'],
+  ['佳奈','あなたが開けてくれたから、私は、生きてこられた。'],
+  ['','帰り道、久我刑事から電話があった。'],
+  ['久我','佐伯の部屋から、アルバムが見つかりました。……あなたにも、見ておいてもらったほうがいい。']
+ ]},
+ {t:'puzzle',id:'album',hint:['ページをめくって最後まで見よう。','','']},
+ {t:'talk',lines:[
+  ['','幽霊なんて、どこにもいなかった。'],
+  ['','いたのは、親切な顔で人の弱さを数え、使い終われば壁の向こうに塗り込める——一人の人間だけだった。'],
+  ['','404号室。'],
+  ['','それは、誰かを「存在しなかったこと」にするための部屋だった。']
+ ]},
+ {t:'fin'}
+]}
 ];
-const questions=[
-{q:'初日の引き継ぎで、まだ使い方を確認できていないものは？',a:['清掃用具','「旧物置」と書かれた鍵','郵便物の仕分け表'],right:1,why:'仕事の手帳と鍵棚を確認した。古い鍵は高瀬に確認するまで使わず、まずは通常の仕事を覚えることにした。'},
-{q:'図面と壁の塗装から分かることは？',a:['以前の物置が壁の向こうに残る','403号室が移動した','屋上から声が響く'],right:0,why:'昔の図面に物置があり、壁の一部は後から塗り直されている。'},
-{q:'壁の傷と古い台帳から、次に確認すべきことは？',a:['当時の宮原佳奈の記録を調べる','屋上の設備を修理する','すぐに壁を壊す'],right:0,why:'傷だけで閉じ込められた人は断定できない。台帳に残る宮原佳奈について、証言と記録を調べる必要がある。'},
-{q:'スピーカーと森田の証言から、まだ説明できないことは？',a:['誰がスピーカーを設置したか','なぜ発見しやすい位置に置かせたか','音が録音かどうか'],right:1,why:'森田は設置を認めたが、発見されやすくする理由までは知らなかった。'},
-{q:'下書きと提出版を比較して、確実に言えることは？',a:['佐伯が過去の事件の犯人である','主人公の知らない撤去指示が追記されている','森田が報告書を偽造した'],right:1,why:'提出された報告書には、主人公が書いていない撤去指示がある。誰が何のために追記したのかは、まだ分からない。'},
-{q:'佳奈が逃げた後も食事が運ばれていたことから考えられるのは？',a:['記録が必ず間違っている','物置に別の誰かがいた可能性','佳奈がすぐ戻った'],right:1,why:'食事記録だけでは誰がいたかは断定できないが、真理の失踪と時期が重なっている。'},
-{q:'真理の失踪と封鎖工事を結ぶ証拠は？',a:['古い手紙の紙質だけ','偽造が疑われる退職届と直後の工事記録','住人の噂だけ'],right:1,why:'真理が消えた直後、物置の奥が塞がれている。'},
-{q:'古い図面・工事記録・手紙を合わせて、警察に確認を求めるべき場所は？',a:['一階の郵便受け','旧物置の奥の封鎖区画','屋上の貯水槽'],right:1,why:'工事前後の図面の違いと当時の記録が、旧物置の奥の封鎖区画を指している。'}
-];
 
-const sceneLines=[
-[['佐伯','あら、あなたが新しく来た子ね。'],['佐伯','私は佐伯。ここには長く住んでいるの。'],['佐伯','お腹は空いていない？ おにぎり、少し多めに作ったから。'],['主人公','ありがとうございます。今日からよろしくお願いします。'],['佐伯','仕事は慌てなくていいからね。少しずつ覚えましょう。'],['地の文','管理室に入ると、古い机と鍵棚があった。まずは引き継ぎを確認しよう。']],
-[['水野','夜遅くにすみません。403号室の水野です。'],['水野','隣から、何かを引きずる音がするんです。'],['主人公','隣……ですか？'],['地の文','四階の廊下は静まり返っていた。壁に近づいて確かめよう。']],
-[['地の文','古い鍵が、点検通路の錠に合った。'],['水野','この奥です。私がずっと調べたかったのは。'],['主人公','ここに何があったんですか？'],['水野','まずは、残されたものを見てください。']],
-[['地の文','深夜二時十三分。昨日と同じ音がした。'],['水野','また、あの声……。'],['主人公','待って。息を吸う音まで、昨日と同じだ。'],['地の文','壁のどこかに、音の出どころがあるはずだ。']],
-[['高瀬','報告書を受け取りました。配線の撤去も進めます。'],['主人公','……撤去？ そんな依頼はしていません。'],['高瀬','提出された書類には、そう書いてありますよ。'],['地の文','管理室で、自分の下書きと提出済みの文書を照合する。']],
-[['水野','会ってほしい人がいます。'],['佳奈','あなたが調べてくれている方ね。'],['佳奈','少し長い話になります。聞いてもらえますか。'],['地の文','佳奈は古い手帳をテーブルに置いた。']],
-[['森田','この資料庫に、当時の書類が残っているはずです。'],['主人公','退職関係の書類も調べてみましょう。'],['水野','真理さんが消えた時期の記録を探します。'],['地の文','資料庫には、まだ誰も照合していない記録が眠っていた。']],
-[['地の文','夜が明けた。壁の奥には、まだ明かされていない事実がある。'],['水野','これまでの証拠は複製しました。'],['主人公','最後に位置関係を確かめて、警察に渡しましょう。'],['地の文','最後に、古い図面と佐伯の記録を確かめる。']]
-];
-const portraits={
-'佐伯':{skin:'#d6bca6',hair:'#aaa9a0',shirt:'#796b63',style:'elder'},
-'水野':{skin:'#e1bdab',hair:'#282b2b',shirt:'#475357',style:'young'},
-'高瀬':{skin:'#c9a18d',hair:'#383b3b',shirt:'#65615a',style:'man'},
-'佳奈':{skin:'#c6a995',hair:'#8c8b84',shirt:'#72646d',style:'elder'},
-'森田':{skin:'#c49c85',hair:'#353535',shirt:'#657477',style:'man'}};
-function svgUri(svg){return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg)}
-function portrait(name){const p=portraits[name];if(!p)return null;return svgUri('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 140"><rect width="120" height="140" fill="#2b3434"/><path d="M0 140 Q4 90 43 88 L80 88 Q118 96 120 140" fill="'+p.shirt+'"/><path d="M22 56 Q15 9 58 11 Q105 10 99 60 L93 91 27 91Z" fill="'+p.hair+'"/><ellipse cx="60" cy="60" rx="35" ry="43" fill="'+p.skin+'"/><path d="M24 45 Q23 4 62 11 Q98 11 97 48 Q76 34 59 35 Q40 45 24 45" fill="'+p.hair+'"/><path d="M36 59h16m17 0h16" stroke="#37312e" stroke-width="2.4" stroke-linecap="round"/><path d="M56 72q4 3 8 0" fill="none" stroke="#997c6a" stroke-width="1.5"/><path d="M48 86q12 6 24 0" fill="none" stroke="#8b655b" stroke-width="2"/><path d="M44 101L60 113 76 101" fill="none" stroke="#c5c1b5" stroke-width="3"/><rect width="120" height="140" fill="#172222" opacity=".1"/></svg>')}
-function itemArt(id){let body='<rect x="12" y="18" width="76" height="64" rx="3" fill="#b8a78c" stroke="#4b4438" stroke-width="3"/><path d="M23 34h53M23 45h48M23 56h53M23 67h36" stroke="#645e52" stroke-width="2"/>';if(/key/i.test(id))body='<circle cx="36" cy="40" r="15" fill="none" stroke="#c4aa73" stroke-width="9"/><path d="M47 51L80 80m-11-11 9-9m-2 16 9-9" stroke="#c4aa73" stroke-width="9" fill="none"/>';else if(/speaker|vent|wire/i.test(id))body='<rect x="15" y="15" width="70" height="70" rx="5" fill="#313b3b" stroke="#9e9884" stroke-width="3"/><circle cx="50" cy="49" r="26" fill="#131b1d" stroke="#6f7770" stroke-width="4"/><circle cx="50" cy="49" r="10" fill="#59665f"/>';else if(/photo|album/i.test(id))body='<rect x="15" y="10" width="70" height="80" fill="#d2c4a7"/><rect x="22" y="17" width="56" height="54" fill="#797d73"/><circle cx="50" cy="35" r="13" fill="#c2a18a"/><path d="M25 69q5-26 25-26t25 26" fill="#414a47"/>';return svgUri('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#192321"/>'+body+'</svg>')}
-let sceneIndex=0,sceneChapter=-1;
-function resetScene(){sceneChapter=s.chapter;sceneIndex=Number(s.scenePos&&s.scenePos[s.chapter]||0)}
-function sceneActive(){return sceneChapter!==s.chapter||sceneIndex<sceneLines[s.chapter].length}
-function renderStory(stage){if(sceneChapter!==s.chapter)resetScene();if(!sceneActive())return false;stage.classList.add('storymode');const line=sceneLines[s.chapter][sceneIndex],box=E('div');box.id='storyline';const face=portrait(line[0]);if(face){const img=E('img');img.className='portrait';img.src=face;img.alt=line[0]+'の顔';box.append(img)}box.append(E('div',line[0],'speaker'),E('div',line[1],'line'));const bar=E('div');bar.className='progressbar';const fill=E('div');fill.style.width=Math.round((sceneIndex+1)/sceneLines[s.chapter].length*100)+'%';bar.append(fill);box.append(bar);const next=B(sceneIndex===sceneLines[s.chapter].length-1?'調査を始める ▸':'タップして次へ ▸',()=>{sceneIndex++;if(!s.scenePos)s.scenePos={};s.scenePos[s.chapter]=sceneIndex;save();render()},'');box.append(next);box.addEventListener('click',e=>{if(e.target!==next){sceneIndex++;if(!s.scenePos)s.scenePos={};s.scenePos[s.chapter]=sceneIndex;save();render()}});stage.append(box);return true}
+/* =========================================================
+   404号室 ― エンジン
+   ========================================================= */
+const $=s=>document.querySelector(s);
+const KEY='kurose404_v2',OLDKEY='kurose404_story_v1';
+const BGS={office:'assets/office.webp',hall:'assets/hall.webp',passage:'assets/passage.webp',archive:'assets/archive.webp',title:'assets/title.webp',door:'assets/door.webp',photo:'assets/photo.webp'};
+const KANJI=['一','二','三','四','五','六','七','八'];
+const fresh=()=>({v:2,started:false,ch:0,step:0,line:0,found:{},ev:[],tr:{},recon:{},bg:'title',clock:'',hintLv:0,maxCh:0,fin:false,sound:false,large:false,speed:1});
+let S=fresh();
+try{const v=JSON.parse(localStorage.getItem(KEY)||'null');if(v&&v.v===2)S=Object.assign(fresh(),v)}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function E(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!==undefined)e.textContent=txt;return e}
+function B(label,fn,cls){const b=E('button','btn '+(cls||''),label);b.type='button';b.addEventListener('click',ev=>{ev.stopPropagation();fn(ev)});return b}
+const CH=()=>CHAPTERS[S.ch],STEP=()=>CH().steps[S.step];
 
-const app=document.getElementById('app'),modal=document.getElementById('modal'),sheet=document.getElementById('sheet'),key='kurose404_story_v1';
-const fresh=()=>({started:false,chapter:0,found:{},solved:{},log:[],scenePos:{},events:{},sound:false,large:false,finished:false});
-let s=fresh();try{let v=JSON.parse(localStorage.getItem(key));if(v&&typeof v.chapter==='number')s={...fresh(),...v,events:v.events||{},scenePos:v.scenePos||{}}}catch(e){}
-function save(){try{localStorage.setItem(key,JSON.stringify(s))}catch(e){}}
-function E(tag,txt,cls){const e=document.createElement(tag);if(txt!==undefined)e.textContent=txt;if(cls)e.className=cls;return e}
-function B(label,fn,cls='btn'){const b=E('button',label,cls);b.type='button';b.addEventListener('click',fn);return b}
-function show(title,body,actions){sheet.replaceChildren(E('h3',title));for(const p of body)sheet.append(E('p',p));(actions||[['閉じる',hide]]).forEach(([t,f])=>sheet.append(B(t,f)));modal.classList.add('show');sheet.scrollTop=0;const b=sheet.querySelector('button');if(b)b.focus()}
-function hide(){modal.classList.remove('show');render()}
-
-const postScripts=[[["佐伯","郵便物は部屋番号順に分ければ大丈夫よ。"],["主人公","四階は403号室までなんですね。"],["佐伯","そうね。昔からそうだったと思うわ。"],["主人公","鍵棚に、使っていない鍵もありました。"],["佐伯","古い物置の鍵かしら。高瀬さんに確認してから使ってね。"],["地の文","仕事の手帳を閉じる。初日は思ったより穏やかに終わった。"],["水野（電話）","すみません。403号室の水野です。隣から、何かを引きずる音がするんです。"],["主人公","隣ですか？　四階の端ですよね。"],["水野","ええ。だから、困っているんです。"]],[["水野","この壁の向こうです。昨日も同じ時間に聞こえました。"],["主人公","塗装がここだけ違う。後から塞いだんでしょうか。"],["水野","避難図には、何も書かれていません。"],["主人公","でも古い図面には、物置がある。"],["水野","それと、この封筒……404号室宛てです。"],["主人公","差出人もない。誰が入れたんだろう。"],["地の文","午前二時十三分。壁の向こうで、三度、乾いた音がした。"],["水野","……今の、聞きましたか？"],["主人公","聞きました。誰かがいるみたいに。"],["地の文","そのあと、小さく「助けて」と聞こえた。"]],[["主人公","台帳に宮原佳奈という名前があります。"],["水野","……その人のことを、調べていました。"],["主人公","壁の傷は、内側からつけたように見えます。"],["水野","ここに「404」って刻んである。"],["主人公","部屋番号じゃなく、この場所の呼び名……？"],["水野","黙っていて、ごめんなさい。宮原佳奈は私の伯母なんです。"],["主人公","最初から知っていたんですか？"],["水野","ここに何かあることは。でも、実際に入れたのは今日が初めてです。"],["水野","伯母は昔、ここに閉じ込められたと言っています。"]],[["主人公","換気口から、また同じ声がします。"],["水野","昨日とまったく同じ……。"],["主人公","この配線、新しいですね。"],["水野","奥に何かあります。"],["主人公","スピーカーだ。録音を流していたのか。"],["水野","じゃあ、誰がこんなことを？"],["主人公","点検通路に出入りできた人を調べましょう。"]],[["主人公","この下書きには、撤去工事なんて書いていません。"],["高瀬（電話）","でも提出版には、早急に撤去するよう記載されています。"],["主人公","送信された時刻、僕は水野さんと四階にいました。"],["高瀬（電話）","管理室の端末から送られていますね。"],["主人公","管理室の合鍵を持っているのは……。"],["高瀬（電話）","それと、採用のとき佐伯さんがあなたを強く推薦したんですよ。"],["主人公","佐伯さんが？　どうして僕を。"],["高瀬（電話）","以前の職場で問題を指摘した話を聞いて、頼れる人だと。"],["地の文","部屋の前に、佐伯のおにぎりが置かれていた。添えられた紙には「もう十分調べたでしょう」とあった。"]],[["佳奈","私は1987年の十月、あの物置に閉じ込められました。"],["主人公","誰が閉じ込めたんですか？"],["佳奈","佐伯さんです。管理会社の不正を調べていた私を黙らせようとした。"],["水野","伯母は、ずっと誰にも話せなかったわけではありません。"],["佳奈","警察には行きました。でも部屋は片づけられ、証拠が足りなかった。"],["主人公","十月八日に逃げたんですよね。"],["佳奈","友人の藤崎真理が、点検通路を開けてくれたんです。"],["佳奈","真理は「まだ書類を取り戻せる」と言って、建物に戻った。"],["主人公","出勤簿では、翌九日を最後に記録が途絶えています。"],["水野","でも食事の記録は十二日まで続いている。"],["佳奈","……真理が、あそこにいたの？"]],[["水野","これが真理さんの手紙。筆跡がはっきり残っています。"],["主人公","退職届の署名と形が違う。本人が書いたとは思えません。"],["森田","工事記録を見てください。十月下旬に、物置の奥を塞いでいます。"],["主人公","真理さんが消えた直後だ。"],["水野","この壁の向こうに、何かを隠した……。"],["地の文","その夜、佐伯から管理室へ来るよう電話が入った。"],["佐伯","ずいぶん古いことまで調べたのね。"],["主人公","真理さんは、どうなったんですか。"],["佐伯","あの子は怪我をしたの。救急車を呼べば、私が困るでしょう？"],["主人公","……助けを呼ばなかったんですか。"],["佐伯","もう終わった話よ。あなたには関係ないでしょう。"],["地の文","主人公はそれ以上追及せず、管理室を出た。水野に連絡し、証拠を別の場所にも保存した。"]],[["主人公","古い図面では、この先に配管用の空間があります。"],["水野","今の壁は、図面よりずっと手前です。"],["主人公","責任者の手紙には「奥にすべて残した」とあります。"],["水野","佐伯はそれを知って、森田さんに撤去工事をさせようとした。"],["主人公","スピーカーを見つけさせたのも、工事の理由を作るため……。"],["水野","でも、私たちが先に証拠を見つけました。"],["主人公","図面、工事記録、退職届、証言を警察に渡しましょう。"],["地の文","警察の捜査で、封鎖された区画から藤崎真理の遺骨が発見された。"],["佳奈","真理……遅くなって、ごめんね。"],["佳奈","あなたが助けてくれたから、私は生きてこられた。"],["地の文","佐伯のアルバムには、佳奈と主人公の写真が並んでいた。"],["水野","二人とも、同じ言葉が書いてある。"],["主人公","「正義感が強い。人の頼みを断れない。利用しやすい」……。"]]];
-function speakSequence(lines,onEnd){
- let index=0;
- function advance(){
-  if(index>=lines.length){hide();if(onEnd)onEnd();return}
-  const line=lines[index++],who=line[0],words=line[1];
-  sheet.replaceChildren(E('h3',who));
-  const pic=portrait(who.replace('（電話）',''));
-  if(pic){const img=E('img');img.src=pic;img.alt=who;img.className='portrait';img.style.cssText='float:left;width:75px;height:90px;object-fit:cover;margin:0 14px 10px 0';sheet.append(img)}
-  sheet.append(E('p',words),E('div',index+' / '+lines.length,'status'),B(index===lines.length?'会話を終える':'タップして次へ ▸',advance,'btn primary'));
-  sheet.scrollTop=0;
- }
- show('会話',[''],[['開始',()=>{}]]);advance()
+/* ---------- 音（WebAudioで生成。音なしでも遊べる） ---------- */
+let AC=null;
+function ac(){if(!S.sound)return null;try{if(!AC)AC=new (window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();return AC}catch(e){return null}}
+function noiseBuf(a,sec){const b=a.createBuffer(1,a.sampleRate*sec,a.sampleRate),d=b.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1;return b}
+function thump(a,t){const o=a.createOscillator(),g=a.createGain();o.frequency.setValueAtTime(110,t);o.frequency.exponentialRampToValueAtTime(45,t+.18);g.gain.setValueAtTime(.9,t);g.gain.exponentialRampToValueAtTime(.001,t+.3);o.connect(g).connect(a.destination);o.start(t);o.stop(t+.32);const n=a.createBufferSource(),f=a.createBiquadFilter(),ng=a.createGain();n.buffer=noiseBuf(a,.08);f.type='lowpass';f.frequency.value=900;ng.gain.setValueAtTime(.5,t);ng.gain.exponentialRampToValueAtTime(.001,t+.07);n.connect(f).connect(ng).connect(a.destination);n.start(t)}
+function noise(a,t,dur,type,freq,gain,trem){const n=a.createBufferSource(),f=a.createBiquadFilter(),g=a.createGain();n.buffer=noiseBuf(a,dur);f.type=type;f.frequency.value=freq;f.Q.value=type==='bandpass'?4:1;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(gain,t+dur*.25);g.gain.linearRampToValueAtTime(0,t+dur);n.connect(f).connect(g).connect(a.destination);if(trem){const l=a.createOscillator(),lg=a.createGain();l.frequency.value=trem;lg.gain.value=gain*.6;l.connect(lg).connect(g.gain);l.start(t);l.stop(t+dur)}n.start(t)}
+function sfx(name){const a=ac();if(!a)return;const t=a.currentTime+.02;
+ if(name==='knock'){thump(a,t);thump(a,t+.55);thump(a,t+1.1)}
+ else if(name==='ring'){for(let i=0;i<2;i++){const o=a.createOscillator(),g=a.createGain();o.type='square';o.frequency.value=i?853:960;g.gain.value=0;[0,.5].forEach(d=>{g.gain.setValueAtTime(.05,t+d+i*.02);g.gain.setValueAtTime(0,t+d+.35)});o.connect(g).connect(a.destination);o.start(t);o.stop(t+.9)}}
+ else if(name==='drag'){noise(a,t,1.1,'lowpass',380,.5);noise(a,t+1.3,1.2,'lowpass',330,.45)}
+ else if(name==='whisper'){noise(a,t,1.4,'bandpass',1800,.35,7)}
+ else if(name==='static'){noise(a,t,1.3,'highpass',2500,.15)}
+ else if(name==='red'){const o=a.createOscillator(),g=a.createGain();o.type='sawtooth';o.frequency.value=48;g.gain.setValueAtTime(.25,t);g.gain.exponentialRampToValueAtTime(.001,t+1.6);const f=a.createBiquadFilter();f.type='lowpass';f.frequency.value=200;o.connect(f).connect(g).connect(a.destination);o.start(t);o.stop(t+1.7)}
 }
-function discovery(id,name,description){
- const first=!s.found[id];s.found[id]=true;
- const brief=({mail:'部屋番号順に並んだ郵便受け。',key:'古い鍵が一本、鍵棚に残っている。',handbook:'仕事の手順が書かれた手帳。',wall:'塗装の色が違う壁の継ぎ目。',map:'古い避難図。現在のものと一部が違う。',letter:'404号室宛ての封筒。差出人の記載はない。',ledger:'1987年の日付が残る台帳。',scratch:'壁の低い位置に刻まれた傷。',photo:'古い写真が入った封筒。',vent:'換気口。奥から音がする。',wire:'新しい配線と結束バンド。',speaker:'壁の裏にあった小型スピーカー。',draft:'手書きの報告書の下書き。',report:'会社に送信された報告書。',history:'管理室端末の送信履歴。',testimony:'佳奈が持参した古い手帳。',attendance:'1987年の出勤簿。',meals:'物置への食事の記録。',mariLetter:'藤崎真理の手紙。',resignation:'藤崎真理の退職届。',construction:'古い封鎖工事の記録。',finalMap:'四階の古い建築図面。',oldLetter:'当時の責任者が残した手紙。',album:'佐伯が保管していた写真アルバム。'})[id]||name;
- if(first)s.log.push({id,name,description:brief,chapter:s.chapter});
- save();
- sheet.replaceChildren(E('h3',name));
- const img=E('img');img.className='itempic';img.src=itemArt(id);img.alt=name+'の画像';sheet.append(img);
- sheet.append(E('p',brief),E('p',first?'証拠帳に記録した。':'すでに確認した品物。'));
- sheet.append(B('証拠帳で確認',journal,'btn secondary'));sheet.append(B('閉じる',()=>{hide();if(chapters[s.chapter].spots.every(x=>s.found[x[3]])&&!s.events['talk'+s.chapter])showPostTalk()},'btn primary'));
- modal.classList.add('show');
-}
-function showPostTalk(){
- const ch=s.chapter;
- if(s.events['talk'+ch])return;
- if(ch===3&&!s.events.moritaDone){speakSequence(postScripts[ch],morita);return}
- speakSequence(postScripts[ch],()=>{s.events['talk'+ch]=true;save();render()});
+function fx(name){
+ const app=$('#app'),st=$('#stage'),l=$('#fxl');
+ const re=(el,c)=>{el.classList.remove(c);void el.offsetWidth;el.classList.add(c);setTimeout(()=>el.classList.remove(c),1700)};
+ sfx(name);
+ if(name==='knock'){[0,550,1100].forEach(d=>setTimeout(()=>re(app,'shake'),d))}
+ else if(name==='flicker'||name==='whisper'||name==='drag')re(st,'flick');
+ else if(name==='red'){re(l,'red');re(app,'shake')}
+ else if(name==='static')re(l,'static');
+ else if(name==='ring')re(app,'shake');
 }
 
-function add(id,name,description){discovery(id,name,description)}
-function morita(){
- const step=Math.min(Number(s.events.morita||0),3);
- const scenes=[
- {question:'壁の音について、森田に確認する',lines:[['主人公','壁の裏からスピーカーが見つかりました。'],['森田','……いたずらじゃないですか？'],['主人公','配線は最近のものです。点検した人なら気づいたはずです。'],['森田','俺には分からないですね。']],prompt:'どの証拠で問い詰める？',options:[['壁の裏の配線','wire'],['古い避難図','map'],['不審な封筒','letter']],answer:'wire'},
- {question:'配線について追及する',lines:[['主人公','この新しい配線を見てください。'],['森田','修理用の線なら、誰でも手に入れられますよ。'],['主人公','あなたが四階に入った記録は確認できますか？'],['森田','……何を疑っているんです？']],prompt:'次に示すべきものは？',options:[['壁の点検通路で見つけたスピーカー','speaker'],['写真の封筒','photo'],['古い台帳','ledger']],answer:'speaker'},
- {question:'設置者を確かめる',lines:[['主人公','スピーカーと配線はつながっています。誰が設置したんですか。'],['森田','……分かりました。俺です。'],['主人公','何のために？'],['森田','住人に早く出ていってもらうため、と聞いていました。']],prompt:'まだ確認できていないことは？',options:[['依頼した人物','client'],['四階の部屋数','rooms'],['郵便の仕分け方','mail']],answer:'client'},
- {question:'依頼者について聞く',lines:[['主人公','その仕事を頼んだのは誰ですか？'],['森田','……佐伯さんです。'],['主人公','どうしてあんな場所に？'],['森田','見つけやすいように付けろ、と言われました。理由は聞いていません。'],['主人公','わざと発見させる必要があった……？']],prompt:'証言の扱いを決める',options:[['森田の証言を記録する','record'],['佐伯の動機が証明されたと断定する','accuse']],answer:'record'}
- ];
- const data=scenes[step];
- function question(){
-  sheet.replaceChildren(E('h3',data.question),E('p',data.prompt));
-  data.options.forEach(([label,id])=>sheet.append(B(label,()=>{
-   if(id!==data.answer)return show('まだ断定できない',['この時点で入手した物証と証言を区別しよう。'],[['質問に戻る',question],['証拠帳',journal]]);
-   s.events.morita=step+1;
-   if(step===3){
-    s.events.moritaDone=true;s.events.talk3=true;
-    if(!s.log.some(x=>x.id==='moritaStatement'))s.log.push({id:'moritaStatement',name:'森田の証言',description:'森田はスピーカーの設置を認め、佐伯から依頼されたと話した。ただし依頼の真意は知らない。',chapter:3});
-    save();return show('証言を記録',['森田は設置を認めた。しかし佐伯の本当の目的は、まだ不明だ。'],[['調査に戻る',hide]]);
-   }
-   save();morita();
-  },'btn')));
-  sheet.append(B('証拠帳を確認',journal,'btn secondary'),B('調査に戻る',hide,'btn secondary'));
-  modal.classList.add('show');sheet.scrollTop=0
- }
- if(!s.found.wire||!s.found.speaker)return show('質問の準備',['配線とスピーカーを調べてから、森田に話を聞こう。'],[['戻る',hide]]);
- speakSequence(data.lines,question);
-}
-function done(){return chapters[s.chapter].spots.every(x=>s.found[x[3]])&&!!s.events['talk'+s.chapter]&&(s.chapter!==3||s.events.moritaDone)}
-function render(){if(s.chapter<0||s.chapter>=chapters.length)s.chapter=0;app.replaceChildren();document.documentElement.style.fontSize=s.large?'18px':'16px';if(!s.started){const intro=E('section',undefined,'intro');intro.append(E('div','KUROSE HEIGHTS / 2026','eyebrow'),E('h1','404号室'),E('p','その部屋は、存在しない。\nそれでも、壁の向こうから声がする。'));intro.append(B('新しく始める',()=>{if(s.chapter>0||s.log.length){show('最初から始めますか？',['現在の調査記録は上書きされます。'],[['最初から始める',()=>{s=fresh();s.started=true;resetScene();save();hide()}],['キャンセル',hide]]);return}s=fresh();s.started=true;resetScene();save();render()},'btn primary'));if(s.chapter>0||s.log.length)intro.append(B('続きから',()=>{s.started=true;save();render()},'btn secondary'));intro.append(B('設定',settings,'btn secondary'),E('p','心理ホラー・ミステリー｜音なしでもプレイできます','caption'));app.append(intro);return}
-const c=chapters[s.chapter],header=E('header');const brand=E('div');brand.append(E('div','404号室','brand'),E('small','黒瀬ハイツ / 調査記録'));header.append(brand,E('div',c.time,'clock'));app.append(header);
-const stage=E('section');stage.id='stage';stage.className='fade';stage.style.backgroundImage='linear-gradient(180deg,#05090920,#05090955),url("'+c.image+'")';stage.append(E('div','CHAPTER '+String(s.chapter+1).padStart(2,'0')+' / '+c.place,'location'));c.spots.forEach(([name,x,y,id,description])=>{const b=B(s.found[id]?'✓':'+',()=>add(id,name,description),'hotspot'+(s.found[id]?' seen':''));b.style.left=x+'%';b.style.top=y+'%';b.setAttribute('aria-label',name+'を調べる');b.title=name;stage.append(b)});stage.append(E('div','＋を押して周囲を調べる','scenefoot'));const inStory=renderStory(stage);app.append(stage);if(inStory){const nav=E('nav');nav.className='bottom';[['▤','証拠帳',journal],['?','ヒント',hint],['☰','メニュー',menu]].forEach(([ic,t,f])=>{const b=B('',f);b.append(E('span',ic),document.createTextNode(t));nav.append(b)});app.append(nav);return}
-const main=E('main');main.append(E('div','CHAPTER '+String(s.chapter+1).padStart(2,'0')+' / 08','eyebrow'),E('h2',c.title),E('div','現在の目的｜'+c.objective,'objective'),E('div','調査 '+c.spots.filter(x=>s.found[x[3]]).length+' / 3　・　推理 '+(s.solved[s.chapter]?'完了':'未完了'),'status'));
-if(s.solved[s.chapter])main.append(B(s.chapter===7?'結末を読む':'次の章へ進む',()=>{if(s.chapter===7){s.finished=true;save();ending()}else{s.chapter++;resetScene();save();render();window.scrollTo(0,0)}},'btn primary'));else main.append(B(done()?(s.chapter===0?'仕事の引き継ぎを終える':s.chapter===4?'報告書を照合する':s.chapter===7?'事件の時系列を再構築する':'集めた証拠から推理する'):(c.spots.every(x=>s.found[x[3]])?'会話を進める':'周囲を調べる'),()=>done()?deduce():(c.spots.every(x=>s.found[x[3]])?showPostTalk():hint()),'btn primary'));
-main.append(B('これまでの物語を読み返す',recap,'btn secondary'));app.append(main);
-const nav=E('nav');nav.className='bottom';[['▤','証拠帳',journal],['◇','推理',deduce],['?','ヒント',hint],['☰','メニュー',menu]].forEach(([icon,label,fn])=>{const b=B('',fn);b.append(E('span',icon),document.createTextNode(label));nav.append(b)});app.append(nav)}
+/* ---------- 画面の骨組み ---------- */
+document.body.insertAdjacentHTML('beforeend','<div id="blur"></div><div id="app"><header><div class="ch" id="hch"></div><div class="clk" id="hclk"></div></header><div id="stagewrap"><div id="stage"><div id="bgimg"></div><div id="spots"></div><div id="dark"></div><div id="fxl"></div><div id="loc"></div></div></div><div id="panel"><div id="who"></div><div id="txt"></div><div id="ctrl"></div><div id="next"></div></div><nav><button type="button" id="nj"><span>▤</span>証拠帳</button><button type="button" id="nh"><span>?</span>ヒント</button><button type="button" id="nm"><span>☰</span>メニュー</button></nav></div><div id="modal" role="dialog" aria-modal="true"><div id="sheet"></div></div><div id="card"></div><div id="title"></div>');
+const modal=$('#modal'),sheet=$('#sheet');
+$('#nj').onclick=()=>journal();$('#nh').onclick=()=>hint();$('#nm').onclick=()=>menu();
+modal.addEventListener('click',e=>{if(e.target===modal&&modal.dataset.lock!=='1')closeModal()});
 
-const caseTimeline=[
-{date:'10月3日',label:'佳奈が物置に閉じ込められる',id:'kana'},
-{date:'10月8日',label:'真理が佳奈を逃がす',id:'escape'},
-{date:'10月9日',label:'真理が建物に戻り、拘束される',id:'mari'},
-{date:'10月12日',label:'食事の搬入記録が途絶える',id:'lastMeal'}
-];
-function evidenceComparison(){
- const rows=[
- ['録音装置を確認した。','録音装置を確認した。',false],
- ['原因の調査を継続する。','原因の調査を継続する。',false],
- ['（記載なし）','旧物置の配線を早急に撤去すること。',true]
- ];
- sheet.replaceChildren(E('h3','報告書の差異を探す'),E('p','左右の報告書を見比べ、提出版だけにある行をタップしてください。'));
- const table=E('div');table.style.cssText='display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0';
- [['下書き','draft'],['会社提出版','report']].forEach(([name])=>{const t=E('strong',name);t.style.cssText='text-align:center;padding:8px;background:#263333';table.append(t)});
- rows.forEach(([left,right,correct])=>{
-  const l=E('div',left);l.style.cssText='padding:12px 8px;border:1px solid #66716a;min-height:62px;white-space:normal';table.append(l);
-  const btn=B(right,()=>{if(!correct)return show('一致する文章',['その行は下書きにもある。追加された指示を探そう。'],[['比較に戻る',evidenceComparison]]);s.events.compareDone=true;save();speakSequence([['主人公','この「旧物置の配線を早急に撤去すること」という一文は、僕の下書きにはない。'],['主人公','提出された時刻は、水野さんと四階にいた。'],['水野','管理室の端末から、誰かが追記した可能性があります。'],['主人公','ただ、送信履歴だけでは操作した人までは特定できない。']],()=>{save();render()})},'btn');btn.style.cssText='white-space:normal;min-height:62px;text-align:left';table.append(btn)
- });
- sheet.append(table,B('証拠帳を確認',journal,'btn secondary'),B('調査に戻る',hide,'btn secondary'));modal.classList.add('show');sheet.scrollTop=0
-}
-function timelinePuzzle(){
- if(!s.events.timeline)s.events.timeline=[];
- const picked=s.events.timeline;
- sheet.replaceChildren(E('h3','1987年の出来事を並べる'),E('p','手帳・出勤簿・食事記録・工事記録から分かる順番に、出来事を選ぼう。'));
- const bar=E('div',undefined,'objective');bar.textContent=picked.length?picked.map(id=>caseTimeline.find(x=>x.id===id)).map(x=>x.date+' '+x.label).join(' → '):'まだ出来事を選んでいない。';sheet.append(bar);
- const order=[caseTimeline[2],caseTimeline[0],caseTimeline[3],caseTimeline[1]];
- order.forEach(item=>{const b=B(item.label,()=>{if(picked.includes(item.id))return;const expected=caseTimeline[picked.length];if(item.id!==expected.id)return show('時系列が合わない',['この出来事より前に起きたことがある。日付と証言を確認しよう。'],[['並べ直す',timelinePuzzle],['最初から',()=>{s.events.timeline=[];save();timelinePuzzle()}]]);picked.push(item.id);save();if(picked.length===4){s.events.timelineDone=true;save();speakSequence([['主人公','佳奈さんの証言では、十月三日に閉じ込められた。'],['水野','八日に真理さんが伯母を逃がした。'],['主人公','九日に真理さんが戻った。その後、十二日まで食事が運ばれている。'],['水野','その後、奥の区画が塞がれた。図面と工事記録を警察に渡しましょう。']],()=>{render()})}else timelinePuzzle()},'btn'+(picked.includes(item.id)?' secondary':''));b.disabled=picked.includes(item.id);sheet.append(b)});
- sheet.append(B('最初から並べ直す',()=>{s.events.timeline=[];save();timelinePuzzle()},'btn secondary'));sheet.append(B('証拠帳',journal,'btn secondary'));modal.classList.add('show')
-}
+function setBg(name){S.bg=name;const el=$('#bgimg');el.className='';el.style.backgroundImage='';const blur=$('#blur');
+ if(BGS[name]){el.style.backgroundImage='url("'+BGS[name]+'")';blur.style.backgroundImage='url("'+BGS[name]+'")'}else{el.classList.add(name);blur.style.backgroundImage='none'}}
+function header(){const c=CH();$('#hch').textContent='第'+KANJI[S.ch]+'章　'+c.title;$('#hclk').textContent=c.date+'　'+(S.clock||c.time);$('#loc').textContent=c.place;document.documentElement.style.setProperty('--fs',S.large?'18px':'16px')}
 
-function deduce(){if(s.solved[s.chapter])return show('推理済み',['この章の推理は完了している。']);if(!done()){if(chapters[s.chapter].spots.every(x=>s.found[x[3]])&&!s.events['talk'+s.chapter])return showPostTalk();return hint()}if(s.chapter===4&&!s.events.compareDone)return evidenceComparison();if(s.chapter===7&&!s.events.timelineDone)return timelinePuzzle();if(s.chapter===0){s.solved[0]=true;save();return show('引き継ぎ完了',['仕事の手順を確認した。古い鍵は勝手に使わず、必要になったら高瀬に相談しよう。'],[['翌日へ',()=>{s.chapter=1;save();hide();window.scrollTo(0,0)}],['記録を見る',journal]])}const q=questions[s.chapter];show('推理｜'+chapters[s.chapter].title,[q.q],q.a.map((a,i)=>[a,()=>{if(i!==q.right)return show('もう一度考えよう',['証拠帳の記述を見比べれば、答えは一つに絞れる。'],[['証拠帳を見る',journal],['推理に戻る',deduce]]);s.solved[s.chapter]=true;save();show('推理成立',[q.why],[['物語を続ける',()=>{hide();if(s.chapter===7){s.finished=true;save();ending()}else{s.chapter++;save();render();window.scrollTo(0,0)}}],['証拠帳を見る',journal]])}]).concat([['探索に戻る',hide]]))}
-function journal(){
- sheet.replaceChildren(E('h3','証拠帳'),E('p','記録した証拠を選ぶと、画像と観察メモをもう一度確認できる。'));
- if(!s.log.length)sheet.append(E('p','まだ記録がない。背景の＋から調べよう。'));
- s.log.forEach(x=>{const b=B('第'+(x.chapter+1)+'章｜'+x.name,()=>inspectEvidence(x),'btn secondary');sheet.append(b)});
- sheet.append(B('調査へ戻る',hide,'btn'));modal.classList.add('show');sheet.scrollTop=0
+/* ---------- 文字送り ---------- */
+let tapAct=null,typing=null;
+function typeText(text,cls,noArrow){const el=$('#txt');el.className=cls||'';el.textContent='';$('#next').textContent='';
+ if(typing){clearInterval(typing.t);typing=null}
+ const sp=[28,14,0][S.speed]||0;
+ if(!sp){el.textContent=text;$('#next').textContent=noArrow?'':'▼';return}
+ let i=0;typing={t:setInterval(()=>{i+=1;el.textContent=text.slice(0,i);if(i>=text.length){clearInterval(typing.t);typing=null;$('#next').textContent=noArrow?'':'▼'}},sp),finish:()=>{clearInterval(typing.t);typing=null;el.textContent=text;$('#next').textContent=noArrow?'':'▼'}}}
+function tap(){if(modal.classList.contains('show'))return;if(typing){typing.finish();return}if(tapAct){const f=tapAct;tapAct=null;f()}}
+$('#panel').addEventListener('click',e=>{if(e.target.closest('button'))return;tap()});
+$('#stage').addEventListener('click',e=>{if(e.target.closest('button'))return;if(!$('#stage').classList.contains('exploring'))tap()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('show')&&modal.dataset.lock!=='1')closeModal();else if((e.key==='Enter'||e.key===' ')&&!modal.classList.contains('show')&&tapAct){e.preventDefault();tap()}});
+
+function clearPanel(){$('#who').textContent='';$('#who').style.color='';$('#txt').textContent='';$('#txt').className='';$('#ctrl').replaceChildren();$('#next').textContent='';tapAct=null}
+
+/* 行の再生。onIdxで進行位置を保存できる */
+function play(lines,done,start,onIdx){let i=start||0;
+ const step=()=>{if(onIdx)onIdx(i);if(i>=lines.length){done&&done();return}
+  const [w,t]=lines[i++];
+  if(w==='@get'){const first=!S.ev.includes(t);if(first){S.ev.push(t);save()}showEvidence(t,first,step);return}
+  if(w==='@fx'){fx(t);setTimeout(step,t==='knock'?350:120);return}
+  if(w==='@bg'){setBg(t);step();return}
+  if(w==='@time'){S.clock=t;header();step();return}
+  $('#ctrl').replaceChildren();
+  const who=$('#who');who.textContent=w&&w!==''?w:'';who.style.color=CAST[w]||'#e8e1d2';
+  typeText(t,w===''?'narr':w==='？？？'?'voice':'');
+  tapAct=step};
+ step()}
+
+/* ---------- 進行 ---------- */
+function stopExplore(){const st=$('#stage');st.classList.remove('exploring','dark');st.style.touchAction='';$('#spots').replaceChildren()}
+function run(){header();setBg(S.bg||CH().bg);stopExplore();clearPanel();$('#nh').classList.remove('glow');
+ const st=STEP();save();
+ if(st.t==='talk')return play(st.lines,nextStep,S.line,i=>{S.line=i;save()});
+ if(st.t==='explore')return explore(st);
+ if(st.t==='choice')return choice(st);
+ if(st.t==='testi')return testimony(st);
+ if(st.t==='puzzle')return PUZ[st.id](()=>{play(st.after||[],nextStep)});
+ if(st.t==='end')return chapterEnd();
+ if(st.t==='fin')return finale();
 }
-function inspectEvidence(x){
- sheet.replaceChildren(E('h3',x.name));
- const img=E('img');img.className='itempic';img.src=itemArt(x.id);img.alt=x.name+'の証拠画像';img.style.cssText='width:100%;max-height:65vh;object-fit:contain;cursor:zoom-in';
- let zoom=false;img.addEventListener('click',()=>{zoom=!zoom;img.style.maxHeight=zoom?'none':'65vh';img.style.cursor=zoom?'zoom-out':'zoom-in'});
- sheet.append(img,E('p',x.description),E('p','画像をタップして拡大・縮小できます。'));
- sheet.append(B('証拠帳に戻る',journal,'btn primary'),B('調査に戻る',hide,'btn secondary'));
- modal.classList.add('show');sheet.scrollTop=0
+function nextStep(){S.step++;S.line=0;S.hintLv=0;save();run()}
+
+/* 探索 */
+function explore(st){setBg(st.bg);const stage=$('#stage'),box=$('#spots');stage.classList.add('exploring');if(st.dark){stage.classList.add('dark');stage.style.touchAction='none';light(50,45)}
+ const key=id=>S.ch+':'+S.step+':'+id;
+ const doneCount=()=>st.spots.filter(s=>S.found[key(s.id)]).length;
+ const draw=()=>{box.replaceChildren();st.spots.forEach(sp=>{const b=E('button','spot'+(S.found[key(sp.id)]?' seen':''),S.found[key(sp.id)]?'✓':'＋');b.type='button';b.dataset.spot=sp.id;b.style.left=sp.x+'%';b.style.top=sp.y+'%';b.setAttribute('aria-label',sp.label);if(S.found[key(sp.id)])b.append(E('span','lb',sp.label));b.addEventListener('click',e=>{e.stopPropagation();investigate(sp)});box.append(b)});if(st.dark)updateLit()};
+ const status=()=>{clearPanel();const g=E('span','goal',st.goal+'\n調べた場所　'+doneCount()+' / '+st.spots.length);$('#txt').append(g)};
+ const investigate=sp=>{const seen=S.found[key(sp.id)];
+  const fin=()=>{S.found[key(sp.id)]=true;save();draw();status();if(doneCount()===st.spots.length)setTimeout(()=>play([['','……ひととおり調べ終えた。']],nextStep),250)};
+  if(seen){play(sp.lines.filter(l=>l[0]!=='@get'),()=>{draw();status()});return}
+  play(sp.lines,()=>{if(sp.puzzle)PUZ[sp.puzzle](()=>play(sp.after||[],fin));else fin()})};
+ draw();status();
 }
-function recap(){show('これまでの記録',chapters.slice(0,s.chapter+1).map((c,i)=>'第'+(i+1)+'章　'+c.title+'\n'+(s.solved[i]?c.end:'現在調査中')), [['戻る',hide]])}
-function hint(){const c=chapters[s.chapter],missing=c.spots.filter(x=>!s.found[x[3]]);if(s.chapter===3&&s.found.speaker&&!s.events.moritaDone)return show('調査のヒント',['スピーカーの設置者について、森田に質問しよう。'],[['森田に話を聞く',morita],['戻る',hide]]);show('調査のヒント',[missing.length?'まだ確認していない場所：'+missing.map(x=>x[0]).join('・'):'証拠は揃っている。推理で、各記録が示す事実を結びつけよう。','間違えてもペナルティはない。証拠帳はいつでも見返せる。'])}
-function menu(){show('メニュー',['進行状況はこの端末に自動保存される。'],[['設定',settings],['タイトルに戻る',()=>{s.started=false;save();hide()}],['閉じる',hide]])}
-function settings(){show('設定',['読みやすさを優先し、音だけを手掛かりにする謎は設けていない。'],[['文字サイズ：'+(s.large?'大':'標準'),()=>{s.large=!s.large;save();settings()}],['音：'+(s.sound?'オン':'オフ')+'（現在は環境音なし）',()=>{s.sound=!s.sound;save();settings()}],['セーブデータを消去',()=>show('初期化の確認',['すべての調査記録を消去する。元には戻せない。'],[['消去する',()=>{s=fresh();save();hide()}],['やめる',settings]])],['戻る',()=>{hide()}]])}
-function ending(){show('404号室｜終章',['警察の捜査で、封鎖された空間から藤崎真理の遺骨が発見された。','佐伯が過去の監禁と隠蔽に関わっていたことも明らかになった。','佳奈は真理の墓に花を供えた。\n\n「あなたが助けてくれたから、私は生きてこられた」','佐伯のアルバムには、佳奈と主人公の写真が並んでいた。どちらにも同じ言葉が添えられている。\n\n「正義感が強い。人の頼みを断れない。利用しやすい」','―― 調査終了 ――'],[['タイトルへ',()=>{s.started=false;save();hide()}],['証拠帳',journal]])}
-modal.addEventListener('click',e=>{if(e.target===modal)hide()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('show'))hide()});try{render()}catch(err){document.getElementById('app').innerHTML='<section class="intro"><h1>404号室</h1><p>起動に失敗しました。ページを再読み込みしてください。</p><button class="btn primary" onclick="location.reload()">再読み込み</button></section>';console.error(err)}
-})();</script></body></html>
+let LX=50,LY=45;
+function light(x,y){LX=x;LY=y;const d=$('#dark'),w=$('#stage').clientWidth||300,r=Math.max(48,w*.15);d.style.background='radial-gradient(circle at '+x+'% '+y+'%, rgba(0,0,0,0) 0px, rgba(0,0,0,0) '+(r*.55)+'px, rgba(0,0,0,.85) '+r+'px, rgba(0,0,0,.975) '+(r*1.8)+'px)';updateLit()}
+function updateLit(){const st=$('#stage'),w=st.clientWidth,h=st.clientHeight,r=Math.max(48,w*.15);document.querySelectorAll('#spots .spot').forEach(b=>{const x=parseFloat(b.style.left)/100*w,y=parseFloat(b.style.top)/100*h,dx=x-LX/100*w,dy=y-LY/100*h;b.classList.toggle('lit',Math.hypot(dx,dy)<r*.95)})}
+(()=>{const st=$('#stage');const mv=e=>{if(!st.classList.contains('dark'))return;const r=st.getBoundingClientRect();const p=e.touches?e.touches[0]:e;light(Math.max(0,Math.min(100,(p.clientX-r.left)/r.width*100)),Math.max(0,Math.min(100,(p.clientY-r.top)/r.height*100)))};st.addEventListener('pointerdown',mv);st.addEventListener('pointermove',e=>{if(e.pointerType==='mouse'||e.buttons||e.pressure>0)mv(e)})})();
+window.addEventListener('resize',()=>{if($('#stage').classList.contains('dark'))light(LX,LY)});
+
+/* 推理（選択） */
+function choice(st){clearPanel();$('#who').textContent='推理';$('#who').style.color='#e7a98f';typeText(st.q,'',true);
+ const c=$('#ctrl');if(st.visual)c.append(B('▤ 資料「'+EVIDENCE[st.visual].n+'」を見る',()=>showEvidence(st.visual,false,null,true),'sub'));
+ st.opts.forEach((o,i)=>{const b=B(o.t,()=>{play(o.r||[],()=>{if(o.ok)nextStep();else play([['','……ほかの可能性を考えよう。']],()=>choice(st))})});b.dataset.opt=i;c.append(b)})}
+
+/* 尋問・照合 */
+function testimony(st){const k=S.ch+':'+S.step;if(!S.tr[k])S.tr[k]={r:0,i:0};const T=S.tr[k];
+ if(T.r>=st.rounds.length){nextStep();return}
+ const R=st.rounds[T.r];clearPanel();
+ const box=E('div','testi');box.append(E('div','tt',(st.mode==='check'?'照合｜':'証言｜')+st.who+'「'+R.title+'」'));const sEl=E('div','st','「'+R.st[T.i].s+'」');box.append(sEl);const dots=E('div','dots');R.st.forEach((_,j)=>dots.append(E('i',j===T.i?'on':'')));box.append(dots);
+ $('#txt').append(box);
+ const c=$('#ctrl'),r1=E('div','row');
+ const prev=B('◀ 前',()=>{T.i=(T.i+R.st.length-1)%R.st.length;save();testimony(st)},'sub ctr'),nx=B('次 ▶',()=>{T.i=(T.i+1)%R.st.length;save();testimony(st)},'sub ctr');prev.dataset.act='prev';nx.dataset.act='next';r1.append(prev,nx);
+ const r2=E('div','row');
+ const pr=B('ゆさぶる',()=>play([['私','……詳しく聞かせてください。'],...R.st[T.i].p],()=>testimony(st)),'ctr');pr.dataset.act='press';
+ const ps=B(st.mode==='check'?'記録を示す':'証拠をつきつける',()=>picker('この発言に示す証拠を選ぶ',id=>{
+   if(T.i===R.target&&R.ans.includes(id)){play([['私',st.mode==='check'?'……この記録を見てください。':'——待ってください。']],()=>play(R.ok,()=>{T.r++;T.i=0;S.hintLv=0;save();testimony(st)}))}
+   else play([...st.wrong,['','（この発言とこの証拠は、結びつかないようだ）']],()=>testimony(st))}),'pri ctr');ps.dataset.act='present';
+ r2.append(pr,ps);c.append(r1,r2);
+ $('#nh').classList.toggle('glow',S.hintLv>0)}
+
+/* ---------- 証拠 ---------- */
+function openModal(lock){modal.dataset.lock=lock?'1':'';modal.classList.add('show');sheet.scrollTop=0}
+function closeModal(){modal.classList.remove('show');modal.dataset.lock='';const f=modal._onclose;modal._onclose=null;if(f)f()}
+function evDoc(id){const d=E('div');d.innerHTML=EVIDENCE[id].doc();return d}
+function showEvidence(id,isNew,cb,ref){const ev=EVIDENCE[id];sheet.replaceChildren();if(isNew)sheet.append(E('div','newtag','証拠帳に記録'));sheet.append(E('h3','',ev.n),evDoc(id),E('p','small',ev.d));
+ modal._onclose=cb||null;sheet.append(B(ref?'閉じる':'確認した',closeModal,'pri ctr'));openModal(!!cb)}
+function journal(){sheet.replaceChildren(E('h3','','証拠帳'));if(!S.ev.length)sheet.append(E('p','small','まだ記録がない。'));
+ const g=E('div','evlist');S.ev.forEach(id=>{const ev=EVIDENCE[id];const b=E('button');b.type='button';b.append(E('small','','第'+KANJI[ev.ch]+'章'),document.createTextNode(ev.n));b.onclick=()=>{sheet.replaceChildren(E('h3','',ev.n),evDoc(id),E('p','small',ev.d),B('証拠帳に戻る',journal,'sub ctr'),B('閉じる',closeModal,'pri ctr'));sheet.scrollTop=0};g.append(b)});
+ sheet.append(g,B('閉じる',closeModal,'pri ctr'));modal._onclose=null;openModal(false)}
+function picker(title,onPick){sheet.replaceChildren(E('h3','',title),E('p','small','証拠を選ぶと中身を確認できます。'));const g=E('div','evlist');
+ S.ev.forEach(id=>{const ev=EVIDENCE[id];const b=E('button');b.type='button';b.dataset.ev=id;b.append(E('small','','第'+KANJI[ev.ch]+'章'),document.createTextNode(ev.n));b.onclick=()=>{sheet.replaceChildren(E('h3','',ev.n),evDoc(id),E('p','small',ev.d));const ok=B('これを示す',()=>{modal._onclose=null;modal.classList.remove('show');onPick(id)},'pri ctr');ok.dataset.act='confirm';sheet.append(ok,B('ほかの証拠を選ぶ',()=>picker(title,onPick),'sub ctr'));sheet.scrollTop=0};g.append(b)});
+ sheet.append(g,B('やめる',closeModal,'sub ctr'));modal._onclose=null;openModal(false)}
+
+/* ---------- 謎解き ---------- */
+function puzzleSheet(title,desc){modal._onclose=null;sheet.replaceChildren(E('h3','',title));if(desc)sheet.append(E('p','small',desc));openModal(true);return sheet}
+function miss(msg,back){sheet.replaceChildren(E('h3','','違うようだ'),E('p','',msg),B('もう一度',back,'pri ctr'));sheet.scrollTop=0}
+function solved(done){modal.classList.remove('show');modal.dataset.lock='';done()}
+const PUZ={
+ mail(done){const L=[['101','佐伯 澄江'],['203','大塚 一郎'],['302','田中 美和'],['403','水野 遥']];const placed={};let sel=null;
+  const draw=()=>{const sh=puzzleSheet('郵便物の仕分け','封筒を選んでから、同じ部屋番号の郵便受けをタップ。');
+   const ls=E('div','letters');L.forEach(([r,n])=>{const b=E('button','letter'+(placed[r]?' done':'')+(sel===r?' sel':''));b.type='button';b.dataset.room=r;b.innerHTML='黒瀬ハイツ　'+r+'号室<br><b>'+n+'</b>　様';b.onclick=()=>{sel=r;draw()};ls.append(b)});
+   const g=E('div','slotgrid');[['401','402','403','X'],['301','302','303',''],['201','202','203',''],['101','102','103','']].forEach(row=>row.forEach(r=>{const b=E('button','slot'+(r==='X'?' taped':r===''?' empty':'')+(placed[r]?' filled':''),r==='X'?'':r);b.type='button';b.dataset.slot=r;if(r==='4'||r==='')b.disabled=true;
+     b.onclick=()=>{if(r==='X'){sh.querySelector('.small').textContent='……ガムテープで塞がれていて、入らない。名札もない。';return}if(!sel){sh.querySelector('.small').textContent='先に封筒を選ぼう。';return}if(sel!==r){sh.querySelector('.small').textContent='部屋番号が違う。宛名をよく見よう。';return}placed[r]=1;sel=null;if(Object.keys(placed).length===L.length)return solved(done);draw()};g.append(b)}));
+   sh.append(ls,g)};draw()},
+ mapdiff(done){const draw=()=>{const sh=puzzleSheet('避難経路図を見比べる','下の古い図面にだけ描かれている区画をタップ。');
+   const svg=mapSVG(true).replace('<rect x="220" y="28" width="70" height="86" fill="#4a3d27"','<rect data-tap="store" class="tap" x="220" y="28" width="70" height="86" fill="#4a3d27"');
+   const w=E('div');w.innerHTML=svg.replace(/<rect x="(10|80|150)" y="68" width="70" height="46" fill="#30291e"/g,(m,x)=>'<rect data-tap="r'+x+'" class="tap" x="'+x+'" y="68" width="70" height="46" fill="#30291e"').replace('<rect x="10" y="28" width="280" height="40" fill="#3a3326"','<rect data-tap="hall" class="tap" x="10" y="28" width="280" height="40" fill="#3a3326"');
+   w.querySelectorAll('[data-tap]').forEach(el=>el.addEventListener('click',()=>{if(el.dataset.tap==='store')solved(done);else miss('その場所は、今の図にもある。',draw)}));sh.append(w)};draw()},
+ reportdiff(done){const draw=()=>{const sh=puzzleSheet('報告書を照合する','提出版にだけある文をタップ。');const a=E('div');a.innerHTML=reportDoc(false);sh.append(E('p','small','▼ 自分の下書き'),a,E('p','small','▼ 会社に提出された版'));
+   const lines=['4階旧物置にて、録音再生装置（小型スピーカー）を確認した。','音声は毎晩2:13と2:43に同じ内容が再生されている。','旧物置の壁内配線は漏電の恐れがあるため、壁を一部開口のうえ早急に撤去すること。','設置者と目的について、引き続き調査する。'];
+   const p=E('div','paper tapdoc');p.append(E('h4','','【報告】4F旧物置の異音について（提出版）'));lines.forEach((l,i)=>{const q=E('p','tl','・'+l);q.dataset.line=i;q.onclick=()=>{if(i===2){q.classList.add('hit');setTimeout(()=>solved(done),500)}else miss('その文は、下書きにもある。',draw)};p.append(q)});sh.append(p)};draw()},
+ sign(done){const draw=()=>{const sh=puzzleSheet('名前の字を見比べる','退職届の氏名で、本人の書き方と違う字をタップ。');const w=E('div','sigs');
+   const a=E('div','sig');a.append(E('small','','履歴書（本人の自筆）'));const ac=E('div','chars');['藤','T','真','理'].forEach(c=>{const b=E('button','',c);if(c==='T')b.innerHTML=saki(true);b.type='button';b.disabled=true;ac.append(b)});a.append(ac);
+   const r=E('div','sig');r.append(E('small','','退職届'));const rc=E('div','chars');['藤','K','真','理'].forEach((c,i)=>{const b=E('button','',c);if(c==='K')b.innerHTML=saki(false);b.type='button';b.dataset.ch=i;b.onclick=()=>{if(i===1){b.classList.add('hit');setTimeout(()=>solved(done),600)}else miss('その字は、履歴書と同じ形だ。',draw)};rc.append(b)});r.append(rc);
+   w.append(a,r);sh.append(w,B('▤ 証拠帳を見る',()=>{modal.dataset.lock='';journal();modal._onclose=()=>PUZ.sign(done)},'sub ctr'))};draw()},
+ recon(done){const EV=[['10月3日','佳奈が管理人に呼び出され、物置に閉じ込められる',['kananote','scratches']],['10月8日 夜','真理が予備の鍵を借り、佳奈を逃がす',['keybook','mariMemo']],['10月9日','真理が会社に出勤し、そのまま消息を絶つ',['attendance']],['10月9日〜12日','佳奈が去ったあとも、物置に二人目がいた',['bento','scratches']],['10月16日','本人が書いたものではない退職届が出される',['resume']],['10月22日','物置の奥が、ブロックで封鎖される',['works']]];
+  const st=S.recon;
+  const draw=()=>{const sh=puzzleSheet('一九八七年の再構築','出来事をタップし、それを裏づける証拠を示す。');const w=E('div','recon');
+   EV.forEach(([d,t,ans],i)=>{const ok=st[i];const b=E('button','ev'+(ok?' ok':''));b.type='button';b.dataset.evt=i;b.style.width='100%';b.style.textAlign='left';b.append(E('b','',d),document.createTextNode(t));if(ok)b.append(E('div','sup','✓ 裏づけ：'+EVIDENCE[ok].n));
+    b.onclick=()=>{if(ok)return;picker(d+'の裏づけ',id=>{if(ans.includes(id)){st[i]=id;save();if(EV.every((_,j)=>st[j]))return solved(done);draw()}else{sheet.replaceChildren(E('h3','','久我'),E('p','','「それだけでは、この出来事の裏づけにはなりませんね」'),B('選び直す',draw,'pri ctr'));openModal(true)}})};w.append(b)});
+   sh.append(w,E('p','small','完了　'+EV.filter((_,j)=>st[j]).length+' / '+EV.length));if(EV.every((_,j)=>st[j]))sh.append(B('久我に説明を終える',()=>solved(done),'pri ctr'))};draw()},
+ blueprint(done){const draw=()=>{const sh=puzzleSheet('どこを開けるべきか','竣工図にあって、現況では壁の向こうに消えている区画をタップ。');const w=E('div');w.innerHTML=planSVG(true);w.querySelectorAll('[data-tap]').forEach(el=>el.addEventListener('click',()=>{if(el.dataset.tap==='pipe')solved(done);else miss(el.dataset.tap==='store'?'物置は今も同じ奥行きで残っている。その奥だ。':'その場所は、今もある。',draw)}));sh.append(w)};draw()},
+ album(done){const pages=[
+   {y:'1987',pic:'k',m:'宮原佳奈　29歳<br>黒瀬不動産 事務<br><br>正義感が強い。<br>人の頼みを断れない。<br>利用しやすい。<br><br><s>処分</s>　逃げた'},
+   {y:'1987',pic:'m',m:'藤崎真理　24歳<br><br>佳奈と仲がいい。<br>余計なことをする。'},
+   {y:'2019',pic:'mo',m:'森田　設備業<br><br>借金。妻に言えない。<br>頼めば、断らない。'},
+   {y:'2026',pic:'me',m:'（新聞の切り抜き）<br>「元社員、勤務先の不正を告発」<br><br>正義感が強い。<br>人の頼みを断れない。<br>利用しやすい。<br><br>求人のチラシ、ポストへ。'},
+   {y:'2026',pic:'h',m:'水野遥　26歳<br><br>佳奈の姪。<br>本人は、気づかれていないつもり。<br>四〇三号室が空いていると教えてあげた。<br>よく動いてくれる。'},
+   {blank:true}];
+  let i=0;const pic=p=>{const c={k:'#8a8478',m:'#7b7e86',mo:'#6e6a62',me:'#7d7466',h:'#727d82'}[p];return '<div class="pic" style="background:linear-gradient(180deg,'+c+',#3a3a36)"><svg viewBox="0 0 100 60" width="100%" height="100%" preserveAspectRatio="xMidYMid slice"><circle cx="50" cy="26" r="11" fill="#2a2a28"/><path d="M28 60q4-24 22-24t22 24z" fill="#2a2a28"/></svg></div>'};
+  const draw=()=>{const sh=puzzleSheet('佐伯のアルバム','');const p=pages[i];const a=E('div','album'),pg=E('div','pg');
+   if(p.blank){pg.className='pg blank';pg.textContent='（まだ何も貼られていない、新しいページ）'}else pg.innerHTML='<div class="yr">'+p.y+'</div>'+pic(p.pic)+'<div class="memo">'+p.m+'</div>';
+   a.append(pg);sh.append(a,E('p','small ctr',(i+1)+' / '+pages.length));const r=E('div','row');if(i>0)r.append(B('◀ 前',()=>{i--;draw()},'sub ctr'));
+   const n=B(i<pages.length-1?'めくる ▶':'アルバムを閉じる',()=>{if(i<pages.length-1){i++;draw()}else solved(done)},'pri ctr');n.dataset.act='next';r.append(n);sh.append(r)};draw()}
+};
+
+/* ---------- 章の区切り ---------- */
+function card(html,cb){const c=$('#card');c.innerHTML=html+'<div class="tap">タップして進む</div>';c.classList.add('show');const go=()=>{c.classList.remove('show');c.onclick=null;cb&&cb()};setTimeout(()=>{c.onclick=go},500)}
+function chapterCard(cb){const c=CH();card('<div class="n">CHAPTER '+String(S.ch+1).padStart(2,'0')+'</div><h2>第'+KANJI[S.ch]+'章　'+c.title+'</h2><div class="m">'+c.date+'　'+c.time+'<br>'+c.place+'</div>',cb)}
+function chapterEnd(){card('<div class="n">CHAPTER '+String(S.ch+1).padStart(2,'0')+' CLEAR</div><h2>第'+KANJI[S.ch]+'章　了</h2><div class="m">記録は自動で保存されました</div>',()=>{S.ch++;S.step=0;S.line=0;S.hintLv=0;S.clock='';S.bg=CH().bg;S.maxCh=Math.max(S.maxCh,S.ch);save();chapterCard(run)})}
+function finale(){S.fin=true;S.maxCh=7;save();card('<div class="n">THE END</div><h2>404号室</h2><div class="m">最後までプレイしていただき、ありがとうございました。<br><br>証拠帳はタイトルからいつでも見返せます。</div>',()=>{S.started=false;save();title()})}
+
+/* ---------- タイトル・メニュー ---------- */
+function title(){const t=$('#title');t.style.display='flex';t.replaceChildren();setBg('title');
+ t.append(E('div','eb','KUROSE HEIGHTS / 2026'),E('h1','','404号室'));const tg=E('p','tag');tg.innerHTML='その部屋は、存在しない。<br>それでも、壁の向こうから声がする。';t.append(tg);
+ const has=S.started||S.ch>0||S.step>0||S.ev.length;
+ if(has&&!S.fin)t.append(B('続きから',()=>{t.style.display='none';S.started=true;save();run()},'pri'));
+ t.append(B(has?'最初から始める':'はじめる',()=>{const go=()=>{const keep={sound:S.sound,large:S.large,speed:S.speed,maxCh:S.maxCh,fin:S.fin};S=Object.assign(fresh(),keep,{started:true});save();t.style.display='none';chapterCard(run)};if(has&&!S.fin){sheet.replaceChildren(E('h3','','最初から始めますか？'),E('p','','現在の進行状況は上書きされます。'),B('最初から始める',()=>{closeModal();go()},'pri ctr'),B('やめる',closeModal,'sub ctr'));modal._onclose=null;openModal(false)}else go()},has&&!S.fin?'sub':'pri'));
+ if(S.maxCh>0)t.append(B('章を選ぶ',chapterSelect,'sub'));
+ t.append(B('設定',settings,'sub'));
+ let cap='心理ホラー・ミステリー｜約60〜90分｜音なしでも遊べます';try{if(localStorage.getItem(OLDKEY)&&!localStorage.getItem(KEY))cap+='\n※大型アップデートのため、以前のセーブデータは引き継がれません'}catch(e){}
+ const c=E('p','cap',cap);c.style.whiteSpace='pre-line';t.append(c)}
+function chapterSelect(){sheet.replaceChildren(E('h3','','章を選ぶ'),E('p','small','それより前の章の証拠は、すべて持った状態で始まります。'));
+ CHAPTERS.forEach((c,i)=>{if(i>S.maxCh)return;sheet.append(B('第'+KANJI[i]+'章　'+c.title,()=>{closeModal();jump(i)},'sub'))});sheet.append(B('閉じる',closeModal,'pri ctr'));modal._onclose=null;openModal(false)}
+function jump(n){S.ch=n;S.step=0;S.line=0;S.hintLv=0;S.clock='';S.bg=CHAPTERS[n].bg;S.started=true;S.fin=false;
+ S.ev=Object.keys(EVIDENCE).filter(id=>EVIDENCE[id].ch<n);
+ Object.keys(S.found).forEach(k=>{if(+k.split(':')[0]>=n)delete S.found[k]});Object.keys(S.tr).forEach(k=>{if(+k.split(':')[0]>=n)delete S.tr[k]});if(n<=7)S.recon={};
+ save();$('#title').style.display='none';chapterCard(run)}
+function settings(){const sp=['ゆっくり','速い','瞬時'];sheet.replaceChildren(E('h3','','設定'),
+ B('文字の大きさ：'+(S.large?'大':'標準'),()=>{S.large=!S.large;save();header&&document.documentElement.style.setProperty('--fs',S.large?'18px':'16px');settings()},'sub'),
+ B('文字の速さ：'+sp[S.speed],()=>{S.speed=(S.speed+1)%3;save();settings()},'sub'),
+ B('効果音：'+(S.sound?'オン':'オフ'),()=>{S.sound=!S.sound;save();if(S.sound){ac();sfx('knock')}settings()},'sub'),
+ E('p','small','効果音はノックや電話などの短い音です。音を出さなくても、すべての謎を解けます。'),
+ B('セーブデータを消去',()=>{sheet.replaceChildren(E('h3','','消去の確認'),E('p','','すべての進行状況と証拠帳を消去します。元には戻せません。'),B('消去する',()=>{S=fresh();save();closeModal();title()},'pri ctr'),B('やめる',settings,'sub ctr'))},'sub'),
+ B('閉じる',closeModal,'pri ctr'));modal._onclose=null;openModal(false)}
+function menu(){sheet.replaceChildren(E('h3','','メニュー'),E('p','small','進行状況は自動で保存されています。'),
+ B('これまでのあらすじ',recap,'sub'),B('設定',settings,'sub'),
+ B('タイトルに戻る',()=>{closeModal();save();title()},'sub'),B('閉じる',closeModal,'pri ctr'));modal._onclose=null;openModal(false)}
+const RECAP=['住み込みの管理人として黒瀬ハイツで働き始めた。親切な住人・佐伯さんにおにぎりをもらう。夜、403号室の水野さんから「突き当たりの向こうから音がする」と電話があった。',
+ '四階の突き当たりの壁は後から塗り直され、古い図面では物置があった。「404号室」宛ての封筒。2時13分、引きずる音と三度のノック、「たすけて」という声。',
+ '物置で、新しい足跡、二組の壁の傷（5本と4本）、1987年のスペアキー貸出簿、二人の女性の写真を見つけた。水野さんは写真の女性・宮原佳奈の姪だった。',
+ '声は録音だった。物置の棚に、見つけてくれと言わんばかりにスピーカーが置かれていた。森田は設置を認め、依頼人は佐伯さんだと話した。',
+ '自分の報告書に「壁を開けて撤去」という一文が書き足され、送信されていた。12月1日の調査の前に、佐伯さん立ち会いで壁を開けさせる狙いだった。佐伯さんは自分を「選んで」雇わせていた。',
+ '佳奈さんの証言と弁当の伝票から、佳奈さんが逃げた後も10月9〜12日、物置に誰かがいたとわかった。録音の声は、藤崎真理の声だった。',
+ '真理の退職届は偽造だった（本人は名字の「崎」を、右上が「立」の字で書く）。物置の奥は10月22日に封鎖されていた。佐伯は、真理が怪我をしても救急車を呼ばなかったことをほのめかした。',
+ '佐伯が壁を壊そうとしているところに駆けつけ、刑事の前で1987年の事件を再構築した。'];
+function recap(){sheet.replaceChildren(E('h3','','これまでのあらすじ'));for(let i=0;i<S.ch;i++)sheet.append(E('p','','第'+KANJI[i]+'章　'+CHAPTERS[i].title),E('p','small',RECAP[i]));if(!S.ch)sheet.append(E('p','small','まだ第一章の途中だ。'));sheet.append(B('閉じる',closeModal,'pri ctr'));modal._onclose=null;openModal(false)}
+function hint(){const st=STEP();const hs=(st&&st.hint)||[];sheet.replaceChildren(E('h3','','ヒント'));
+ if(!hs.length||!hs[0]){sheet.append(E('p','','画面下の文章をタップして、物語を進めよう。'))}else{const lv=Math.min(S.hintLv,hs.length-1);for(let i=0;i<=lv;i++)sheet.append(E('p',i===lv?'':'small',['① ','② ','③ '][i]+hs[i]));if(lv<hs.length-1&&hs[lv+1])sheet.append(B('もっと詳しいヒント',()=>{S.hintLv++;save();hint()},'sub ctr'))}
+ sheet.append(B('閉じる',closeModal,'pri ctr'));modal._onclose=null;openModal(false)}
+
+/* 起動 */
+window.__404={get S(){return S},CHAPTERS,EVIDENCE};
+title();
+
+})();
+</script></body></html>
